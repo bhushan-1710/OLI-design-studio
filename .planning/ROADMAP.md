@@ -25,7 +25,7 @@ The client has not yet supplied the following assets and decisions. Development 
 
 ## Phases
 
-- [ ] **Phase 1: Foundation & Design System** - Scaffold Next.js static export app, tokens, fonts, footer theme toggle, sheet layout, Lenis + ScrollTrigger motion infrastructure, and UI primitives.
+- [x] **Phase 1: Foundation & Design System** - Scaffold Next.js static export app, tokens, fonts, footer theme toggle, sheet layout, Lenis + ScrollTrigger motion infrastructure, and UI primitives.
 - [ ] **Phase 2: Home Hero** - Port approved `oli-hero.html` into a React client component preserving exact layer hierarchy, timings, stage thresholds, and mobile fallbacks.
 - [ ] **Phase 3: Home Sections** - Selected work cards with draw overlay, pinned process section (stacked on mobile), disciplines list, closing CTA, and clean pin release verification.
 - [ ] **Phase 4: Work Index & Projects** - Typed project data model with build-time validation and explicit `isPlaceholder` guard, filtered work gallery with URL sync, project detail template, and sketch-to-photo scrub.
@@ -50,9 +50,9 @@ The client has not yet supplied the following assets and decisions. Development 
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: Repo scaffold, Next.js static export config, `tokens.css`, fonts, Footer theme toggle, and base styles.
-- [ ] 01-02: Global layout architecture (SheetFrame, TitleBlock, Nav with mobile collapse, Footer with theme toggle).
-- [ ] 01-03: Motion runtime setup (Lenis + ScrollTrigger ticker synchronization, `draw()` primitive helper, reduced-motion guard) and UI primitives.
+- [x] 01-01: Repo scaffold, Next.js static export config, `tokens.css`, fonts, Footer theme toggle, base styles, and Button primitive.
+- [x] 01-02: Global layout architecture (reusable SheetFrame, TitleBlock, Nav with mobile collapse, Footer with theme toggle, and placeholder routes).
+- [x] 01-03: Motion runtime setup (Lenis + ScrollTrigger ticker synchronization, `draw()` primitive helper, reduced-motion guard) and UI primitives (Chip, Stamp, DimensionRule, Annotation, HandCircle).
 
 ### Phase 2: Home Hero
 **Goal**: Port the approved hero prototype (`docs/reference/oli-hero.html`) into an isolated React client component, maintaining exact SVG layer structure, stage thresholds, scrub physics, and mobile adaptations.

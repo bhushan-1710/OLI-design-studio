@@ -9,14 +9,14 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Foundation & Design System (FOUND)
 
-- [ ] **FOUND-01**: Next.js App Router setup with static export (`output: 'export'`) and pinned dependencies.
-- [ ] **FOUND-02**: CSS design tokens in `tokens.css` with light and dark themes (system detection + manual toggle in Footer with `localStorage` and zero-flash inline script).
-- [ ] **FOUND-03**: Self-hosted typography via `next/font` (Instrument Serif, DM Mono, Just Another Hand).
-- [ ] **FOUND-04**: Sheet frame (12px inset, 1.5px solid `--ink`), 48px drafting grid, and responsive Sheet TitleBlock.
-- [ ] **FOUND-05**: Global Navigation with logo ("OLI" hand font + "Design Studio" mono caps), Work/Process/About links, and Enquire button.
-- [ ] **FOUND-06**: Global Footer with studio disciplines, contact links, Instagram, copyright, and theme toggle.
-- [ ] **FOUND-07**: Motion foundation with Lenis 1.1.x, GSAP 3.12.x + ScrollTrigger, `draw()` stroke helper, and `prefers-reduced-motion` bypass.
-- [ ] **FOUND-08**: Reusable UI primitives: Button (wobbly radius, red border/fill), Chip, Stamp, DimensionRule, Annotation, and HandCircle.
+- [x] **FOUND-01**: Next.js App Router setup with static export (`output: 'export'`) and pinned dependencies.
+- [x] **FOUND-02**: CSS design tokens in `tokens.css` with light and dark themes (system detection + manual toggle in Footer with `localStorage` and zero-flash inline script).
+- [x] **FOUND-03**: Self-hosted typography via `next/font` (Instrument Serif, DM Mono, Just Another Hand).
+- [x] **FOUND-04**: Sheet frame (12px inset, 1.5px solid `--ink`), 48px drafting grid, and responsive Sheet TitleBlock.
+- [x] **FOUND-05**: Global Navigation with logo ("OLI" hand font + "Design Studio" mono caps), Work/Process/About links, and Enquire button.
+- [x] **FOUND-06**: Global Footer with studio disciplines, contact links, Instagram, copyright, and theme toggle.
+- [x] **FOUND-07**: Motion foundation with Lenis 1.1.x, GSAP 3.12.x + ScrollTrigger, `draw()` stroke helper, and `prefers-reduced-motion` bypass.
+- [x] **FOUND-08**: Reusable UI primitives: Button (wobbly radius, red border/fill), Chip, Stamp, DimensionRule, Annotation, and HandCircle.
 
 ### Home Hero Section (HERO)
 
@@ -94,14 +94,14 @@ Which phases cover which requirements.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | Phase 1 | Pending |
-| FOUND-02 | Phase 1 | Pending |
-| FOUND-03 | Phase 1 | Pending |
-| FOUND-04 | Phase 1 | Pending |
-| FOUND-05 | Phase 1 | Pending |
-| FOUND-06 | Phase 1 | Pending |
-| FOUND-07 | Phase 1 | Pending |
-| FOUND-08 | Phase 1 | Pending |
+| FOUND-01 | Phase 1 | Complete |
+| FOUND-02 | Phase 1 | Complete |
+| FOUND-03 | Phase 1 | Complete |
+| FOUND-04 | Phase 1 | Complete |
+| FOUND-05 | Phase 1 | Complete |
+| FOUND-06 | Phase 1 | Complete |
+| FOUND-07 | Phase 1 | Complete |
+| FOUND-08 | Phase 1 | Complete |
 | HERO-01 | Phase 2 | Pending |
 | HERO-02 | Phase 2 | Pending |
 | HERO-03 | Phase 2 | Pending |
