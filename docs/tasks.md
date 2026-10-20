@@ -88,6 +88,8 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 
 ## Copy awaiting studio approval
 
+Nothing in the 'Copy awaiting studio approval' list ships until the studio has signed it off; record who and when.
+
 The following proposed `[DRAFT]` strings are actively rendered on the site or referenced in template copy. Each item requires studio sign-off or replacement with approved studio wording before production launch (Phase 6 / Phase 7):
 
 | Section / Item | File | Current [DRAFT] Copy | Studio Action |
@@ -108,7 +110,7 @@ The following proposed `[DRAFT]` strings are actively rendered on the site or re
 | **Contact page header & prompt** | `app/contact/page.tsx` | Headline: `"Let's talk about your project. [DRAFT]"`<br>Prompt: `"Tell us the site, the scale and when you'd like to start. [DRAFT]"` | Confirm contact sheet introduction and prompt. |
 | **Enquiry form success copy** | `components/contact/EnquiryForm.tsx` | `"We've received your enquiry and will reply within [NEEDED] working day(s). [DRAFT]"` | Supply turnaround SLA (e.g., "1–2 working days"). |
 | **Enquiry form error copy** | `components/contact/EnquiryForm.tsx` | `"That didn't send. Your message is still here. Try again, or email us at olidesignstudio06@gmail.com."` | Confirm fallback channel once WhatsApp number is supplied. |
-| **Custom 404 subhead** | `app/not-found.tsx` | `"The drawing or specification you requested could not be located on this drawing board. [DRAFT]"` | Confirm 404 message copy. |
+| **Custom 404 copy** | `app/not-found.tsx` | Subhead removed; uses only `content.md` copy (`"This sheet doesn't exist."`) | Resolved. |
 | **Page metadata titles** | `app/*/page.tsx`, `docs/content.md` | `"Projects — OLI Design Studio"`, `"How we work — OLI Design Studio"`, `"About — OLI Design Studio"`, `"Contact — OLI Design Studio"` | Confirm browser tab / SEO page titles. |
 
 ## Change log
@@ -123,6 +125,7 @@ The following proposed `[DRAFT]` strings are actively rendered on the site or re
 | 2026-10-20 | Corrections applied: UAT records 2, 3, 4 re-opened for user visual verification; OLI_PRODUCTION=1 guard added; placeholders cleansed of invented numbers; copy aligned with content.md; /dev/primitives excluded from export; project sheet numbering scheme submitted for approval | User & Dev |
 | 2026-10-20 | Phase 5 Remaining Pages complete: Process (A-03), About (A-04), Contact (A-05), EnquiryForm, Custom 404, PageTransition; script checks passed, visual items awaiting user verification | Dev |
 | 2026-10-20 | Added "Copy awaiting studio approval" inventory to tasks.md | User & Dev |
+| 2026-10-20 | Applied team block single-container solid border fix, removed 404 invented subhead, enhanced placeholder scanner to inspect static JS bundles, added Lenis forward & back/forward scroll handling, and enforced copy sign-off gate in tasks.md | User & Dev |
 
 
 

@@ -20,6 +20,12 @@ export function getLenisInstance(): Lenis | null {
   return activeLenis;
 }
 
+export function resetLenisScroll(target: number = 0, immediate: boolean = true) {
+  if (activeLenis) {
+    activeLenis.scrollTo(target, { immediate });
+  }
+}
+
 /**
  * Initializes Lenis smooth scrolling synchronized with GSAP's central ticker.
  * If user prefers reduced motion, bypasses Lenis completely.

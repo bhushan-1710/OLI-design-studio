@@ -76,21 +76,7 @@ export default function NotFound() {
             This sheet doesn&apos;t exist.
           </h1>
 
-          <p
-            style={{
-              fontFamily: 'var(--font-serif, Georgia, serif)',
-              fontStyle: 'italic',
-              fontSize: 'clamp(16px, 2vw, 20px)',
-              lineHeight: 1.45,
-              color: 'var(--ink)',
-              opacity: 0.85,
-              margin: 0,
-            }}
-          >
-            The drawing or specification you requested could not be located on this drawing board. [DRAFT]
-          </p>
-
-          <div style={{ paddingTop: 'var(--space-4)' }}>
+          <div style={{ paddingTop: 'calc(var(--space-base) * 2)' }}>
             <Button href="/" variant="primary">
               Back to Home →
             </Button>

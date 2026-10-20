@@ -10,12 +10,6 @@ export const metadata: Metadata = {
     'About OLI Design Studio — Architecture, Interior, Landscape, Product Design.',
 };
 
-const TEAM_PLACEHOLDERS = [
-  { id: '1', role: 'Principal Architect' },
-  { id: '2', role: 'Interior Lead' },
-  { id: '3', role: 'Landscape & Product Lead' },
-];
-
 export default function AboutPage() {
   return (
     <div
@@ -167,13 +161,13 @@ export default function AboutPage() {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: 'var(--space-6)',
+            gap: 'var(--space-base)',
           }}
         >
           <div
             id="team-heading"
             style={{
-              fontFamily: 'var(--font-mono, monospace)',
+              fontFamily: 'var(--font-mono, var(--font-mono-fallback))',
               fontSize: '11px',
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
@@ -185,84 +179,37 @@ export default function AboutPage() {
 
           <div
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
-              gap: 'var(--space-6)',
+              border: '1.5px solid var(--ink)',
+              backgroundColor: 'var(--paper)',
+              padding: 'var(--sheet-padding)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 'var(--space-base)',
+              boxSizing: 'border-box',
             }}
           >
-            {TEAM_PLACEHOLDERS.map((member) => (
-              <article
-                key={member.id}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  border: '1.5px solid var(--ink)',
-                  backgroundColor: 'var(--paper)',
-                  boxSizing: 'border-box',
-                }}
-              >
-                {/* Silhouette portrait placeholder */}
-                <div
-                  style={{
-                    width: '100%',
-                    aspectRatio: '4 / 5',
-                    backgroundColor: 'var(--wash-s1)',
-                    borderBottom: '1px solid var(--ink)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'relative',
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: 'var(--font-mono, monospace)',
-                      fontSize: '11px',
-                      letterSpacing: '0.12em',
-                      textTransform: 'uppercase',
-                      padding: '4px 10px',
-                      border: '1px dashed var(--ink)',
-                      opacity: 0.7,
-                    }}
-                  >
-                    [NEEDED: Team portrait]
-                  </span>
-                </div>
-
-                {/* Card metadata */}
-                <div
-                  style={{
-                    padding: 'var(--space-4) var(--space-6)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '4px',
-                  }}
-                >
-                  <h3
-                    style={{
-                      fontFamily: 'var(--font-serif, Georgia, serif)',
-                      fontSize: '20px',
-                      fontWeight: 400,
-                      margin: 0,
-                    }}
-                  >
-                    [NEEDED: Team member name]
-                  </h3>
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-mono, monospace)',
-                      fontSize: '11px',
-                      letterSpacing: '0.08em',
-                      textTransform: 'uppercase',
-                      color: 'var(--red)',
-                      margin: 0,
-                    }}
-                  >
-                    {member.role}
-                  </p>
-                </div>
-              </article>
-            ))}
+            <span
+              style={{
+                fontFamily: 'var(--font-mono, var(--font-mono-fallback))',
+                fontSize: '13px',
+                letterSpacing: '0.04em',
+                color: 'var(--ink)',
+              }}
+            >
+              [NEEDED: team members]
+            </span>
+            <p
+              style={{
+                fontFamily: 'var(--font-mono, var(--font-mono-fallback))',
+                fontSize: '13px',
+                letterSpacing: '0.04em',
+                opacity: 0.75,
+                color: 'var(--ink)',
+                margin: 0,
+              }}
+            >
+              Studio to supply names, roles and portraits.
+            </p>
           </div>
         </section>
 

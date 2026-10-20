@@ -80,8 +80,13 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 - [ ] Simple CMS for the studio
 - [ ] Revisit a Three.js moment **only if** a real 3D model of a project exists
 
+## Copy awaiting studio approval
+
+Nothing in the 'Copy awaiting studio approval' list ships until the studio has signed it off; record who and when.
+
 ## Change log
 
 | Date | Change | Decided by |
 |---|---|---|
 | 2026-10-20 | Hero prototype approved; docs set created | Bhushan |
+| 2026-10-20 | Added studio approval rule for draft copy; team block, 404, placeholder scanner, and Lenis scroll handling updated | User & Dev |

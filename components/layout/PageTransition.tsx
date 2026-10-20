@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { prefersReducedMotion } from '@/lib/motion/reduced-motion';
+import { getLenisInstance } from '@/lib/motion/lenis';
 
 export function PageTransition() {
   const pathname = usePathname();
@@ -12,6 +13,18 @@ export function PageTransition() {
   const overlayRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
   const isFirstMount = useRef(true);
+  const isPopstateRef = useRef(false);
+
+  // Track browser Back/Forward (popstate) navigations
+  useEffect(() => {
+    const handlePopState = () => {
+      isPopstateRef.current = true;
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
 
   useEffect(() => {
     // Skip animation on initial page load
@@ -27,6 +40,28 @@ export function PageTransition() {
     }
 
     prevPathRef.current = pathname;
+    const isPopstate = isPopstateRef.current;
+    isPopstateRef.current = false;
+
+    const lenis = getLenisInstance();
+
+    // Scroll handling:
+    // 1. Forward navigation: Immediately reset scroll to 0 for both Lenis and window
+    // 2. Back/Forward (popstate): Allow the browser to restore previous scroll position,
+    //    then synchronize Lenis with the restored window.scrollY
+    if (!isPopstate) {
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true });
+      }
+      window.scrollTo(0, 0);
+    } else {
+      // On popstate, browser handles scroll restoration asynchronously
+      requestAnimationFrame(() => {
+        if (lenis) {
+          lenis.scrollTo(window.scrollY, { immediate: true });
+        }
+      });
+    }
 
     // Reduced motion check: skip wipe entirely
     if (prefersReducedMotion()) {
