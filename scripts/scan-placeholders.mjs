@@ -4,6 +4,7 @@ import path from 'path';
 const OUT_DIR = path.resolve(process.cwd(), 'out');
 const PATTERNS = [
   { label: '[NEEDED', regex: /\[NEEDED/i },
+  { label: '[DRAFT', regex: /\[DRAFT/i },
   { label: 'TBC', regex: /\bTBC\b/i },
   { label: 'placeholder', regex: /placeholder/i },
 ];
