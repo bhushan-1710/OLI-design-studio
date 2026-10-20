@@ -86,6 +86,31 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 - [ ] Simple CMS for the studio
 - [ ] Revisit a Three.js moment **only if** a real 3D model of a project exists
 
+## Copy awaiting studio approval
+
+The following proposed `[DRAFT]` strings are actively rendered on the site or referenced in template copy. Each item requires studio sign-off or replacement with approved studio wording before production launch (Phase 6 / Phase 7):
+
+| Section / Item | File | Current [DRAFT] Copy | Studio Action |
+|---|---|---|---|
+| **Hero headline** | `components/sections/HeroSection.tsx` | `"From sketch to handover."` | Approve headline or supply alternative core promise. |
+| **Hero stage labels** | `components/sections/HeroSection.tsx` | `"01 Sketch · 02 Develop · 03 Build · 04 Handover"` | Confirm 4-stage nomenclature matches studio process. |
+| **Hero stamp text** | `components/sections/HeroElevation.tsx` | `"HANDED OVER"` | Confirm stamp wording. |
+| **Hero technical annotations** | `components/sections/HeroElevation.tsx` | `"CANTILEVER 3.0 M"`, `"FULL-HEIGHT GLAZING"`, `"ENTRY"` | Confirm or replace with real project drawing annotations. |
+| **Home: Selected work heading** | `components/sections/SelectedWorkSection.tsx` | `"Selected work"` | Confirm section heading. |
+| **Home: Process section heading** | `components/sections/ProcessSection.tsx` | `"How a project moves."` | Confirm section headline. |
+| **Home: Process stage descriptions** | `components/sections/ProcessSection.tsx` | 01: `"We start on paper: your site, your brief, first ideas drawn by hand."`<br>02: `"Ideas become plans, sections and materials you can review and change."`<br>03: `"We detail the drawings, coordinate vendors and visit site as it goes up."`<br>04: `"You receive the finished space and the documents behind it."` | Confirm stage summaries reflect studio workflow. |
+| **Home: Closing CTA heading & subhead** | `components/sections/ClosingCtaSection.tsx` | Heading: `"Have a project in mind?"`<br>Subhead: `"Tell us the site, the scale and when you'd like to start."` | Confirm conversion headline and invitation copy. |
+| **Footer discipline tagline** | `components/layout/Footer.tsx` | `"Architecture · Interior · Landscape · Product Design — one studio, start to finish."` | Confirm global footer discipline statement. |
+| **Work page title & empty state** | `app/work/page.tsx`, `components/work/WorkGallery.tsx` | Title: `"Work"`<br>Empty state: `"Nothing here yet. Try another discipline."` | Confirm page heading and zero-filter message. |
+| **Process page intro headline** | `app/process/page.tsx` | `"A project is a series of decisions. Here is when each one gets made. [DRAFT]"` | Confirm or refine page philosophy intro. |
+| **Process page stage cards** | `app/process/page.tsx` | Stages 01–04 descriptions (`"We start on paper..."`, etc.) | Confirm stage descriptions. |
+| **About page discipline tagline** | `app/about/page.tsx` | `"Architecture · Interior · Landscape · Product Design — one studio, start to finish. [DRAFT]"` | Confirm hero subhead on About sheet. |
+| **Contact page header & prompt** | `app/contact/page.tsx` | Headline: `"Let's talk about your project. [DRAFT]"`<br>Prompt: `"Tell us the site, the scale and when you'd like to start. [DRAFT]"` | Confirm contact sheet introduction and prompt. |
+| **Enquiry form success copy** | `components/contact/EnquiryForm.tsx` | `"We've received your enquiry and will reply within [NEEDED] working day(s). [DRAFT]"` | Supply turnaround SLA (e.g., "1–2 working days"). |
+| **Enquiry form error copy** | `components/contact/EnquiryForm.tsx` | `"That didn't send. Your message is still here. Try again, or email us at olidesignstudio06@gmail.com."` | Confirm fallback channel once WhatsApp number is supplied. |
+| **Custom 404 subhead** | `app/not-found.tsx` | `"The drawing or specification you requested could not be located on this drawing board. [DRAFT]"` | Confirm 404 message copy. |
+| **Page metadata titles** | `app/*/page.tsx`, `docs/content.md` | `"Projects — OLI Design Studio"`, `"How we work — OLI Design Studio"`, `"About — OLI Design Studio"`, `"Contact — OLI Design Studio"` | Confirm browser tab / SEO page titles. |
+
 ## Change log
 
 | Date | Change | Decided by |
@@ -97,5 +122,7 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 | 2026-10-20 | Phase 4 Work Index & Projects complete with sketch-to-photo scrub (6/6 UAT passed) | Dev |
 | 2026-10-20 | Corrections applied: UAT records 2, 3, 4 re-opened for user visual verification; OLI_PRODUCTION=1 guard added; placeholders cleansed of invented numbers; copy aligned with content.md; /dev/primitives excluded from export; project sheet numbering scheme submitted for approval | User & Dev |
 | 2026-10-20 | Phase 5 Remaining Pages complete: Process (A-03), About (A-04), Contact (A-05), EnquiryForm, Custom 404, PageTransition; script checks passed, visual items awaiting user verification | Dev |
+| 2026-10-20 | Added "Copy awaiting studio approval" inventory to tasks.md | User & Dev |
+
 
 
