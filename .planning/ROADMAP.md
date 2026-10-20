@@ -27,7 +27,7 @@ The client has not yet supplied the following assets and decisions. Development 
 
 - [x] **Phase 1: Foundation & Design System** - Scaffold Next.js static export app, tokens, fonts, footer theme toggle, sheet layout, Lenis + ScrollTrigger motion infrastructure, and UI primitives.
 - [x] **Phase 2: Home Hero** - Port approved `oli-hero.html` into a React client component preserving exact layer hierarchy, timings, stage thresholds, and mobile fallbacks.
-- [ ] **Phase 3: Home Sections** - Selected work cards with draw overlay, pinned process section (stacked on mobile), disciplines list, closing CTA, and clean pin release verification.
+- [x] **Phase 3: Home Sections** - Selected work cards with draw overlay, pinned process section (stacked on mobile), disciplines list, closing CTA, and clean pin release verification.
 - [ ] **Phase 4: Work Index & Projects** - Typed project data model with build-time validation and explicit `isPlaceholder` guard, filtered work gallery with URL sync, project detail template, and sketch-to-photo scrub.
 - [ ] **Phase 5: Remaining Pages** - Dedicated Process page (structured placeholder), About page, Contact page with 4-field validated form + Web3Forms (`botcheck` honeypot) + WhatsApp integration, 404, and sheet wipe transitions.
 - [ ] **Phase 6: Quality, Polish & Launch Readiness** - Metadata, sitemap, JSON-LD, performance budgets audit on Android 4G, WCAG AA accessibility, reduced-motion verification, and cross-browser testing.
@@ -84,9 +84,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 03-01: DimensionRule component and SelectedWork section with project card enter/hover animations.
-- [ ] 03-02: ProcessSection component with responsive desktop horizontal pin vs mobile vertical stack.
-- [ ] 03-03: Disciplines list with SVG sketch reveals, ClosingCTA section, and ScrollTrigger refresh/resize pin lifecycle audit.
+- [x] 03-01: DimensionRule component and SelectedWork section with project card enter/hover animations.
+- [x] 03-02: ProcessSection component with responsive desktop horizontal pin vs mobile vertical stack.
+- [x] 03-03: Disciplines list with SVG sketch reveals, ClosingCTA section, and ScrollTrigger refresh/resize pin lifecycle audit.
 
 ### Phase 4: Work Index & Projects
 **Goal**: Establish the typed project content architecture with build-time validation and explicit `isPlaceholder` protection, build the filterable Work gallery with shareable URL state, and deliver the project detail template with the signature sketch-to-photo scrub.

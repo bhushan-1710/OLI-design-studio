@@ -1,9 +1,9 @@
 ---
 gsd_state_version: '1.0'
-status: executing
+status: planning
 progress:
   total_phases: 6
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 15
   completed_plans: 8
   percent: 53
@@ -16,14 +16,14 @@ progress:
 See: `.planning/PROJECT.md` (updated 2026-10-20)
 
 **Core value:** Demonstrate the studio's end-to-end "sketch to handover" promise through meaningful scroll-driven drafting linework and authentic project material, converting mobile visitors into direct enquiries.
-**Current focus:** Phase 3: Home Sections
+**Current focus:** Phase 4: Work Index & Projects
 
 ## Current Position
 
-Phase: 3 of 6 (Home Sections)
-Plan: 3 of 3 in Phase 3
-Status: Phase 3 execution complete — ready for verification
-Last activity: 2026-10-20 — Executed Plans 03-01, 03-02, and 03-03 (SelectedWork, ProcessSection, Disciplines, ClosingCTA, and home assembly)
+Phase: 4 of 6 (Work Index & Projects)
+Plan: 0 of 2 in Phase 4
+Status: Phase 3 verified (5/5 UAT passed) — initiating Phase 4
+Last activity: 2026-10-20 — Completed Phase 3 Home Sections verification (5/5 UAT tests passed)
 
 Progress: [█████░░░░░] 53%
 

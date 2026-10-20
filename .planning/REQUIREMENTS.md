@@ -29,12 +29,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Home Sections (HOME)
 
-- [ ] **HOME-01**: Selected work section preceded by DimensionRule divider, presenting 3-4 featured project cards.
-- [ ] **HOME-02**: Project card component with image cover, meta, scroll-triggered stroke draw overlay, and desktop hover scale/underline animation.
-- [ ] **HOME-03**: Process section with pinned horizontal scroll on desktop (travel = (panels - 1) × viewport width, `end: +=300%`, drawings complete during panel scroll).
-- [ ] **HOME-04**: Process section responsive mobile fallback (≤820px) stacking panels vertically with single-trigger drawing on enter.
-- [ ] **HOME-05**: Disciplines section (Architecture, Interior, Landscape, Product) in large serif typography; hover/focus draws discipline sketch (tap toggle on mobile).
-- [ ] **HOME-06**: Closing CTA section with headline, Enquire button, WhatsApp click-to-chat, and mailto link.
+- [x] **HOME-01**: Selected work section preceded by DimensionRule divider, presenting 3-4 featured project cards.
+- [x] **HOME-02**: Project card component with image cover, meta, scroll-triggered stroke draw overlay, and desktop hover scale/underline animation.
+- [x] **HOME-03**: Process section with pinned horizontal scroll on desktop (travel = (panels - 1) × viewport width, `end: +=300%`, drawings complete during panel scroll).
+- [x] **HOME-04**: Process section responsive mobile fallback (≤820px) stacking panels vertically with single-trigger drawing on enter.
+- [x] **HOME-05**: Disciplines section (Architecture, Interior, Landscape, Product) in large serif typography; hover/focus draws discipline sketch (tap toggle on mobile).
+- [x] **HOME-06**: Closing CTA section with headline, Enquire button, WhatsApp click-to-chat, and mailto link.
 
 ### Work & Projects (WORK)
 

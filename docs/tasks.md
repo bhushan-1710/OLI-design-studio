@@ -31,16 +31,25 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 - [x] Hero placeholder elevation drawing structured with typed layers (.cl, .s1, .s2, .dim, .note, wash, stamp); ready to swap when client assets arrive
 - [x] Review: verified at 390 / 1280 in light and dark mode with calibrated dark wash contrast (5/5 UAT passed)
 
-## Phase 3: Work and projects
+## Phase 3: Home Sections
 
-- [ ] Project data model + build-time validation
-- [ ] Work index with filter chips and URL state
-- [ ] Project detail template
-- [ ] Sketch-to-photo scrub component
-- [ ] Populate 3–4 projects **(blocked on client assets)**
+- [x] DimensionRule divider with left-to-right draw
+- [x] Selected Work section with stroke-draw photo reveals and hover effects
+- [x] ProcessSection: responsive horizontal pinned scrub on desktop (`+=300%`), stacked panels on mobile (≤820px)
+- [x] Disciplines section with SVG sketch reveals (hover on desktop, tap accordion on mobile)
+- [x] Closing CTA section with headline, Enquire button, WhatsApp click-to-chat, and mailto
+- [x] Dual-pin lifecycle and font-load ScrollTrigger refresh verified at 390px and 1280px (5/5 UAT passed)
+
+## Phase 4: Work and projects
+
+- [ ] Project data model + build-time validation (`isPlaceholder` guard)
+- [ ] Work index with filter chips and URL state (`/work?type=...`)
+- [ ] Project detail template (`/work/[slug]`, Sheet A-03+)
+- [ ] Sketch-to-photo scrub component (`+=150%` pinned scrub)
+- [ ] Seed 3 obviously fake placeholder projects (`isPlaceholder: true`, "Location TBC")
 - [ ] Next-project navigation
 
-## Phase 4: Remaining pages
+## Phase 5: Remaining pages
 
 - [ ] Process page
 - [ ] About page
@@ -49,7 +58,7 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 - [ ] 404 page
 - [ ] Page transitions
 
-## Phase 5: Quality
+## Phase 6: Quality
 
 - [ ] SEO: metadata, sitemap, robots, JSON-LD, OG image
 - [ ] Performance pass against `tech-spec.md` budgets (real Android device)
@@ -58,7 +67,7 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 - [ ] Cross-browser pass (Safari iOS, Chrome Android, desktop browsers)
 - [ ] Copy pass: remove every `[DRAFT]` / `[NEEDED]` marker from `content.md` content
 
-## Phase 6: Launch
+## Phase 7: Launch
 
 - [ ] Client review and sign-off
 - [ ] Domain: DNS change plan, redirect from Google Sites URL tested
@@ -83,3 +92,5 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 | 2026-10-20 | Hero prototype approved; docs set created | Bhushan |
 | 2026-10-20 | Phase 1 Foundation & Design System complete (5/5 UAT passed) | Dev |
 | 2026-10-20 | Phase 2 Home Hero complete with dark wash calibration (5/5 UAT passed) | Dev |
+| 2026-10-20 | Phase 3 Home Sections complete with dual-pin lifecycle (5/5 UAT passed) | Dev |
+
