@@ -20,8 +20,8 @@ export default function WorkPage() {
         flexDirection: 'column',
       }}
     >
-      <main
-        id="main-content"
+      <div
+        className="oli-sheet-content"
         style={{
           width: '100%',
           maxWidth: '1280px',
@@ -94,7 +94,7 @@ export default function WorkPage() {
         >
           <WorkGallery />
         </Suspense>
-      </main>
+      </div>
 
       {/* Sheet Title Block */}
       <TitleBlock sheetNumber="A-02" sheetTitle="Work" scale="Scale 1:100" />

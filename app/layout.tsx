@@ -4,6 +4,7 @@ import { themeInitScript } from '@/lib/theme';
 import { SkipLink } from '@/components/layout/SkipLink';
 import { Nav } from '@/components/layout/Nav';
 import { Footer } from '@/components/layout/Footer';
+import { PageTransition } from '@/components/layout/PageTransition';
 import '@/styles/base.css';
 import '@/styles/components.css';
 
@@ -26,6 +27,7 @@ export default function RootLayout({
       </head>
       <body>
         <SkipLink />
+        <PageTransition />
         <Nav />
         <main id="main-content">
           {children}

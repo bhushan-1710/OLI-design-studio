@@ -7,14 +7,12 @@ import { ClosingCtaSection } from '@/components/sections/ClosingCtaSection';
 
 export default function HomePage() {
   return (
-    <main>
+    <>
       <HeroSection />
       <SelectedWorkSection />
       <ProcessSection />
       <DisciplinesSection />
       <ClosingCtaSection />
-    </main>
+    </>
   );
 }
-
-

@@ -13,6 +13,8 @@ if (typeof window !== 'undefined') {
 export type LenisCleanup = () => void;
 
 let activeLenis: Lenis | null = null;
+let instanceCount = 0;
+let tickerCallback: ((time: number) => void) | null = null;
 
 export function getLenisInstance(): Lenis | null {
   return activeLenis;
@@ -21,7 +23,7 @@ export function getLenisInstance(): Lenis | null {
 /**
  * Initializes Lenis smooth scrolling synchronized with GSAP's central ticker.
  * If user prefers reduced motion, bypasses Lenis completely.
- * Returns a cleanup callback to destroy Lenis and remove ticker callbacks.
+ * Safe ref-counting singleton: multiple consumers can call this without duplicating tickers.
  */
 export function initSmoothScroll(): LenisCleanup {
   if (typeof window === 'undefined') {
@@ -33,37 +35,45 @@ export function initSmoothScroll(): LenisCleanup {
     return () => {};
   }
 
-  try {
-    const lenis = new Lenis({
-      lerp: 0.1,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.5,
-      autoRaf: false, // Driven strictly by GSAP ticker
-    });
+  instanceCount++;
 
-    activeLenis = lenis;
+  if (!activeLenis) {
+    try {
+      const lenis = new Lenis({
+        lerp: 0.1,
+        wheelMultiplier: 1,
+        touchMultiplier: 1.5,
+        autoRaf: false, // Driven strictly by GSAP ticker
+      });
 
-    // Update ScrollTrigger on Lenis scroll
-    lenis.on('scroll', ScrollTrigger.update);
+      activeLenis = lenis;
 
-    // Bind Lenis RAF into GSAP's central ticker
-    const tickerCallback = (time: number) => {
-      lenis.raf(time * 1000);
-    };
+      // Update ScrollTrigger on Lenis scroll
+      lenis.on('scroll', ScrollTrigger.update);
 
-    gsap.ticker.add(tickerCallback);
-    gsap.ticker.lagSmoothing(0);
+      // Bind Lenis RAF into GSAP's central ticker
+      tickerCallback = (time: number) => {
+        lenis.raf(time * 1000);
+      };
 
-    return () => {
-      gsap.ticker.remove(tickerCallback);
-      lenis.destroy();
-      if (activeLenis === lenis) {
-        activeLenis = null;
-      }
-    };
-  } catch (err) {
-    // Graceful fallback if smooth scroll initialization encounters an issue
-    return () => {};
+      gsap.ticker.add(tickerCallback);
+      gsap.ticker.lagSmoothing(0);
+    } catch {
+      // Graceful fallback if smooth scroll initialization encounters an issue
+      return () => {};
+    }
   }
-}
 
+  return () => {
+    instanceCount--;
+    if (instanceCount <= 0 && activeLenis) {
+      if (tickerCallback) {
+        gsap.ticker.remove(tickerCallback);
+        tickerCallback = null;
+      }
+      activeLenis.destroy();
+      activeLenis = null;
+      instanceCount = 0;
+    }
+  };
+}

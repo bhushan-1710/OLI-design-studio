@@ -27,8 +27,8 @@ export default function AboutPage() {
         flexDirection: 'column',
       }}
     >
-      <main
-        id="main-content"
+      <div
+        className="oli-sheet-content"
         style={{
           width: '100%',
           maxWidth: '1280px',
@@ -360,7 +360,7 @@ export default function AboutPage() {
             Get in touch →
           </Button>
         </footer>
-      </main>
+      </div>
 
       {/* Sheet Title Block */}
       <TitleBlock sheetNumber="A-04" sheetTitle="About" scale="Scale 1:100" />

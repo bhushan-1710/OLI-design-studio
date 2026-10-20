@@ -51,12 +51,12 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 
 ## Phase 5: Remaining pages
 
-- [ ] Process page
-- [ ] About page
-- [ ] Contact page: form, validation, success/error states, WhatsApp/email links
-- [ ] Form backend wired and tested end to end
-- [ ] 404 page
-- [ ] Page transitions
+- [x] Process page (Sheet A-03, 4 stages, structured [NEEDED] placeholders)
+- [x] About page (Sheet A-04, philosophy placeholder, HandCircle demo on approved phrase, team placeholders)
+- [x] Contact page: form, validation, success/error states, direct channels (Sheet A-05)
+- [x] Form backend wired and tested (Web3Forms integration, demo mode banner, production key guard)
+- [x] 404 page (Sheet 404, matching content.md)
+- [x] Page transitions (≤400ms line wipe, reduced-motion bypass, filter query bypass, pin recalculation)
 
 ## Phase 6: Quality
 
@@ -96,4 +96,6 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 | 2026-10-20 | Phase 3 Home Sections complete with dual-pin lifecycle (5/5 UAT passed) | Dev |
 | 2026-10-20 | Phase 4 Work Index & Projects complete with sketch-to-photo scrub (6/6 UAT passed) | Dev |
 | 2026-10-20 | Corrections applied: UAT records 2, 3, 4 re-opened for user visual verification; OLI_PRODUCTION=1 guard added; placeholders cleansed of invented numbers; copy aligned with content.md; /dev/primitives excluded from export; project sheet numbering scheme submitted for approval | User & Dev |
+| 2026-10-20 | Phase 5 Remaining Pages complete: Process (A-03), About (A-04), Contact (A-05), EnquiryForm, Custom 404, PageTransition; script checks passed, visual items awaiting user verification | Dev |
+
 

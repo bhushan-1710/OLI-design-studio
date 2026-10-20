@@ -44,8 +44,8 @@ export default function ProcessPage() {
         flexDirection: 'column',
       }}
     >
-      <main
-        id="main-content"
+      <div
+        className="oli-sheet-content"
         style={{
           width: '100%',
           maxWidth: '1280px',
@@ -314,7 +314,7 @@ export default function ProcessPage() {
             Start a Conversation →
           </Button>
         </footer>
-      </main>
+      </div>
 
       {/* Sheet Title Block */}
       <TitleBlock sheetNumber="A-03" sheetTitle="Process" scale="Scale 1:100" />
