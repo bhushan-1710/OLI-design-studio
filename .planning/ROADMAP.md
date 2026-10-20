@@ -102,8 +102,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 04-01: Typed project data schema (`/content/projects.ts`) with `isPlaceholder` validation, 3 obviously fake placeholder projects, and Work index with URL-state filter chips.
-- [ ] 04-02: Project detail dynamic route (`/work/[slug]`), sketch-to-photo scrub component, process gallery, and next-project navigation.
+- [x] 04-01: Typed project data schema (`/content/projects.ts`) with `isPlaceholder` validation, 3 obviously fake placeholder projects, and Work index with URL-state filter chips.
+- [x] 04-02: Project detail dynamic route (`/work/[slug]`), sketch-to-photo scrub component, process gallery, and next-project navigation.
 
 ### Phase 5: Remaining Pages
 **Goal**: Build the dedicated Process (with structured placeholder content awaiting client confirmation), About, and Contact pages, integrate the 4-field enquiry form with client-side validation and Web3Forms (`botcheck` honeypot) static export submission, custom 404 sheet, and route transition effects.

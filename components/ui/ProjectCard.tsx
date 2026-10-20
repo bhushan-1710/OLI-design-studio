@@ -89,8 +89,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <Link
       ref={cardRef}
-      href={`/work/`}
-      className="project-card"
+      href={`/work/${project.slug}`}
+      className="project-card focus-visible-ring"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{
@@ -98,7 +98,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         flexDirection: 'column',
         textDecoration: 'none',
         color: 'inherit',
-        outline: 'none',
         position: 'relative',
       }}
     >

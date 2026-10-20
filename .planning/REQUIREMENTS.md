@@ -38,12 +38,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Work & Projects (WORK)
 
-- [ ] **WORK-01**: Typed project data model (`/content/projects.ts`) enforcing `isPlaceholder: boolean` flag, `cover`, `brief`, and ≥3 images at build time, blocking unflagged placeholder data from production.
-- [ ] **WORK-02**: Seed 3 obviously fake placeholder projects ("Placeholder Project 01", "02", "03", "Location TBC") with `isPlaceholder: true` and zero invented details.
-- [ ] **WORK-03**: Work index page (`/work`, Sheet A-02) with responsive 2-column desktop / 1-column mobile grid.
-- [ ] **WORK-04**: Instant discipline filter chips with URL query param sync (`/work?type=...`) without page reload.
-- [ ] **WORK-05**: Project detail template (`/work/[slug]`, Sheet A-03+) with title, meta, 2-3 sentence brief, process drawings/photos, outcome gallery, and next-project link.
-- [ ] **WORK-06**: Sketch-to-photo scroll-scrub component pinned for `+=150%` (`scrub: 0.7`), fading linework from 0-50% and revealing full color photo by 100%.
+- [x] **WORK-01**: Typed project data model (`/content/projects.ts`) enforcing `isPlaceholder: boolean` flag, `cover`, `brief`, and ≥3 images at build time, blocking unflagged placeholder data from production.
+- [x] **WORK-02**: Seed 3 obviously fake placeholder projects ("Placeholder Project 01", "02", "03", "Location TBC") with `isPlaceholder: true` and zero invented details.
+- [x] **WORK-03**: Work index page (`/work`, Sheet A-02) with responsive 2-column desktop / 1-column mobile grid.
+- [x] **WORK-04**: Instant discipline filter chips with URL query param sync (`/work?type=...`) without page reload.
+- [x] **WORK-05**: Project detail template (`/work/[slug]`, Sheet A-03+) with title, meta, 2-3 sentence brief, process drawings/photos, outcome gallery, and next-project link.
+- [x] **WORK-06**: Sketch-to-photo scroll-scrub component pinned for `+=150%` (`scrub: 0.7`), fading linework from 0-50% and revealing full color photo by 100%.
 
 ### Remaining Pages (PAGE)
 

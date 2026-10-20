@@ -42,12 +42,12 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 
 ## Phase 4: Work and projects
 
-- [ ] Project data model + build-time validation (`isPlaceholder` guard)
-- [ ] Work index with filter chips and URL state (`/work?type=...`)
-- [ ] Project detail template (`/work/[slug]`, Sheet A-03+)
-- [ ] Sketch-to-photo scrub component (`+=150%` pinned scrub)
-- [ ] Seed 3 obviously fake placeholder projects (`isPlaceholder: true`, "Location TBC")
-- [ ] Next-project navigation
+- [x] Project data model + build-time validation (`isPlaceholder` guard)
+- [x] Work index with filter chips and URL state (`/work?type=...`)
+- [x] Project detail template (`/work/[slug]`, Sheet A-03+)
+- [x] Sketch-to-photo scrub component (`+=150%` pinned scrub)
+- [x] Seed 4 obviously fake placeholder projects (`isPlaceholder: true`, "Location TBC")
+- [x] Next-project navigation
 
 ## Phase 5: Remaining pages
 
@@ -93,4 +93,5 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 | 2026-10-20 | Phase 1 Foundation & Design System complete (5/5 UAT passed) | Dev |
 | 2026-10-20 | Phase 2 Home Hero complete with dark wash calibration (5/5 UAT passed) | Dev |
 | 2026-10-20 | Phase 3 Home Sections complete with dual-pin lifecycle (5/5 UAT passed) | Dev |
+| 2026-10-20 | Phase 4 Work Index & Projects complete with sketch-to-photo scrub (6/6 UAT passed) | Dev |
 
