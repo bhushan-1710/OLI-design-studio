@@ -12,6 +12,12 @@ if (typeof window !== 'undefined') {
 
 export type LenisCleanup = () => void;
 
+let activeLenis: Lenis | null = null;
+
+export function getLenisInstance(): Lenis | null {
+  return activeLenis;
+}
+
 /**
  * Initializes Lenis smooth scrolling synchronized with GSAP's central ticker.
  * If user prefers reduced motion, bypasses Lenis completely.
@@ -35,6 +41,8 @@ export function initSmoothScroll(): LenisCleanup {
       autoRaf: false, // Driven strictly by GSAP ticker
     });
 
+    activeLenis = lenis;
+
     // Update ScrollTrigger on Lenis scroll
     lenis.on('scroll', ScrollTrigger.update);
 
@@ -49,9 +57,13 @@ export function initSmoothScroll(): LenisCleanup {
     return () => {
       gsap.ticker.remove(tickerCallback);
       lenis.destroy();
+      if (activeLenis === lenis) {
+        activeLenis = null;
+      }
     };
   } catch (err) {
     // Graceful fallback if smooth scroll initialization encounters an issue
     return () => {};
   }
 }
+

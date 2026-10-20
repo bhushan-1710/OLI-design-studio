@@ -44,6 +44,16 @@
     --ink: #ECE6D9;
     --red: #E5694F;
     --grid: rgba(236, 230, 217, 0.06);
+
+    /* Calibrated Marker Wash Palette for Dark Mode (preserving >4.5:1 contrast for cream linework) */
+    --wash-sand: #3A3428;
+    --wash-concrete: #343330;
+    --wash-glass: #223538;
+    --wash-timber: #3C2417;
+    --wash-sage: #263420;
+    --wash-shrub: #1F2B18;
+    --wash-slab: #2E2B27;
+    --wash-ground: #2E2B25;
   }
 }
 
@@ -53,6 +63,16 @@
   --ink: #ECE6D9;
   --red: #E5694F;
   --grid: rgba(236, 230, 217, 0.06);
+
+  /* Calibrated Marker Wash Palette for Dark Mode (preserving >4.5:1 contrast for cream linework) */
+  --wash-sand: #3A3428;
+  --wash-concrete: #343330;
+  --wash-glass: #223538;
+  --wash-timber: #3C2417;
+  --wash-sage: #263420;
+  --wash-shrub: #1F2B18;
+  --wash-slab: #2E2B27;
+  --wash-ground: #2E2B25;
 }
 
 /* Light Theme via Manual Override */
@@ -61,4 +81,14 @@
   --ink: #2B2926;
   --red: #C8412B;
   --grid: rgba(43, 41, 38, 0.06);
+
+  --wash-sand: #D8C8AA;
+  --wash-concrete: #CDC6B8;
+  --wash-glass: #9DB6BA;
+  --wash-timber: #8A5A3C;
+  --wash-sage: #8FA27A;
+  --wash-shrub: #7C9168;
+  --wash-slab: #4A4743;
+  --wash-ground: #BDB4A1;
 }
+
