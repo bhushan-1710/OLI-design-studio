@@ -17,13 +17,13 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 
 ## Phase 1: Foundation
 
-- [ ] Create repo, scaffold Next.js app, set up linting
-- [ ] Tokens: `tokens.css` (light/dark), base styles, font loading
-- [ ] Theme: system detection, manual toggle, no flash
-- [ ] Layout: sheet frame, title block, nav, footer, skip link
-- [ ] Motion foundation: Lenis + ScrollTrigger setup, `draw()` helper, reduced-motion handling
-- [ ] UI primitives: Button (wobbly), Chip, Stamp, DimensionRule, Annotation, HandCircle
-- [ ] Review: shared layout at 390 / 1280 in light and dark
+- [x] Create repo, scaffold Next.js app, set up linting
+- [x] Tokens: `tokens.css` (light/dark), base styles, font loading
+- [x] Theme: system detection, manual toggle, no flash
+- [x] Layout: sheet frame, title block, nav, footer, skip link
+- [x] Motion foundation: Lenis + ScrollTrigger setup, `draw()` helper, reduced-motion handling
+- [x] UI primitives: Button (wobbly), Chip, Stamp, DimensionRule, Annotation, HandCircle
+- [x] Review: shared layout at 390 / 1280 in light and dark
 
 ## Phase 2: Home
 
@@ -85,3 +85,4 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 | Date | Change | Decided by |
 |---|---|---|
 | 2026-10-20 | Hero prototype approved; docs set created | Bhushan |
+| 2026-10-20 | Phase 1 Foundation & Design System complete (5/5 UAT passed) | Dev |
