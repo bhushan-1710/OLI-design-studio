@@ -17,10 +17,10 @@ function fetchPage(url) {
 }
 
 const PROJECTS = [
-  { slug: 'placeholder-project-01', sheet: 'A-02.1', title: 'Placeholder Project 01', next: 'placeholder-project-02' },
-  { slug: 'placeholder-project-02', sheet: 'A-02.2', title: 'Placeholder Project 02', next: 'placeholder-project-03' },
-  { slug: 'placeholder-project-03', sheet: 'A-02.3', title: 'Placeholder Project 03', next: 'placeholder-project-04' },
-  { slug: 'placeholder-project-04', sheet: 'A-02.4', title: 'Placeholder Project 04', next: 'placeholder-project-01' },
+  { slug: 'placeholder-project-01', sheet: 'A-02.01', title: 'Placeholder Project 01', next: 'placeholder-project-02' },
+  { slug: 'placeholder-project-02', sheet: 'A-02.02', title: 'Placeholder Project 02', next: 'placeholder-project-03' },
+  { slug: 'placeholder-project-03', sheet: 'A-02.03', title: 'Placeholder Project 03', next: 'placeholder-project-04' },
+  { slug: 'placeholder-project-04', sheet: 'A-02.04', title: 'Placeholder Project 04', next: 'placeholder-project-01' },
 ];
 
 async function verify() {

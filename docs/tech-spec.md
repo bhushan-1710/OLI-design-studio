@@ -111,13 +111,18 @@ Tokens on `:root`; dark values under `@media (prefers-color-scheme: dark)` guard
 - Focus-visible styles in red, 2px with offset.
 - Reduced motion handled at the root (no `js` class, no Lenis, no pin).
 
-## 9. Deployment
+## 9. Deployment & Production Safety
 
-1. Repo on GitHub; main branch protected, preview deploys per PR.
-2. Environment variables for form provider keys.
-3. Add `olidesignstudio.in` as the custom domain; update DNS at the registrar (needs client access).
-4. Test the redirect from the Google Sites URL before switching DNS.
-5. Post-launch: submit sitemap to Google Search Console; verify analytics events.
+1. **Production Build Command:** Hosting platforms (Vercel, Cloudflare Pages, Netlify, etc.) **MUST** use the command `npm run build:prod` (which invokes `cross-env OLI_PRODUCTION=1 next build && node scripts/clean-dev-export.mjs && node scripts/scan-placeholders.mjs`), or configure the environment variable `OLI_PRODUCTION=1` in the hosting environment.
+2. **Production Safety Gates:**
+   - `content/projects.ts` build-time validation strictly throws and halts compilation if any project has `isPlaceholder: true`.
+   - `scripts/scan-placeholders.mjs` executes post-build and scans all exported HTML (`out/**/*.html`) for `[NEEDED`, `TBC`, and `placeholder`. Under `OLI_PRODUCTION=1`, it strictly fails the build if any matches are detected.
+   - Development builds (`npm run build`) allow placeholders with visible warnings to facilitate local review and design iteration.
+3. Repo on GitHub; main branch protected, preview deploys per PR.
+4. Environment variables for form provider keys.
+5. Add `olidesignstudio.in` as the custom domain; update DNS at the registrar (needs client access).
+6. Test the redirect from the Google Sites URL before switching DNS.
+7. Post-launch: submit sitemap to Google Search Console; verify analytics events.
 
 ## 10. Testing
 

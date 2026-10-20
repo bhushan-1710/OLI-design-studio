@@ -66,10 +66,11 @@ A website for OLI Design Studio (Architecture, Interior, Landscape, Product). Th
 Fill in once the repo is scaffolded.
 
 ```
-install:  npm install
-dev:      npm run dev
-build:    npm run build
-lint:     npm run lint
+install:     npm install
+dev:         npm run dev
+build:       npm run build
+build:prod:  npm run build:prod (enforces zero placeholders and fails on [NEEDED]/TBC/placeholder)
+lint:        npm run lint
 ```
 
 ## 7. Asset notes

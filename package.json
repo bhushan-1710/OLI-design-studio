@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node scripts/clean-dev-export.mjs",
+    "build": "next build && node scripts/clean-dev-export.mjs && node scripts/scan-placeholders.mjs",
+    "build:prod": "cross-env OLI_PRODUCTION=1 next build && node scripts/clean-dev-export.mjs && node scripts/scan-placeholders.mjs",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{ts,tsx,css,md,json}\""
@@ -20,6 +21,7 @@
     "@types/node": "20.17.0",
     "@types/react": "18.3.11",
     "@types/react-dom": "18.3.1",
+    "cross-env": "^7.0.3",
     "eslint": "8.57.1",
     "eslint-config-next": "14.2.15",
     "prettier": "3.3.3",

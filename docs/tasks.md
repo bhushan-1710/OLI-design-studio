@@ -66,6 +66,7 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 - [ ] Reduced-motion pass
 - [ ] Cross-browser pass (Safari iOS, Chrome Android, desktop browsers)
 - [ ] Copy pass: remove every `[DRAFT]` / `[NEEDED]` marker from `content.md` content
+- [ ] Replace hero house drawing, its dimension labels (12.40 M, 6.20 M, CANTILEVER 3.0 M) and the project scrub drawing's dimension strings with real project data, or remove
 
 ## Phase 7: Launch
 

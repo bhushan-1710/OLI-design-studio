@@ -40,7 +40,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
 
   const project = allProjects[currentIndex];
   const nextProject = allProjects[(currentIndex + 1) % allProjects.length];
-  const sheetNumber = `A-02.${currentIndex + 1}`;
+  const sheetNumber = `A-02.${String(currentIndex + 1).padStart(2, '0')}`;
 
   return (
     <div
