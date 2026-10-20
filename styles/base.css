@@ -339,5 +339,29 @@ h1, h2, h3, h4, .serif {
   }
 }
 
+/* Disciplines Section Styles */
+@media (min-width: 769px) {
+  .discipline-row:hover .discipline-title {
+    color: var(--red);
+  }
+  .discipline-row:hover .discipline-arrow {
+    transform: rotate(45deg);
+  }
+  .discipline-row:hover .discipline-drawing-desktop {
+    opacity: 1 !important;
+    transform: translateX(0px) !important;
+  }
+  .discipline-drawing-mobile {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .discipline-drawing-desktop {
+    display: none !important;
+  }
+}
+
+
 
 
