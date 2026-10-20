@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { fontClassNames } from '@/lib/fonts';
 import { themeInitScript } from '@/lib/theme';
+import { SkipLink } from '@/components/layout/SkipLink';
+import { Nav } from '@/components/layout/Nav';
+import { Footer } from '@/components/layout/Footer';
 import '@/styles/base.css';
 import '@/styles/components.css';
 
@@ -22,7 +25,12 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {children}
+        <SkipLink />
+        <Nav />
+        <main id="main-content">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
