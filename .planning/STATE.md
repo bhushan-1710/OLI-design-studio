@@ -1,12 +1,12 @@
 ---
 gsd_state_version: '1.0'
-status: planning
+status: executing
 progress:
   total_phases: 6
   completed_phases: 1
   total_plans: 15
-  completed_plans: 3
-  percent: 20
+  completed_plans: 5
+  percent: 33
 ---
 
 # Project State
@@ -21,11 +21,11 @@ See: `.planning/PROJECT.md` (updated 2026-10-20)
 ## Current Position
 
 Phase: 2 of 6 (Home Hero)
-Plan: 0 of 2 in Phase 2
-Status: Phase 1 complete ✓ — ready for Phase 2 discussion and planning
-Last activity: 2026-10-20 — Executed and verified Phase 1 (Foundation & Design System)
+Plan: 2 of 2 in Phase 2
+Status: Phase 2 execution complete — ready for verification
+Last activity: 2026-10-20 — Executed Plan 02-01 and Plan 02-02 (HeroElevation, HeroSection, GSAP scrub, and dark wash calibration)
 
-Progress: [██░░░░░░░░] 20%
+Progress: [███░░░░░░░] 33%
 
 ## Performance Metrics
 
@@ -37,9 +37,9 @@ Progress: [██░░░░░░░░] 20%
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
-|-------|-------|-------|----------|
+|---|---|---|---|
 | Phase 1: Foundation & Design System | 3 | 3 complete | ~5 min |
-| Phase 2: Home Hero | 2 | — | — |
+| Phase 2: Home Hero | 2 | 2 complete | ~5 min |
 | Phase 3: Home Sections | 3 | — | — |
 | Phase 4: Work Index & Projects | 2 | — | — |
 | Phase 5: Remaining Pages | 3 | — | — |
