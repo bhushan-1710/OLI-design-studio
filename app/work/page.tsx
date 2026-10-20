@@ -58,7 +58,7 @@ export default function WorkPage() {
           >
             <span>SHEET A-02</span>
             <span>·</span>
-            <span>PROJECT ARCHIVE</span>
+            <span>WORK</span>
           </div>
 
           <h1
@@ -71,22 +71,8 @@ export default function WorkPage() {
               margin: 0,
             }}
           >
-            Work Index
+            Work
           </h1>
-
-          <p
-            style={{
-              fontFamily: 'var(--font-serif, Georgia, serif)',
-              fontStyle: 'italic',
-              fontSize: 'clamp(16px, 1.8vw, 20px)',
-              lineHeight: 1.5,
-              opacity: 0.85,
-              margin: 0,
-            }}
-          >
-            From residential and landscape master plans to bespoke interiors and object design.
-            Every project detailed from initial sketch to physical handover.
-          </p>
         </header>
 
         {/* Gallery with filter chips wrapped in Suspense for useSearchParams */}
@@ -111,7 +97,7 @@ export default function WorkPage() {
       </main>
 
       {/* Sheet Title Block */}
-      <TitleBlock sheetNumber="A-02" sheetTitle="Work Index" scale="Scale 1:100" />
+      <TitleBlock sheetNumber="A-02" sheetTitle="Work" scale="Scale 1:100" />
     </div>
   );
 }

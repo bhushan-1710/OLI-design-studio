@@ -1,72 +1,59 @@
-# Phase 4 UAT Verification: Work Index & Projects
-
-## Summary of Results
-- **Status:** PASS (6/6 criteria passed)
-- **Verified on:** 2026-10-20
-- **Scope:** WORK-01 through WORK-06
-
+---
+status: awaiting_user_verification
+result: pending_user_review
+phase: 04-work-index-projects
+started: 2026-10-20T15:30:00+05:30
+updated: 2026-10-20T15:42:00+05:30
 ---
 
-### Test 1: Project Data Model & Build Validation (`WORK-01`, `WORK-02`)
-- **Criteria:** Build-time validation guard in `content/projects.ts` enforces `coverImage`, `brief`, `images.length >= 3`, and `isPlaceholder: boolean`. Unflagged placeholder data fails the build. Seeded with 4 obviously fake placeholder projects representing Architecture, Interior, Landscape, Product Design with zero invented client details.
+## Summary
+
+total: 6
+script_verified: 3
+awaiting_user_verification: 3
+issues: 0
+
+Script-verifiable items (build validation failure, production guard, route generation, static export) pass. All animation scrubbing, pinning feel, visual presentation, and interactive feel are recorded as "awaiting user verification" and are not self-certified.
+
+## Tests
+
+### 1. Project Data Model & Build Validation (`WORK-01`, `WORK-02`)
+- **Criteria:** Build-time validation guard in `content/projects.ts` enforces `coverImage`, `brief`, `images.length >= 3`, and `isPlaceholder: boolean`. When `OLI_PRODUCTION=1` is set, build strictly fails if any project has `isPlaceholder: true`. Seeded with 4 placeholder projects representing Architecture, Interior, Landscape, Product Design with zero invented numbers or claims ("Year TBC", "Area TBC", "Location TBC").
 - **Verification:**
-  - `validateProjects()` executes on import and build.
-  - Tested with all 4 seeded placeholder projects (`placeholder-project-01` to `04`): all marked `isPlaceholder: true`, "Location TBC", and >=3 images.
-  - `npm run build` succeeds with code 0.
-- **Result:** PASS ✓
+  - Automated validation function executes on import and build.
+  - Tested: unflagged placeholder throws error; missing required metadata throws error.
+  - Development build passes with flagged placeholders.
+- **Result:** PASS (Script-verified) ✓
 
----
-
-### Test 2: Work Index Sheet & TitleBlock (`WORK-03`)
-- **Criteria:** Work index at `/work` renders as Sheet A-02 with `SheetTitleBlock sheetNumber="A-02" sheetTitle="Work Index"` and responsive 2-column desktop / 1-column mobile grid.
+### 2. Work Index Route & Dynamic Detail Export (`WORK-03`, `WORK-05`)
+- **Criteria:** Work index (`/work/`, Sheet A-02) and all dynamic project detail routes (`/work/placeholder-project-01/` to `04/`, Sheet A-02.1 to A-02.4) compile and statically export to `out/`.
 - **Verification:**
-  - `http://localhost:3005/work/` loads with HTTP 200.
-  - TitleBlock displays `Sheet A-02 · Work Index · Scale 1:100`.
-  - Grid displays 2 columns on viewports >= 769px and 1 column on mobile.
-- **Result:** PASS ✓
+  - `npm run build` generates all static HTML files (13 pages).
+  - Dynamic sheet numbering (`A-02.1` through `A-02.4`) confirmed in generated HTML.
+  - `/dev/primitives` successfully excluded from production export (`out/dev` deleted).
+- **Result:** PASS (Script-verified) ✓
 
----
-
-### Test 3: Instant Discipline Filter Chips & URL State (`WORK-04`)
-- **Criteria:** Filter chips (All, Architecture, Interior, Landscape, Product) filter cards instantly without full page reload and synchronize URL search params (`/work?type=...`).
+### 3. Circular Navigation & Enquire CTA Link Wiring (`WORK-05`)
+- **Criteria:** Next project links wrap around circularly (Project 04 links back to Project 01). Enquire CTA links to `/contact?type=[discipline]`.
 - **Verification:**
-  - Verified count badges: All (4), Architecture (1), Interior (1), Landscape (1), Product (1).
-  - Chip clicks update DOM instantly and push URL state via `window.history.pushState`.
-  - Empty filter fallback message displayed when no projects match.
-  - Cards feature 2px red outline on `:focus-visible`.
-- **Result:** PASS ✓
+  - Verified via HTTP test script against all 4 project detail routes.
+- **Result:** PASS (Script-verified) ✓
 
----
+### 4. Work Index Visual Layout & Filter Chips Feel (`WORK-03`, `WORK-04`)
+- **Criteria:** 2-column desktop / 1-column mobile grid; filter chips (All, Architecture, Interior, Landscape, Product) update view instantly with smooth stagger and synchronized URL parameters (`/work/?type=...`); 2px red focus ring.
+- **Status:** awaiting user verification
+- **Notes:** DOM elements and URL pushState confirmed in script; visual layout, typography, and chip interaction feel require user verification in browser.
 
-### Test 4: Project Detail Dynamic Routes & Sheet Numbering (`WORK-05`)
-- **Criteria:** All `/work/[slug]` dynamic routes statically exported via `generateStaticParams()`. Sheet numbering dynamically increments (`A-03`, `A-04`, `A-05`, `A-06`).
-- **Verification:**
-  - Verified all 4 routes pre-rendered during `npm run build` (13/13 static pages).
-  - Tested HTTP 200 and sheet number for:
-    - `/work/placeholder-project-01/` -> Sheet A-03
-    - `/work/placeholder-project-02/` -> Sheet A-04
-    - `/work/placeholder-project-03/` -> Sheet A-05
-    - `/work/placeholder-project-04/` -> Sheet A-06
-- **Result:** PASS ✓
+### 5. Pinned Sketch-to-Photo Scrub Experience (`WORK-06`)
+- **Criteria:** `SketchScrub` component pins smoothly for `+=150%` (`scrub: 0.7`), progressing from 01 Sketch through 02 Develop, 03 Build, to 04 Handover. Linework dissolves smoothly into color wash and outcome rendering. Unpins and renders manual toggle under `prefers-reduced-motion`.
+- **Status:** awaiting user verification
+- **Notes:** GSAP ScrollTrigger timeline and reduced-motion fallback code in place; pinning physics, dissolve timing, and visual quality require user verification.
 
----
+### 6. Project Detail Page Visual Presentation (`WORK-05`)
+- **Criteria:** Large Instrument Serif title, monospace metadata strip, italic brief placeholder `[NEEDED: Project brief from studio, 2–3 sentences]`, process technical studies with `[NEEDED]` captions, and outcome gallery cards with `[NEEDED: Outcome photo] · PHOTO TBC` badges.
+- **Status:** awaiting user verification
+- **Notes:** Content renders without invented specifics; visual hierarchy and drafting sheet aesthetic require user verification.
 
-### Test 5: Pinned Sketch-to-Photo Scrub Sequence (`WORK-06`)
-- **Criteria:** `SketchScrub` component pins for `+=150%` with `scrub: 0.7`, fading architectural linework from 0-50% and revealing full color photo/wash by 100%. Unpins and provides manual toggle under `prefers-reduced-motion`.
-- **Verification:**
-  - Verified ScrollTrigger pinning lifecycle in `components/work/SketchScrub.tsx`.
-  - Timeline progresses from drafting phase (`PHASE 01 // DRAFTING`) through `PHASE 02 // DEVELOP & BUILD` to `PHASE 04 // HANDOVER OUTCOME`.
-  - Cleaned up with `gsap.context()` / `ctx.revert()`.
-  - Reduced-motion mode tested: unpins container and presents toggle buttons.
-- **Result:** PASS ✓
+## Gaps
 
----
-
-### Test 6: Process Drawings, Outcome Gallery & Circular Next Navigation (`WORK-05`)
-- **Criteria:** Project detail page displays technical process studies (FIG 01, FIG 02, FIG 03), outcome spatial photography cards with PHOTO TBC badges, next-project link with circular wrap-around, and Enquire CTA button.
-- **Verification:**
-  - Process section renders FIG 01 (Schematic Plan), FIG 02 (Section Study), and FIG 03 (Detail Junction).
-  - Outcome gallery renders photo cards with `PHOTO TBC` badges.
-  - Circular navigation verified: Project 04 next project link returns to Project 01.
-  - Enquire CTA button links to `/contact?type=[discipline]`.
-- **Result:** PASS ✓
+Awaiting user visual inspection at http://localhost:3005/work/ and http://localhost:3005/work/placeholder-project-01/.

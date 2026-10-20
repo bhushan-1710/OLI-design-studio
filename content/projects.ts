@@ -18,8 +18,18 @@ export interface Project {
  * Validates project data to guarantee production hygiene:
  * 1. Checks required fields: slug, title, discipline, location, year, brief, coverImage.
  * 2. Enforces at least 3 gallery images per project.
- * 3. Enforces that any placeholder project has `isPlaceholder: true`.
- * Throws a build-halting Error if any rule is violated.
+ * 3. Enforces that any project containing placeholder indicators has `isPlaceholder: true`.
+ * 4. PRODUCTION GUARD: If `process.env.OLI_PRODUCTION === '1'`, fails the build immediately
+ *    if ANY project has `isPlaceholder: true`. Development builds (without the flag) pass.
+ *
+ * What this guard blocks:
+ * - In dev/test: blocks incomplete records, <3 images, or unflagged placeholders disguised as real projects.
+ * - In production (OLI_PRODUCTION=1): blocks ANY project with `isPlaceholder: true` from building.
+ *
+ * What this guard does NOT block:
+ * - In non-production builds (standard dev/test): allows flagged placeholder projects (`isPlaceholder: true`).
+ * - Does not check image binary dimensions/resolutions or verify external URL reachability.
+ * - Does not inspect whether non-placeholder text is grammatically correct or factually verified.
  */
 export function validateProjects(data: Project[]): void {
   for (const p of data) {
@@ -34,10 +44,16 @@ export function validateProjects(data: Project[]): void {
     }
     const isObviousPlaceholder =
       p.title.toLowerCase().includes('placeholder') ||
-      p.location.toLowerCase().includes('tbc');
+      p.location.toLowerCase().includes('tbc') ||
+      p.year.toLowerCase().includes('tbc');
     if (isObviousPlaceholder && !p.isPlaceholder) {
       throw new Error(
-        `[Project Validation Error] Project "${p.slug}" contains placeholder text but has isPlaceholder=false. Unflagged placeholders cannot ship.`
+        `[Project Validation Error] Project "${p.slug}" contains placeholder markers ("${p.title}", "${p.location}") but has isPlaceholder=false. Unflagged placeholders cannot ship.`
+      );
+    }
+    if (process.env.OLI_PRODUCTION === '1' && p.isPlaceholder) {
+      throw new Error(
+        `[Production Build Guard] Cannot build for production (OLI_PRODUCTION=1) with placeholder projects active: "${p.slug}". Real project assets required before production deployment.`
       );
     }
   }
@@ -46,8 +62,8 @@ export function validateProjects(data: Project[]): void {
 /**
  * 4 obviously fake placeholder projects representing each studio discipline:
  * Architecture, Interior, Landscape, Product Design.
- * All entries are strictly flagged with `isPlaceholder: true` and "Location TBC".
- * Zero invented facts, client names, or realistic project claims.
+ * All entries are strictly flagged with `isPlaceholder: true`, "Location TBC", "Year TBC", "Area TBC".
+ * Zero invented specifics, narrative claims, or plausible numbers.
  */
 export const projects: Project[] = [
   {
@@ -55,10 +71,9 @@ export const projects: Project[] = [
     title: 'Placeholder Project 01',
     discipline: 'Architecture',
     location: 'Location TBC',
-    year: '2026',
-    area: '450 SQ M',
-    brief:
-      'Architectural residential commission exploring passive thermal mass and courtyard ventilation. Detailed specifications and site photography to be populated upon client delivery.',
+    year: 'Year TBC',
+    area: 'Area TBC',
+    brief: '[NEEDED: Project brief from studio, 2–3 sentences]',
     isPlaceholder: true,
     coverImage: '/images/placeholder-01.jpg',
     images: [
@@ -72,10 +87,9 @@ export const projects: Project[] = [
     title: 'Placeholder Project 02',
     discipline: 'Interior',
     location: 'Location TBC',
-    year: '2026',
-    area: '280 SQ M',
-    brief:
-      'Interior spatial planning and bespoke joinery package celebrating natural lime plaster and seasoned teak. Detailed material palettes to follow after client asset handover.',
+    year: 'Year TBC',
+    area: 'Area TBC',
+    brief: '[NEEDED: Project brief from studio, 2–3 sentences]',
     isPlaceholder: true,
     coverImage: '/images/placeholder-02.jpg',
     images: [
@@ -89,10 +103,9 @@ export const projects: Project[] = [
     title: 'Placeholder Project 03',
     discipline: 'Landscape',
     location: 'Location TBC',
-    year: '2025',
-    area: '1,200 SQ M',
-    brief:
-      'Landscape design integrating native drought-tolerant flora, rainwater harvesting bioswales, and local basalt stone pathways. Site surveys and plant schedules will be added once approved.',
+    year: 'Year TBC',
+    area: 'Area TBC',
+    brief: '[NEEDED: Project brief from studio, 2–3 sentences]',
     isPlaceholder: true,
     coverImage: '/images/placeholder-03.jpg',
     images: [
@@ -106,10 +119,9 @@ export const projects: Project[] = [
     title: 'Placeholder Project 04',
     discipline: 'Product',
     location: 'Location TBC',
-    year: '2026',
-    area: 'Custom Series',
-    brief:
-      'Studio series of turned brass luminaires and hand-carved monolithic credenzas. Joinery blueprints and fabrication workshop photos will be populated upon fabrication sign-off.',
+    year: 'Year TBC',
+    area: 'Area TBC',
+    brief: '[NEEDED: Project brief from studio, 2–3 sentences]',
     isPlaceholder: true,
     coverImage: '/images/placeholder-01.jpg',
     images: [

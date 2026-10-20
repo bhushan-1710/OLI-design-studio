@@ -111,20 +111,25 @@ Fallbacks: Georgia (serif), `ui-monospace` (mono), `cursive` (hand). Use real fa
 4. **Disciplines** — Architecture / Interior / Landscape / Product as four lines of large serif text; hovering one draws a small section/plan sketch beside it.
 5. **Closing CTA** — headline + Enquire button + WhatsApp + email. Stamp "LET'S START" is optional.
 
-### Work (A-02)
+### Work (Sheet A-02)
 Filter chips by discipline; grid of project cards (2 columns desktop, 1 mobile). No infinite scroll.
 
-### Project detail (A-03+)
-Order: title + discipline/location/year → brief (2–3 sentences) → sketch-to-photo sequence (scroll-scrubbed) → process images → outcome gallery → next project link. Each project needs real sketches or plan drawings; if the studio has none, trace over the plan or elevation.
-
-### Process (A-0x)
+### Process (Sheet A-03)
 The home process section expanded: one pinned scene per stage with what the client gets and what the client decides at that stage.
 
-### About
+### About (Sheet A-04)
 Studio philosophy (short), team with real portraits, location(s). Hand circle highlight on one phrase.
 
-### Contact
+### Contact (Sheet A-05)
 Form (§4.12) + WhatsApp + email (`olidesignstudio06@gmail.com`) + Instagram. Mobile: sticky Enquire button stays reachable on every page.
+
+### Project Detail Pages — Proposed Numbering Scheme (Pending Approval)
+Top-level sheets are fixed from `A-01` to `A-05`. To ensure project pages never collide with main section sheets or depend on project count, we propose:
+- **Proposal (Recommended): Decimal sub-sheets under Work: `A-02.01`, `A-02.02`, `A-02.03`, ...**
+  In architectural drawing conventions, detail sheets subordinate to a primary package (Sheet A-02 Work) use decimal sub-sheet notation. This eliminates collisions with A-03 Process, A-04 About, and A-05 Contact regardless of how many projects exist in the studio archive.
+- *Alternative:* Dedicated Project prefix `P-01`, `P-02`, ... separate from architectural general sheets `A-xx`.
+
+Order: title + discipline/location/year → brief (2–3 sentences) → sketch-to-photo sequence (scroll-scrubbed) → process images → outcome gallery → next project link. Each project needs real sketches or plan drawings; if the studio has none, trace over the plan or elevation.
 
 ## 7. Content and voice
 

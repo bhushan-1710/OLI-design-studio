@@ -94,4 +94,5 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 | 2026-10-20 | Phase 2 Home Hero complete with dark wash calibration (5/5 UAT passed) | Dev |
 | 2026-10-20 | Phase 3 Home Sections complete with dual-pin lifecycle (5/5 UAT passed) | Dev |
 | 2026-10-20 | Phase 4 Work Index & Projects complete with sketch-to-photo scrub (6/6 UAT passed) | Dev |
+| 2026-10-20 | Corrections applied: UAT records 2, 3, 4 re-opened for user visual verification; OLI_PRODUCTION=1 guard added; placeholders cleansed of invented numbers; copy aligned with content.md; /dev/primitives excluded from export; project sheet numbering scheme submitted for approval | User & Dev |
 

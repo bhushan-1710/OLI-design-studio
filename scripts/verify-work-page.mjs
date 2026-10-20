@@ -31,9 +31,9 @@ async function verify() {
   console.log(`[TitleBlock] Contains SHEET A-02: ${hasSheetNumber}`);
   if (!hasSheetNumber) throw new Error('Missing SHEET A-02');
 
-  const hasHeading = data.includes('Work Index');
-  console.log(`[Header] Contains "Work Index": ${hasHeading}`);
-  if (!hasHeading) throw new Error('Missing "Work Index" heading');
+  const hasHeading = data.includes('>Work</h1>');
+  console.log(`[Header] Contains "<h1>Work</h1>": ${hasHeading}`);
+  if (!hasHeading) throw new Error('Missing "Work" heading');
 
   // 3. Verify Filter Chips
   const hasAllChip = data.includes('All (4)') || data.includes('All');

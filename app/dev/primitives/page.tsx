@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { notFound } from 'next/navigation';
 import { SheetFrame } from '@/components/layout/SheetFrame';
 import { TitleBlock } from '@/components/layout/TitleBlock';
 import { Button } from '@/components/ui/Button';
@@ -13,6 +14,10 @@ import { initSmoothScroll } from '@/lib/motion/lenis';
 import { trackEvent } from '@/lib/analytics';
 
 export default function DevPrimitivesPage() {
+  if (process.env.NODE_ENV === 'production') {
+    notFound();
+  }
+
   const [activeChip, setActiveChip] = useState<'all' | 'arch' | 'interior' | 'landscape' | 'product'>('all');
 
   useEffect(() => {

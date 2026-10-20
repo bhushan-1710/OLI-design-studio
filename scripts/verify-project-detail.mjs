@@ -17,10 +17,10 @@ function fetchPage(url) {
 }
 
 const PROJECTS = [
-  { slug: 'placeholder-project-01', sheet: 'A-03', title: 'Placeholder Project 01', next: 'placeholder-project-02' },
-  { slug: 'placeholder-project-02', sheet: 'A-04', title: 'Placeholder Project 02', next: 'placeholder-project-03' },
-  { slug: 'placeholder-project-03', sheet: 'A-05', title: 'Placeholder Project 03', next: 'placeholder-project-04' },
-  { slug: 'placeholder-project-04', sheet: 'A-06', title: 'Placeholder Project 04', next: 'placeholder-project-01' },
+  { slug: 'placeholder-project-01', sheet: 'A-02.1', title: 'Placeholder Project 01', next: 'placeholder-project-02' },
+  { slug: 'placeholder-project-02', sheet: 'A-02.2', title: 'Placeholder Project 02', next: 'placeholder-project-03' },
+  { slug: 'placeholder-project-03', sheet: 'A-02.3', title: 'Placeholder Project 03', next: 'placeholder-project-04' },
+  { slug: 'placeholder-project-04', sheet: 'A-02.4', title: 'Placeholder Project 04', next: 'placeholder-project-01' },
 ];
 
 async function verify() {
@@ -49,19 +49,19 @@ async function verify() {
     console.log(`  ✓ Project title "${p.title}" verified`);
 
     // Check SketchScrub components
-    if (!data.includes('PHASE 01 // DRAFTING') || !data.includes('SCROLL TO DISSOLVE')) {
+    if (!data.includes('01 Sketch') || !data.includes('Scroll to reveal handover')) {
       throw new Error(`[FAIL] ${p.slug} missing SketchScrub markup`);
     }
     console.log(`  ✓ SketchScrub linework & status indicator verified`);
 
     // Check Process section
-    if (!data.includes('PROCESS DOCUMENTATION') || !data.includes('FIG 01') || !data.includes('FIG 02')) {
+    if (!data.includes('Process') || !data.includes('[NEEDED: Process caption')) {
       throw new Error(`[FAIL] ${p.slug} missing process documentation studies`);
     }
-    console.log(`  ✓ Process drawings (FIG 01, FIG 02, FIG 03) verified`);
+    console.log(`  ✓ Process drawings ([NEEDED] placeholders) verified`);
 
     // Check Outcome section
-    if (!data.includes('OUTCOME GALLERY') || !data.includes('PHOTO TBC')) {
+    if (!data.includes('Outcome') || !data.includes('PHOTO TBC')) {
       throw new Error(`[FAIL] ${p.slug} missing outcome gallery or PHOTO TBC badge`);
     }
     console.log(`  ✓ Outcome gallery with PHOTO TBC badge verified`);

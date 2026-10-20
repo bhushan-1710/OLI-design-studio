@@ -40,7 +40,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
 
   const project = allProjects[currentIndex];
   const nextProject = allProjects[(currentIndex + 1) % allProjects.length];
-  const sheetNumber = `A-0${currentIndex + 3}`;
+  const sheetNumber = `A-02.${currentIndex + 1}`;
 
   return (
     <div
@@ -180,9 +180,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
               marginBottom: 'var(--space-2)',
             }}
           >
-            <span>01 // DISSOLVE SEQUENCE</span>
-            <span>·</span>
-            <span>FROM SKETCH TO PHYSICAL HANDOVER</span>
+            <span>01 Sketch → 04 Handover</span>
           </div>
           <SketchScrub project={project} />
         </section>
@@ -211,9 +209,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
               opacity: 0.6,
             }}
           >
-            <span>02 // PROCESS DOCUMENTATION</span>
-            <span>·</span>
-            <span>TECHNICAL STUDIES</span>
+            <span>02 Develop & 03 Build · Process</span>
           </div>
 
           <h2
@@ -224,7 +220,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
               margin: 0,
             }}
           >
-            Process & Methodology
+            Process
           </h2>
 
           <div
@@ -300,7 +296,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
                   opacity: 0.8,
                 }}
               >
-                FIG 01 // CONCEPT SCHEMATIC PLAN
+                [NEEDED: Process caption — concept drawing]
               </div>
             </div>
 
@@ -358,7 +354,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
                   opacity: 0.8,
                 }}
               >
-                FIG 02 // STRUCTURAL SECTION STUDY
+                [NEEDED: Process caption — section study]
               </div>
             </div>
 
@@ -416,7 +412,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
                   opacity: 0.8,
                 }}
               >
-                FIG 03 // FABRICATION & ASSEMBLY DETAIL
+                [NEEDED: Process caption — detail study]
               </div>
             </div>
           </div>
@@ -446,9 +442,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
               opacity: 0.6,
             }}
           >
-            <span>03 // OUTCOME GALLERY</span>
-            <span>·</span>
-            <span>SPATIAL PHOTOGRAPHY</span>
+            <span>04 Handover · Outcome</span>
           </div>
 
           <h2
@@ -459,7 +453,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
               margin: 0,
             }}
           >
-            Completed Space
+            Outcome
           </h2>
 
           <div
@@ -498,7 +492,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
                     backgroundColor: 'var(--paper)',
                   }}
                 >
-                  OUTCOME VIEW {i + 1} · PHOTO TBC
+                  [NEEDED: Outcome photo {i + 1}] · PHOTO TBC
                 </div>
               </div>
             ))}

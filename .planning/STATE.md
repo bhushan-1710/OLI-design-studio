@@ -16,14 +16,14 @@ progress:
 See: `.planning/PROJECT.md` (updated 2026-10-20)
 
 **Core value:** Demonstrate the studio's end-to-end "sketch to handover" promise through meaningful scroll-driven drafting linework and authentic project material, converting mobile visitors into direct enquiries.
-**Current focus:** Phase 5: Remaining Pages
+**Current focus:** Awaiting user verification for Phases 2, 3, and 4 (Phase 5 paused)
 
 ## Current Position
 
-Phase: 5 of 6 (Remaining Pages)
-Plan: 0 of 3 in Phase 5
-Status: Phase 4 verified (6/6 UAT passed) — initiating Phase 5
-Last activity: 2026-10-20 — Completed Phase 4 Work Index & Projects (Plans 04-01 and 04-02 verified with static export and UAT)
+Phase: 4 of 6 (Work Index & Projects)
+Plan: 2 of 2 in Phase 4 (implemented; UAT re-opened for user visual verification)
+Status: Corrections applied (production guard, placeholder cleansing, copy alignment, dev exclusion, sheet numbering proposal); awaiting user visual verification
+Last activity: 2026-10-20 — Re-opened UAT records for Phases 2, 3, and 4; added OLI_PRODUCTION=1 guard; cleaned placeholders; excluded /dev/primitives from export
 
 Progress: [███████░░░] 67%
 

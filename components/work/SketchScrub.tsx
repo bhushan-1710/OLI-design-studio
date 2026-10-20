@@ -55,14 +55,17 @@ export function SketchScrub({ project }: SketchScrubProps) {
           onUpdate: (self) => {
             if (indicator) {
               const progress = self.progress;
-              if (progress < 0.4) {
-                indicator.innerText = 'PHASE 01 // DRAFTING';
+              if (progress < 0.25) {
+                indicator.innerText = '01 Sketch';
+                indicator.style.color = 'var(--ink)';
+              } else if (progress < 0.5) {
+                indicator.innerText = '02 Develop';
                 indicator.style.color = 'var(--ink)';
               } else if (progress < 0.75) {
-                indicator.innerText = 'PHASE 02 // DEVELOP & BUILD';
+                indicator.innerText = '03 Build';
                 indicator.style.color = 'var(--ink)';
               } else {
-                indicator.innerText = 'PHASE 04 // HANDOVER OUTCOME';
+                indicator.innerText = '04 Handover';
                 indicator.style.color = 'var(--red)';
               }
             }
@@ -254,7 +257,7 @@ export function SketchScrub({ project }: SketchScrubProps) {
                 zIndex: 4,
               }}
             >
-              PHYSICAL HANDOVER // PHOTO TBC
+              04 Handover · [NEEDED: Project photo]
             </div>
           </div>
 
@@ -352,7 +355,7 @@ export function SketchScrub({ project }: SketchScrubProps) {
                   fontSize="22"
                   fill="var(--ink)"
                 >
-                  Exposed concrete coping
+                  [NEEDED: Project note]
                 </text>
                 <path d="M 390 220 Q 420 225 440 238" stroke="var(--ink)" strokeWidth="1" fill="none" />
                 <text
@@ -362,7 +365,7 @@ export function SketchScrub({ project }: SketchScrubProps) {
                   fontSize="22"
                   fill="var(--ink)"
                 >
-                  Vertical seasoned teak battens
+                  [NEEDED: Project note]
                 </text>
                 <path d="M 630 300 Q 600 305 580 325" stroke="var(--ink)" strokeWidth="1" fill="none" />
               </g>
@@ -387,7 +390,7 @@ export function SketchScrub({ project }: SketchScrubProps) {
               transition: 'color 0.3s ease',
             }}
           >
-            PHASE 01 // DRAFTING
+            01 Sketch
           </div>
 
           {/* Interactive Scrub Cue (Bottom-Center) */}
@@ -410,7 +413,7 @@ export function SketchScrub({ project }: SketchScrubProps) {
                 pointerEvents: 'none',
               }}
             >
-              SCROLL TO DISSOLVE FROM SKETCH TO HANDOVER ↓
+              Scroll to reveal handover ↓
             </div>
           )}
         </div>
