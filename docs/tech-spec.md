@@ -94,10 +94,13 @@ Tactics: load animation code only on pages that need it; dynamic-import ScrollTr
 
 - Fields: name, phone/WhatsApp, project type, message.
 - Static export form provider: Web3Forms via client-side fetch (`https://api.web3forms.com/submit`).
-- Spam protection & validation: honeypot field named `botcheck` (hidden via CSS and tabindex -1), client-side input validation, and access key restricted to the production domain (`olidesignstudio.in`).
+- Access Key Environment Variable: `NEXT_PUBLIC_WEB3FORMS_KEY` (documented in `.env.example`).
+  - In development/preview: if unset, form simulates submission in mock mode with a 500ms delay, logs payload to console, and triggers the success Stamp.
+  - In production (`OLI_PRODUCTION=1`): build fails if the key is missing or blank.
+- Spam protection & validation: honeypot field named `botcheck` (hidden via CSS and tabindex -1), client-side input validation on blur, and access key restricted to the production domain (`olidesignstudio.in`).
 - Delivery: direct to `olidesignstudio06@gmail.com`.
 - WhatsApp: `https://wa.me/<number>?text=<prefilled message>`, number to be supplied.
-- Fallback redundancy: direct WhatsApp and `mailto:` links displayed prominently on submission failure.
+- Fallback redundancy: direct WhatsApp and `mailto:` links displayed prominently on submission failure. Input values are preserved in state on error.
 
 ## 7. Theming
 
