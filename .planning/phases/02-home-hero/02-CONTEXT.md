@@ -50,8 +50,10 @@ Port the approved prototype (`docs/reference/oli-hero.html`) into a production R
   - `0.45 <= progress < 0.78`: **03 Build**
   - `progress >= 0.78`: **04 Handover**
 - **Scroll Cue:**
-  - Animated bouncing text `"scroll to draw ↓"` using Just Another Hand script.
-  - Clicking the cue calls Lenis to smooth-scroll down by the hero scrub height (`window.innerHeight * 3`).
+  - Prototype copy: `"scroll ↓"` (rendered in Just Another Hand font, color `var(--red)`).
+  - Bobs with subtle infinite CSS animation (`bob 1.8s ease-in-out infinite`).
+  - Fades to `opacity: 0` during the first unit of scroll scrub (`scrub.to('#cue', { opacity: 0, duration: 1 }, 0)`).
+  - Does NOT jump past the pin; if clicked, nudges scroll only slightly (~100–150px) to initiate the scrub.
 
 ### 3.3 SVG Art & Pencil Wobble
 - **House Linework:** Exact SVG paths from `oli-hero.html` with explicit layers:
@@ -60,12 +62,12 @@ Port the approved prototype (`docs/reference/oli-hero.html`) into a production R
   - `.s2`: Secondary linework (window panes, mullions, siding, stairs).
   - `.dim`: Dimension lines and tick markers.
   - `.note`: Handwritten notes with arrow callouts.
-  - `#washes`: Watercolor fills (`sand`, `concrete`, `glass`, `timber`, `sage`, `shrub`, `slab`, `ground`) grouped at `0.88` opacity, revealed via `#wash-clip` `y` and `height` interpolation.
+  - `#washes`: Watercolor fills grouped at `0.88` opacity, revealed via `#wash-clip` `y` and `height` interpolation.
   - `#stamp`: Red border rectangle with "HANDED OVER" text rotated -5°.
 - **Pencil Wobble Filter:**
   - SVG `<filter id="pnp">` with `<feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" result="noise" />` and `<feDisplacementMap in="SourceGraphic" in2="noise" scale="2.4" />`.
   - Applied to the drawing group (`filter: url(#pnp)`).
-  - Disabled on mobile (&le;768px) via media query (`filter: none`) per `motion-spec.md` to conserve mobile GPU battery.
+  - Breakpoint handling via matchMedia / `@media (min-width: 769px)`: enabled on desktop (≥769px), disabled (`filter: none`) on mobile (&le;768px).
 
 ### 3.4 Responsive Behavior
 - **Mobile (&le;820px):**
@@ -80,18 +82,30 @@ Port the approved prototype (`docs/reference/oli-hero.html`) into a production R
   - TitleBlock visible bottom-right.
   - SVG art spans `100%` width, `57svh` height.
 
-### 3.5 Theming & Contrast
+### 3.5 Theming & Dark Mode Wash Contrast Audit
 - **Light Theme:** Paper `#F2EEE4`, Ink `#2B2926`, Red `#C8412B`.
 - **Dark Theme:** Paper `#1C1B19`, Ink `#ECE6D9`, Red `#E5694F`.
-- **Wash Colors in Dark Mode:** Uses standard marker-wash palette per `design.md §3` (same in both themes). Slab `#4A4743` acts as subtle tone-on-tone floor wash on dark paper `#1C1B19`.
+- **Linework / Wash Contrast in Dark Mode (Explicit Audit Step):**
+  - In dark mode, ink is light cream (`#ECE6D9`). If wash fills are light/mid tones (`sand`, `concrete`, `glass`), linework running over the wash will lose contrast or vanish.
+  - Do NOT accept low contrast or washed-out linework as "tone-on-tone".
+  - Include an explicit inspection step in the plan: render the hero at the wash stage (progress ~0.80) in dark mode at 390px and 1280px, compare directly to light mode, and propose calibrated dark-mode wash variants (e.g. darkened/tinted fills on `:root[data-theme="dark"]`) for client/user review and approval before final verification.
+
+### 3.6 Robustness & Engine Integration
+- **Font Loading & ScrollTrigger Refresh:** Call `document.fonts.ready.then(() => ScrollTrigger.refresh())` to recalculate pin bounds accurately after Instrument Serif and Just Another Hand load.
+- **Hydration & Pre-JS State:** Full linework and content visible before hydration and with JS disabled (`stroke-dasharray: 1; stroke-dashoffset: 1` scoped strictly to `html.js`).
+- **Reduced Motion:** Under `prefers-reduced-motion`, instantly render completed state (wash raised, linework drawn, stamp placed, tracker on Handover) with no pin and no Lenis.
+- **Strict-Mode Double-Mount:** Verify single pin, zero leftover spacing, zero ghost ScrollTriggers on React double-mount.
 
 ---
 
 ## 4. Verification Criteria
 - [ ] Intro animation draws construction lines, main contour, then fades in typography.
 - [ ] Scroll triggers smooth scrub across all 4 stages (Sketch &rarr; Develop &rarr; Build &rarr; Handover).
+- [ ] Scroll cue displays "scroll ↓", bobs, and fades to opacity 0 as scroll begins.
 - [ ] Wash rises seamlessly from ground line to roof.
+- [ ] Dark-mode wash contrast audited at 390px and 1280px; linework retains clear contrast over fills.
 - [ ] Stamp lands with snappy back ease and word circle completes around "handover.".
+- [ ] `ScrollTrigger.refresh()` runs on `document.fonts.ready`.
 - [ ] No double-pinning or broken layout on React double-mount (strict mode).
 - [ ] Verified at 390px (mobile) and 1280px (desktop) in both light and dark themes.
 - [ ] `prefers-reduced-motion` displays completed state with no pin.
