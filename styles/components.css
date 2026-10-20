@@ -163,6 +163,137 @@
   }
 }
 
+/* Filter Chip (design.md §4.11) */
+.oli-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  font-family: var(--font-mono, var(--font-mono-fallback));
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.38;
+  transition: opacity 0.25s ease, border-color 0.25s ease;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.oli-chip:hover {
+  opacity: 0.8;
+}
+
+.oli-chip.oli-chip-active {
+  opacity: 1;
+  border-bottom: 2px solid var(--red);
+}
+
+/* Stamp Primitive (design.md §4.7) */
+.oli-stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2.6px solid var(--red);
+  color: var(--red);
+  padding: 8px 22px;
+  font-family: var(--font-hand, var(--font-hand-fallback));
+  font-size: 34px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: transparent;
+  user-select: none;
+  line-height: 1;
+}
+
+/* Dimension Rule (design.md §4.8) */
+.oli-dimension-rule {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 48px 0;
+  min-height: 24px;
+}
+
+.oli-dimension-rule-svg-wrap {
+  width: 100%;
+  height: 24px;
+}
+
+.oli-dimension-svg {
+  display: block;
+  width: 100%;
+  height: 24px;
+  overflow: visible;
+}
+
+.oli-dimension-path {
+  stroke: var(--red);
+  stroke-width: 1.4;
+  fill: none;
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
+}
+
+.oli-dimension-value {
+  position: absolute;
+  background-color: var(--paper);
+  color: var(--red);
+  font-family: var(--font-hand, var(--font-hand-fallback));
+  font-size: 26px;
+  letter-spacing: 0.06em;
+  padding: 0 16px;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+/* Annotation Primitive (design.md §4.9) */
+.oli-annotation {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--red);
+  font-family: var(--font-hand, var(--font-hand-fallback));
+  font-size: 26px;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+.oli-annotation-arrow {
+  width: 22px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Hand Circle Highlight (design.md §4.6) */
+.oli-hl {
+  position: relative;
+  display: inline-block;
+}
+
+.oli-hl-svg {
+  position: absolute;
+  left: -7%;
+  top: -14%;
+  width: 114%;
+  height: 128%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.oli-hl-path {
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
 /* Global Footer */
 .oli-footer {
   position: relative;
