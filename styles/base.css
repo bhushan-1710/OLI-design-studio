@@ -1,0 +1,90 @@
+/* OLI Design Studio — Base Styles */
+@import './tokens.css';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  color: var(--ink);
+  font-family: var(--font-mono, var(--font-mono-fallback));
+  line-height: 1.5;
+  overflow-x: hidden;
+  transition: var(--transition-theme);
+  min-height: 100svh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Keyboard accessibility: visible red focus state with offset */
+:focus-visible {
+  outline: 2px solid var(--red) !important;
+  outline-offset: 3px !important;
+}
+
+/* Minimum accessible touch targets */
+button, a, input, select, textarea {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Stroke-draw primitives (scoped strictly to .js when motion is enabled) */
+.js .d {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.js .note,
+.js .stamp {
+  opacity: 0;
+}
+
+/* Full-height sections must use svh per AGENTS.md */
+.stage {
+  position: relative;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  padding: var(--sheet-padding);
+}
+
+/* Headings font styling */
+h1, h2, h3, h4, .serif {
+  font-family: var(--font-serif, var(--font-serif-fallback));
+  font-weight: 400;
+}
+
+/* Hand annotations */
+.hand {
+  font-family: var(--font-hand, var(--font-hand-fallback));
+}
+
+/* Mono meta */
+.mono {
+  font-family: var(--font-mono, var(--font-mono-fallback));
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}

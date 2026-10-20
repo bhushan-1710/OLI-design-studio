@@ -1,0 +1,64 @@
+/* OLI Design Studio — Design Tokens */
+
+:root {
+  /* Core Colors — Light Theme */
+  --paper: #F2EEE4;
+  --ink: #2B2926;
+  --red: #C8412B;
+  --grid: rgba(43, 41, 38, 0.06);
+
+  /* Marker Wash Palette (used at ~88% opacity) */
+  --wash-sand: #D8C8AA;
+  --wash-concrete: #CDC6B8;
+  --wash-glass: #9DB6BA;
+  --wash-timber: #8A5A3C;
+  --wash-sage: #8FA27A;
+  --wash-shrub: #7C9168;
+  --wash-slab: #4A4743;
+  --wash-ground: #BDB4A1;
+
+  /* Typography Fallbacks */
+  --font-serif-fallback: Georgia, serif;
+  --font-mono-fallback: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-hand-fallback: 'Just Another Hand', cursive;
+
+  /* Space Tokens */
+  --space-base: 8px;
+  --sheet-inset: 12px;
+  --sheet-padding: clamp(22px, 3vw, 38px);
+  --grid-size: 48px;
+
+  /* Shape Tokens */
+  --radius-square: 0px;
+  --radius-wobbly: 255px 15px 225px 15px / 15px 225px 15px 255px;
+
+  /* Transitions */
+  --transition-theme: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  --transition-fast: 0.2s ease;
+}
+
+/* Dark Theme via System Preference (guarded against explicit light override) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #1C1B19;
+    --ink: #ECE6D9;
+    --red: #E5694F;
+    --grid: rgba(236, 230, 217, 0.06);
+  }
+}
+
+/* Dark Theme via Manual Override */
+:root[data-theme="dark"] {
+  --paper: #1C1B19;
+  --ink: #ECE6D9;
+  --red: #E5694F;
+  --grid: rgba(236, 230, 217, 0.06);
+}
+
+/* Light Theme via Manual Override */
+:root[data-theme="light"] {
+  --paper: #F2EEE4;
+  --ink: #2B2926;
+  --red: #C8412B;
+  --grid: rgba(43, 41, 38, 0.06);
+}

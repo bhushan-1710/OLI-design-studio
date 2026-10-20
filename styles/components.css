@@ -1,0 +1,45 @@
+/* OLI Design Studio — Component Styles */
+
+/* Canonical Hand-Drawn Wobbly Button */
+.oli-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 20px;
+  font-family: var(--font-mono, var(--font-mono-fallback));
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: var(--radius-wobbly);
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
+  min-height: 44px;
+  min-width: 44px;
+  cursor: pointer;
+  background: transparent;
+  user-select: none;
+}
+
+.oli-btn:active {
+  transform: scale(0.98);
+}
+
+.oli-btn-primary {
+  border: 1.5px solid var(--red);
+  color: var(--red);
+}
+
+.oli-btn-primary:hover {
+  background-color: var(--red);
+  color: var(--paper);
+}
+
+.oli-btn-secondary {
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+}
+
+.oli-btn-secondary:hover {
+  background-color: var(--ink);
+  color: var(--paper);
+}
