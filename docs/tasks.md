@@ -25,15 +25,11 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 - [x] UI primitives: Button (wobbly), Chip, Stamp, DimensionRule, Annotation, HandCircle
 - [x] Review: shared layout at 390 / 1280 in light and dark
 
-## Phase 2: Home
+## Phase 2: Home Hero
 
-- [ ] Port hero prototype into a component (same timeline and thresholds)
-- [ ] Hero drawing swapped to a real project **(blocked on client assets)**; placeholder house until then
-- [ ] Selected work section + project card component
-- [ ] Process section (pinned horizontal on desktop, stacked on mobile)
-- [ ] Disciplines section
-- [ ] Closing CTA
-- [ ] Review: scroll feel on a real phone; tune pin lengths
+- [x] Port hero prototype into a component (same timeline and thresholds)
+- [x] Hero placeholder elevation drawing structured with typed layers (.cl, .s1, .s2, .dim, .note, wash, stamp); ready to swap when client assets arrive
+- [x] Review: verified at 390 / 1280 in light and dark mode with calibrated dark wash contrast (5/5 UAT passed)
 
 ## Phase 3: Work and projects
 
@@ -86,3 +82,4 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 |---|---|---|
 | 2026-10-20 | Hero prototype approved; docs set created | Bhushan |
 | 2026-10-20 | Phase 1 Foundation & Design System complete (5/5 UAT passed) | Dev |
+| 2026-10-20 | Phase 2 Home Hero complete with dark wash calibration (5/5 UAT passed) | Dev |

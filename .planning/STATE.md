@@ -1,9 +1,9 @@
 ---
 gsd_state_version: '1.0'
-status: executing
+status: planning
 progress:
   total_phases: 6
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 15
   completed_plans: 5
   percent: 33
@@ -16,14 +16,14 @@ progress:
 See: `.planning/PROJECT.md` (updated 2026-10-20)
 
 **Core value:** Demonstrate the studio's end-to-end "sketch to handover" promise through meaningful scroll-driven drafting linework and authentic project material, converting mobile visitors into direct enquiries.
-**Current focus:** Phase 2: Home Hero
+**Current focus:** Phase 3: Home Sections
 
 ## Current Position
 
-Phase: 2 of 6 (Home Hero)
-Plan: 2 of 2 in Phase 2
-Status: Phase 2 execution complete — ready for verification
-Last activity: 2026-10-20 — Executed Plan 02-01 and Plan 02-02 (HeroElevation, HeroSection, GSAP scrub, and dark wash calibration)
+Phase: 3 of 6 (Home Sections)
+Plan: 0 of 3 in Phase 3
+Status: Phase 2 complete ✓ — ready for Phase 3 discussion and planning
+Last activity: 2026-10-20 — Executed and verified Phase 2 (Home Hero, 5/5 UAT passed)
 
 Progress: [███░░░░░░░] 33%
 

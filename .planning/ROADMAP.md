@@ -26,7 +26,7 @@ The client has not yet supplied the following assets and decisions. Development 
 ## Phases
 
 - [x] **Phase 1: Foundation & Design System** - Scaffold Next.js static export app, tokens, fonts, footer theme toggle, sheet layout, Lenis + ScrollTrigger motion infrastructure, and UI primitives.
-- [ ] **Phase 2: Home Hero** - Port approved `oli-hero.html` into a React client component preserving exact layer hierarchy, timings, stage thresholds, and mobile fallbacks.
+- [x] **Phase 2: Home Hero** - Port approved `oli-hero.html` into a React client component preserving exact layer hierarchy, timings, stage thresholds, and mobile fallbacks.
 - [ ] **Phase 3: Home Sections** - Selected work cards with draw overlay, pinned process section (stacked on mobile), disciplines list, closing CTA, and clean pin release verification.
 - [ ] **Phase 4: Work Index & Projects** - Typed project data model with build-time validation and explicit `isPlaceholder` guard, filtered work gallery with URL sync, project detail template, and sketch-to-photo scrub.
 - [ ] **Phase 5: Remaining Pages** - Dedicated Process page (structured placeholder), About page, Contact page with 4-field validated form + Web3Forms (`botcheck` honeypot) + WhatsApp integration, 404, and sheet wipe transitions.
@@ -67,8 +67,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: Hero elevation SVG component with layered linework, marker wash clip path, annotations, and wobble filter.
-- [ ] 02-02: Hero component integration, intro timeline, ScrollTrigger pinned timeline (`+=300%`), and stage tracker state machine.
+- [x] 02-01: Hero elevation SVG component with layered linework, marker wash clip path, annotations, and wobble filter.
+- [x] 02-02: Hero component integration, intro timeline, ScrollTrigger pinned timeline (`+=300%`), and stage tracker state machine.
 
 ### Phase 3: Home Sections
 **Goal**: Build the remaining sections of the Home page: Selected Work with stroke-draw photo reveals, pinned horizontal Process scroll (collapsing to vertical stack on mobile), interactive Disciplines list, Closing CTA, and bulletproof pin release lifecycle.

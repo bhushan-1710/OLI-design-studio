@@ -20,12 +20,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Home Hero Section (HERO)
 
-- [ ] **HERO-01**: Port approved `oli-hero.html` into a React client component preserving exact layer hierarchy (`.cl`, `.s1`, `.s2`, `.dim`, `.note`, wash group with clip rect, `.stamp`, `.hl-path`).
-- [ ] **HERO-02**: Time-based intro animation (construction lines stagger → outline stagger → headline/tracker fade up).
-- [ ] **HERO-03**: Pinned scroll scrub sequence (`end: +=300%`, `scrub: 0.7`) progressing details (0-3s), dimensions (2.2s), annotations (3s), colour wash rise (4.6-7.8s), construction lines fade (6s), stamp landing (`back.out(2)` at 8.2s), and hand circle highlight (8.5s).
-- [ ] **HERO-04**: Stage tracker updating across thresholds (<0.03 Sketch, <0.45 Develop, <0.78 Build, else Handover).
-- [ ] **HERO-05**: Desktop-only pencil wobble filter (`feTurbulence` + `feDisplacementMap` on ≥769px, removed on mobile).
-- [ ] **HERO-06**: Placeholder house elevation drawing structured with typed layers, ready to swap to real project trace when client assets arrive.
+- [x] **HERO-01**: Port approved `oli-hero.html` into a React client component preserving exact layer hierarchy (`.cl`, `.s1`, `.s2`, `.dim`, `.note`, wash group with clip rect, `.stamp`, `.hl-path`).
+- [x] **HERO-02**: Time-based intro animation (construction lines stagger → outline stagger → headline/tracker fade up).
+- [x] **HERO-03**: Pinned scroll scrub sequence (`end: +=300%`, `scrub: 0.7`) progressing details (0-3s), dimensions (2.2s), annotations (3s), colour wash rise (4.6-7.8s), construction lines fade (6s), stamp landing (`back.out(2)` at 8.2s), and hand circle highlight (8.5s).
+- [x] **HERO-04**: Stage tracker updating across thresholds (<0.03 Sketch, <0.45 Develop, <0.78 Build, else Handover).
+- [x] **HERO-05**: Desktop-only pencil wobble filter (`feTurbulence` + `feDisplacementMap` on ≥769px, removed on mobile).
+- [x] **HERO-06**: Placeholder house elevation drawing structured with typed layers, ready to swap to real project trace when client assets arrive.
 
 ### Home Sections (HOME)
 
