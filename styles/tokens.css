@@ -4,7 +4,7 @@
   /* Core Colors — Light Theme */
   --paper: #F2EEE4;
   --ink: #2B2926;
-  --red: #C8412B;
+  --red: #C03C26;
   --grid: rgba(43, 41, 38, 0.06);
 
   /* Marker Wash Palette (used at ~88% opacity) */
@@ -79,7 +79,7 @@
 :root[data-theme="light"] {
   --paper: #F2EEE4;
   --ink: #2B2926;
-  --red: #C8412B;
+  --red: #C03C26;
   --grid: rgba(43, 41, 38, 0.06);
 
   --wash-sand: #D8C8AA;

@@ -60,13 +60,14 @@ Build plan, in order. Tick items as they are completed and approved. Each phase 
 
 ## Phase 6: Quality
 
-- [ ] SEO: metadata, sitemap, robots, JSON-LD, OG image
-- [ ] Performance pass against `tech-spec.md` budgets (real Android device)
-- [ ] Accessibility pass: keyboard, screen reader spot-check, contrast in both themes
-- [ ] Reduced-motion pass
-- [ ] Cross-browser pass (Safari iOS, Chrome Android, desktop browsers)
+- [x] SEO: metadata, sitemap.xml, robots.txt, canonical URLs, JSON-LD, OG image
+- [ ] Performance pass against `tech-spec.md` budgets (real Android device) [Awaiting user verification]
+- [ ] Accessibility pass: keyboard, screen reader spot-check, contrast in both themes [Awaiting user verification]
+- [ ] Reduced-motion pass [Awaiting user verification]
+- [ ] Cross-browser pass (Safari iOS, Chrome Android, desktop browsers) [Awaiting user verification]
 - [ ] Copy pass: remove every `[DRAFT]` / `[NEEDED]` marker from `content.md` content
 - [ ] Replace hero house drawing, its dimension labels (12.40 M, 6.20 M, CANTILEVER 3.0 M) and the project scrub drawing's dimension strings with real project data, or remove
+- [ ] Regenerate og.png from the real project drawing once supplied
 
 ## Phase 7: Launch
 
