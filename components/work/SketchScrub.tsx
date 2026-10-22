@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Project } from '@/content/projects';
 import { prefersReducedMotion } from '@/lib/motion/reduced-motion';
+import { ProjectSketchDrawing } from './ProjectSketchDrawings';
 
 interface SketchScrubProps {
   project: Project;
@@ -151,97 +152,55 @@ export function SketchScrub({ project }: SketchScrubProps) {
             boxShadow: '0 8px 32px rgba(0, 0, 0, 0.04)',
           }}
         >
-          {/* Bottom Layer: Outcome Photography / Material Render Placeholder */}
+          {/* Bottom Layer: Outcome Photography */}
           <div
             ref={photoLayerRef}
             style={{
               position: 'absolute',
               inset: 0,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              background:
-                'radial-gradient(ellipse at center, rgba(196, 77, 44, 0.08) 0%, rgba(0, 0, 0, 0.02) 70%), var(--paper)',
+              overflow: 'hidden',
+              backgroundColor: 'var(--paper)',
               zIndex: 1,
             }}
           >
-            {/* Architectural elevation render simulation */}
-            <div
-              style={{
-                width: '80%',
-                height: '70%',
-                position: 'relative',
-                display: 'flex',
-                alignItems: 'flex-end',
-                justifyContent: 'center',
-              }}
-            >
-              {/* Ground line */}
-              <div
+            {project.images && project.images[0] ? (
+              <img
+                src={project.images[0]}
+                alt={`${project.title} outcome reveal`}
                 style={{
-                  position: 'absolute',
-                  bottom: '10%',
-                  left: 0,
-                  right: 0,
-                  height: '2px',
-                  backgroundColor: 'var(--ink)',
-                  opacity: 0.8,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
                 }}
               />
-
-              {/* Massing volume 1 with wash concrete */}
+            ) : (
+              /* Architectural elevation render simulation fallback */
               <div
                 style={{
-                  width: '45%',
-                  height: '65%',
-                  backgroundColor: 'var(--wash-concrete)',
-                  border: '1.5px solid var(--ink)',
+                  width: '80%',
+                  height: '70%',
                   position: 'relative',
-                  marginRight: '-5%',
-                  zIndex: 2,
-                  boxShadow: '4px 6px 16px rgba(0,0,0,0.06)',
+                  display: 'flex',
+                  alignItems: 'flex-end',
+                  justifyContent: 'center',
                 }}
               >
-                {/* Window apertures */}
                 <div
                   style={{
                     position: 'absolute',
-                    top: '20%',
-                    right: '15%',
-                    width: '35%',
-                    height: '40%',
-                    backgroundColor: 'var(--wash-glazing)',
-                    border: '1px solid var(--ink)',
+                    bottom: '10%',
+                    left: 0,
+                    right: 0,
+                    height: '2px',
+                    backgroundColor: 'var(--ink)',
+                    opacity: 0.8,
                   }}
                 />
               </div>
+            )}
 
-              {/* Massing volume 2 with wash timber */}
-              <div
-                style={{
-                  width: '40%',
-                  height: '50%',
-                  backgroundColor: 'var(--wash-timber)',
-                  border: '1.5px solid var(--ink)',
-                  position: 'relative',
-                  zIndex: 1,
-                }}
-              >
-                {/* Louver lines */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: '15%',
-                    borderTop: '1px solid var(--ink)',
-                    borderBottom: '1px solid var(--ink)',
-                    opacity: 0.4,
-                  }}
-                />
-              </div>
-            </div>
-
-            {/* Photo TBC Watermark */}
+            {/* Handover Badge */}
             <div
               style={{
                 position: 'absolute',
@@ -257,7 +216,7 @@ export function SketchScrub({ project }: SketchScrubProps) {
                 zIndex: 4,
               }}
             >
-              04 Handover · [NEEDED: Project photo]
+              04 Handover · Built Outcome
             </div>
           </div>
 
@@ -273,103 +232,7 @@ export function SketchScrub({ project }: SketchScrubProps) {
               boxSizing: 'border-box',
             }}
           >
-            <svg
-              viewBox="0 0 1000 625"
-              fill="none"
-              style={{
-                width: '100%',
-                height: '100%',
-                stroke: 'var(--ink)',
-                strokeWidth: 1.5,
-              }}
-            >
-              {/* Construction Grid & Datum Lines */}
-              <g opacity="0.35" strokeDasharray="6 4">
-                <line x1="80" y1="120" x2="920" y2="120" />
-                <line x1="80" y1="320" x2="920" y2="320" />
-                <line x1="80" y1="520" x2="920" y2="520" />
-                <line x1="250" y1="80" x2="250" y2="550" />
-                <line x1="550" y1="80" x2="550" y2="550" />
-                <line x1="750" y1="80" x2="750" y2="550" />
-              </g>
-
-              {/* Main Structural Outlines */}
-              <g strokeWidth="2">
-                {/* Main house pavilion */}
-                <rect x="250" y="240" width="300" height="280" />
-                {/* Secondary cantilever wing */}
-                <rect x="520" y="320" width="230" height="200" />
-                {/* Parapet cap */}
-                <line x1="230" y1="240" x2="570" y2="240" strokeWidth="2.5" />
-              </g>
-
-              {/* Glazing & Openings */}
-              <g strokeWidth="1.2">
-                <rect x="300" y="300" width="120" height="180" />
-                <line x1="360" y1="300" x2="360" y2="480" />
-                <rect x="560" y="360" width="140" height="120" />
-                <line x1="630" y1="360" x2="630" y2="480" />
-              </g>
-
-              {/* Architectural Dimensions */}
-              <g stroke="var(--ink)" strokeWidth="1" opacity="0.8">
-                {/* Horizontal dimension string */}
-                <line x1="250" y1="180" x2="750" y2="180" />
-                <line x1="250" y1="172" x2="250" y2="188" />
-                <line x1="550" y1="172" x2="550" y2="188" />
-                <line x1="750" y1="172" x2="750" y2="188" />
-                {/* Slash ticks */}
-                <line x1="247" y1="183" x2="253" y2="177" strokeWidth="1.5" />
-                <line x1="547" y1="183" x2="553" y2="177" strokeWidth="1.5" />
-                <line x1="747" y1="183" x2="753" y2="177" strokeWidth="1.5" />
-                <text
-                  x="400"
-                  y="170"
-                  fontFamily="var(--font-mono, monospace)"
-                  fontSize="12"
-                  fill="var(--ink)"
-                  textAnchor="middle"
-                  letterSpacing="0.1em"
-                >
-                  6,000 MM
-                </text>
-                <text
-                  x="650"
-                  y="170"
-                  fontFamily="var(--font-mono, monospace)"
-                  fontSize="12"
-                  fill="var(--ink)"
-                  textAnchor="middle"
-                  letterSpacing="0.1em"
-                >
-                  4,200 MM
-                </text>
-              </g>
-
-              {/* Hand-lettered Drafting Notes */}
-              <g fill="var(--ink)">
-                <text
-                  x="260"
-                  y="225"
-                  fontFamily="var(--font-hand, cursive)"
-                  fontSize="22"
-                  fill="var(--ink)"
-                >
-                  [NEEDED: Project note]
-                </text>
-                <path d="M 390 220 Q 420 225 440 238" stroke="var(--ink)" strokeWidth="1" fill="none" />
-                <text
-                  x="640"
-                  y="305"
-                  fontFamily="var(--font-hand, cursive)"
-                  fontSize="22"
-                  fill="var(--ink)"
-                >
-                  [NEEDED: Project note]
-                </text>
-                <path d="M 630 300 Q 600 305 580 325" stroke="var(--ink)" strokeWidth="1" fill="none" />
-              </g>
-            </svg>
+            <ProjectSketchDrawing slug={project.slug} />
           </div>
 
           {/* Scrub Status Indicator (Top-Left) */}

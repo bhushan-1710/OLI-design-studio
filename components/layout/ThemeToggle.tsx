@@ -30,7 +30,7 @@ export const ThemeToggle: React.FC<{ className?: string }> = ({ className = '' }
       type="button"
       onClick={handleToggle}
       className={`oli-theme-toggle ${className}`.trim()}
-      aria-label={`Current theme is ${theme}. Click to switch theme.`}
+      aria-label={label}
     >
       <span className="oli-theme-toggle-indicator" aria-hidden="true" />
       <span className="oli-theme-toggle-text">{label}</span>

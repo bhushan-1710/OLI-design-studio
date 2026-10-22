@@ -68,7 +68,7 @@ export function WorkGallery() {
       }
 
       const queryString = params.toString();
-      const newUrl = queryString ? `/work?${queryString}` : '/work';
+      const newUrl = queryString ? `/work/?${queryString}` : '/work/';
       window.history.pushState(null, '', newUrl);
     },
     []

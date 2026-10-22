@@ -60,7 +60,7 @@ export default function NotFound() {
           >
             <span>SHEET 404</span>
             <span>·</span>
-            <span>NOT FOUND</span>
+            <span>DRAWING NOT FOUND</span>
           </div>
 
           <h1
@@ -76,10 +76,42 @@ export default function NotFound() {
             This sheet doesn&apos;t exist.
           </h1>
 
-          <div style={{ paddingTop: 'calc(var(--space-base) * 2)' }}>
+          <p
+            style={{
+              fontFamily: 'var(--font-mono, monospace)',
+              fontSize: '13px',
+              lineHeight: 1.6,
+              opacity: 0.85,
+              margin: 0,
+            }}
+          >
+            The drawing or specification you were looking for has moved or was renumbered. Explore our active studio archives below:
+          </p>
+
+          <div
+            style={{
+              display: 'flex',
+              gap: '12px',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              paddingTop: '8px',
+            }}
+          >
             <Button href="/" variant="primary">
               Back to Home →
             </Button>
+            <Link
+              href="/work/"
+              className="oli-btn oli-btn-secondary"
+            >
+              Browse Projects
+            </Link>
+            <Link
+              href="/contact/"
+              className="oli-btn oli-btn-secondary"
+            >
+              Contact Studio
+            </Link>
           </div>
         </div>
       </div>

@@ -27,6 +27,14 @@ export function generateMetadata({ params }: ProjectPageProps): Metadata {
   return {
     title: `${project.title} · OLI Design Studio`,
     description: project.brief,
+    alternates: {
+      canonical: `/work/${project.slug}`,
+    },
+    openGraph: {
+      title: `${project.title} · OLI Design Studio`,
+      description: project.brief,
+      url: `https://olidesignstudio.in/work/${project.slug}`,
+    },
   };
 }
 
@@ -162,6 +170,77 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
           >
             {project.brief}
           </p>
+
+          {/* Architectural Concept & Strategy */}
+          {project.concept && (
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '6px',
+                marginTop: 'var(--space-4)',
+                paddingTop: 'var(--space-4)',
+                borderTop: '1px solid var(--grid)',
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: 'var(--font-mono, monospace)',
+                  fontSize: '11px',
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  color: 'var(--red)',
+                }}
+              >
+                CONCEPT & STRATEGY
+              </span>
+              <p
+                style={{
+                  fontFamily: 'var(--font-mono, monospace)',
+                  fontSize: '13px',
+                  lineHeight: 1.6,
+                  letterSpacing: '0.02em',
+                  color: 'var(--ink)',
+                  opacity: 0.85,
+                  margin: 0,
+                  maxWidth: '760px',
+                }}
+              >
+                {project.concept}
+              </p>
+            </div>
+          )}
+
+          {/* Material Palette Chips */}
+          {project.materials && project.materials.length > 0 && (
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '8px',
+                marginTop: 'var(--space-2)',
+              }}
+            >
+              {project.materials.map((mat, mi) => (
+                <span
+                  key={mi}
+                  style={{
+                    fontFamily: 'var(--font-mono, monospace)',
+                    fontSize: '10px',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    padding: '3px 8px',
+                    border: '1px solid var(--grid)',
+                    backgroundColor: 'rgba(0, 0, 0, 0.02)',
+                    color: 'var(--ink)',
+                    opacity: 0.85,
+                  }}
+                >
+                  {mat}
+                </span>
+              ))}
+            </div>
+          )}
         </header>
 
         {/* Signature Pinned Sketch-to-Photo Scrub */}
@@ -293,10 +372,10 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
                   fontSize: '11px',
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
-                  opacity: 0.8,
+                  opacity: 0.85,
                 }}
               >
-                [NEEDED: Process caption — concept drawing]
+                01 Ground Plan · Spatial Flow & Sightlines
               </div>
             </div>
 
@@ -351,10 +430,10 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
                   fontSize: '11px',
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
-                  opacity: 0.8,
+                  opacity: 0.85,
                 }}
               >
-                [NEEDED: Process caption — section study]
+                02 Section · Volumetric Heights & Overhangs
               </div>
             </div>
 
@@ -409,10 +488,10 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
                   fontSize: '11px',
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
-                  opacity: 0.8,
+                  opacity: 0.85,
                 }}
               >
-                [NEEDED: Process caption — detail study]
+                03 Joinery Detail · Recessed Shadow Reveals
               </div>
             </div>
           </div>
@@ -463,7 +542,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
               gap: 'var(--space-6)',
             }}
           >
-            {project.images.slice(0, 2).map((img, i) => (
+            {project.images.slice(1, 3).map((img, i) => (
               <div
                 key={i}
                 style={{
@@ -476,27 +555,118 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  background:
-                    'linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px)',
-                  backgroundSize: '24px 24px',
                 }}
               >
+                {img ? (
+                  <img
+                    src={img}
+                    alt={`${project.title} — Architectural outcome view 0${i + 1}`}
+                    loading="lazy"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      display: 'block',
+                    }}
+                  />
+                ) : (
+                  <div
+                    style={{
+                      border: '1px solid var(--ink)',
+                      padding: '6px 12px',
+                      fontFamily: 'var(--font-mono, monospace)',
+                      fontSize: '11px',
+                      letterSpacing: '0.14em',
+                      textTransform: 'uppercase',
+                      backgroundColor: 'var(--paper)',
+                    }}
+                  >
+                    Outcome view 0{i + 1}
+                  </div>
+                )}
                 <div
                   style={{
+                    position: 'absolute',
+                    bottom: '12px',
+                    left: '12px',
                     border: '1px solid var(--ink)',
-                    padding: '6px 12px',
+                    padding: '3px 8px',
                     fontFamily: 'var(--font-mono, monospace)',
-                    fontSize: '11px',
-                    letterSpacing: '0.14em',
+                    fontSize: '10px',
+                    letterSpacing: '0.12em',
                     textTransform: 'uppercase',
                     backgroundColor: 'var(--paper)',
+                    opacity: 0.95,
                   }}
                 >
-                  [NEEDED: Outcome photo {i + 1}] · PHOTO TBC
+                  View 0{i + 1} · Handover
                 </div>
               </div>
             ))}
           </div>
+        </section>
+
+        {/* Project Delivery Framework Note */}
+        <section
+          style={{
+            border: '1.5px solid var(--ink)',
+            backgroundColor: 'var(--paper)',
+            padding: 'clamp(20px, 3vw, 32px)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '12px',
+          }}
+          aria-label="Delivery Framework"
+        >
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: '8px' }}>
+            <span
+              style={{
+                fontFamily: 'var(--font-mono, monospace)',
+                fontSize: '11px',
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'var(--red)',
+                fontWeight: 600,
+              }}
+            >
+              EXECUTION &amp; HANDOVER FRAMEWORK
+            </span>
+            <span
+              style={{
+                fontFamily: 'var(--font-mono, monospace)',
+                fontSize: '10px',
+                letterSpacing: '0.1em',
+                opacity: 0.6,
+                textTransform: 'uppercase',
+              }}
+            >
+              ONE STUDIO ACCOUNTABILITY
+            </span>
+          </div>
+
+          <h3
+            style={{
+              fontFamily: 'var(--font-serif, Georgia, serif)',
+              fontSize: '22px',
+              fontWeight: 400,
+              margin: 0,
+              color: 'var(--ink)',
+            }}
+          >
+            How this commission was realized.
+          </h3>
+
+          <p
+            style={{
+              fontFamily: 'var(--font-mono, monospace)',
+              fontSize: '12px',
+              lineHeight: 1.6,
+              opacity: 0.85,
+              margin: 0,
+            }}
+          >
+            From the initial trace-paper elevation sketch through structural engineering, material mock-up testing, and on-site vendor supervision, OLI Design Studio provided unified single-point responsibility until physical keys and warranties were handed over.
+          </p>
         </section>
 
         {/* Next Project & Enquire Footer Bar */}
@@ -509,7 +679,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
             gap: 'var(--space-6)',
             paddingTop: 'var(--space-10)',
             borderTop: '1.5px solid var(--ink)',
-            marginTop: 'var(--space-8)',
+            marginTop: 'var(--space-4)',
           }}
         >
           {/* Next Project Link */}
@@ -557,7 +727,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
             </span>
           </Link>
 
-          {/* Project Enquiry CTA */}
+          {/* Project Enquiry Dual CTA */}
           <div
             style={{
               display: 'flex',
@@ -575,14 +745,28 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
                 opacity: 0.7,
               }}
             >
-              Planning something similar?
+              Planning a similar {project.discipline.toLowerCase()} commission?
             </span>
-            <Button
-              href={`/contact?type=${project.discipline.toLowerCase()}`}
-              variant="primary"
-            >
-              Enquire About This Project →
-            </Button>
+            <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
+              <a
+                href={`https://wa.me/?text=Hello%20OLI%20Design%20Studio%2C%20I%20am%20interested%20in%20discussing%20a%20project%20similar%20to%20${encodeURIComponent(
+                  project.title
+                )}.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="oli-btn oli-btn-secondary"
+                style={{ minHeight: '42px', fontSize: '11px' }}
+              >
+                WhatsApp Us ↗
+              </a>
+              <Button
+                href={`/contact?type=${project.discipline.toLowerCase()}`}
+                variant="primary"
+                style={{ minHeight: '42px' }}
+              >
+                Enquire About This Project →
+              </Button>
+            </div>
           </div>
         </footer>
       </div>

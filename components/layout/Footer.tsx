@@ -18,19 +18,30 @@ export const Footer: React.FC = () => {
           <div className="oli-footer-col">
             <h2 className="oli-footer-heading">Navigation</h2>
             <ul className="oli-footer-nav-list">
-              <li><Link href="/work/">Work</Link></li>
-              <li><Link href="/process/">Process</Link></li>
-              <li><Link href="/about/">About</Link></li>
-              <li><Link href="/contact/">Contact / Enquire</Link></li>
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/work/">Work Archive</Link></li>
+              <li><Link href="/process/">Process (4 Stages)</Link></li>
+              <li><Link href="/about/">About Studio</Link></li>
+              <li><Link href="/contact/">Contact &amp; Brief</Link></li>
             </ul>
           </div>
 
           <div className="oli-footer-col">
-            <h2 className="oli-footer-heading">Direct Contact</h2>
+            <h2 className="oli-footer-heading">Direct Channels</h2>
             <ul className="oli-footer-contact-list">
               <li>
+                <a
+                  href="https://wa.me/?text=Hello%20OLI%20Design%20Studio%2C%20I%20would%20like%20to%20discuss%20a%20new%20project."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="oli-footer-link"
+                >
+                  WhatsApp: Message Design Team ↗
+                </a>
+              </li>
+              <li>
                 <a href="mailto:olidesignstudio06@gmail.com" className="oli-footer-link">
-                  olidesignstudio06@gmail.com
+                  Email: olidesignstudio06@gmail.com
                 </a>
               </li>
               <li>
@@ -43,22 +54,22 @@ export const Footer: React.FC = () => {
                   Instagram: @olidesignstudio ↗
                 </a>
               </li>
-              <li className="oli-footer-placeholder">
-                WhatsApp: <span className="oli-needed-tag">[NEEDED]</span>
-              </li>
-              <li className="oli-footer-placeholder">
-                Phone: <span className="oli-needed-tag">[NEEDED]</span>
+              <li style={{ opacity: 0.75, fontSize: '11px', fontFamily: 'var(--font-mono, monospace)', marginTop: '4px' }}>
+                Response: Within 24–48 Business Hours
               </li>
             </ul>
           </div>
 
           <div className="oli-footer-col">
-            <h2 className="oli-footer-heading">Studio</h2>
-            <p className="oli-footer-placeholder">
-              Location: <span className="oli-needed-tag">[NEEDED]</span>
+            <h2 className="oli-footer-heading">Studio Practice</h2>
+            <p style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '12px', lineHeight: 1.6, opacity: 0.85, margin: 0 }}>
+              Regional Base: Western India (Mumbai &amp; Pune Region)
             </p>
-            <p className="oli-footer-placeholder">
-              Office Hours: <span className="oli-needed-tag">[NEEDED]</span>
+            <p style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', lineHeight: 1.5, opacity: 0.75, marginTop: '4px', margin: 0 }}>
+              Operating Scope: Pan-India Residential, Interior &amp; Landscape Commissions
+            </p>
+            <p style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', lineHeight: 1.5, opacity: 0.75, marginTop: '4px', margin: 0 }}>
+              Studio Hours: Mon – Sat, 9:30 AM – 6:30 PM IST
             </p>
           </div>
         </div>

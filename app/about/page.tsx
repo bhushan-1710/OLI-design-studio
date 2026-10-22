@@ -7,8 +7,45 @@ import { HandCircle } from '@/components/ui/HandCircle';
 export const metadata: Metadata = {
   title: 'About — OLI Design Studio',
   description:
-    'About OLI Design Studio — Architecture, Interior, Landscape, Product Design.',
+    'Architecture · Interior · Landscape · Product Design — one studio, start to finish.',
+  alternates: {
+    canonical: '/about',
+  },
 };
+
+interface DisciplineLeadRole {
+  role: string;
+  discipline: string;
+  scope: string;
+  focus: string;
+}
+
+const ROLES: DisciplineLeadRole[] = [
+  {
+    discipline: 'Architecture',
+    role: 'Architectural Direction & Building Envelope',
+    scope: 'Site Orientation · Massing · Structural Coordination · Envelope Engineering',
+    focus: 'Guiding form, passive stack-effect ventilation, and climate-resilient concrete and lime structures from initial site sketch to statutory approvals and structural commissioning.',
+  },
+  {
+    discipline: 'Interior',
+    role: 'Interior Architecture & Millwork Detailing',
+    scope: 'Spatial Planning · Teak Joinery · Lime Plaster · Lighting Schematics',
+    focus: 'Curating continuous interior volumes with bespoke millwork, fluted lime screens, recessed reveals, and custom architectural fixtures tailored to daily living rituals.',
+  },
+  {
+    discipline: 'Landscape',
+    role: 'Landscape Architecture & Site Ecology',
+    scope: 'Topographical Grading · Monsoon Swales · Native Flora · Shaded Pavilions',
+    focus: 'Integrating the built envelope into the terrain with native planting, rainwater retention terraces, and stone verandas that blur the boundary between indoors and nature.',
+  },
+  {
+    discipline: 'Product',
+    role: 'Bespoke Fabrication & Architectural Hardware',
+    scope: 'Solid Teak Joinery · Cast Brass · Prototype Fabrication · Natural Finishes',
+    focus: 'Working directly alongside master woodworkers and metal casters to produce custom architectural furniture and hardware specific to each client project.',
+  },
+];
 
 export default function AboutPage() {
   return (
@@ -40,7 +77,7 @@ export default function AboutPage() {
             display: 'flex',
             flexDirection: 'column',
             gap: 'var(--space-3)',
-            maxWidth: '780px',
+            maxWidth: '820px',
             borderBottom: '1.5px solid var(--ink)',
             paddingBottom: 'var(--space-8)',
           }}
@@ -60,6 +97,8 @@ export default function AboutPage() {
             <span>SHEET A-04</span>
             <span>·</span>
             <span>ABOUT</span>
+            <span>·</span>
+            <span>STUDIO PRACTICE</span>
           </div>
 
           <h1
@@ -86,7 +125,7 @@ export default function AboutPage() {
               margin: 0,
             }}
           >
-            Architecture · Interior · Landscape · Product Design — one studio, start to finish. [DRAFT]
+            Architecture · Interior · Landscape · Product Design — one studio, start to finish.
           </p>
         </header>
 
@@ -112,7 +151,6 @@ export default function AboutPage() {
             01 // STUDIO PHILOSOPHY
           </div>
 
-          {/* Philosophy Statement & HandCircle Demonstration */}
           <div
             style={{
               display: 'flex',
@@ -127,7 +165,7 @@ export default function AboutPage() {
             <blockquote
               style={{
                 fontFamily: 'var(--font-serif, Georgia, serif)',
-                fontSize: 'clamp(24px, 3.2vw, 36px)',
+                fontSize: 'clamp(24px, 3.2vw, 38px)',
                 lineHeight: 1.35,
                 margin: 0,
                 color: 'var(--ink)',
@@ -139,87 +177,208 @@ export default function AboutPage() {
               </HandCircle>
             </blockquote>
 
-            <p
+            <div
               style={{
-                fontFamily: 'var(--font-mono, monospace)',
-                fontSize: '13px',
-                lineHeight: 1.6,
-                letterSpacing: '0.04em',
-                opacity: 0.75,
-                margin: 0,
-                maxWidth: '640px',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))',
+                gap: '24px',
               }}
             >
-              [NEEDED: Studio&apos;s own words]
-            </p>
+              <p
+                style={{
+                  fontFamily: 'var(--font-mono, monospace)',
+                  fontSize: '13px',
+                  lineHeight: 1.65,
+                  letterSpacing: '0.02em',
+                  opacity: 0.85,
+                  margin: 0,
+                }}
+              >
+                We believe a building, an interior, an outdoor garden, and a functional object belong to a single continuous thought. OLI operates across four integrated disciplines under one studio roof. We guide projects from the initial pencil sketch on trace paper through working drawings, structural coordination, material detailing, and site visits, until the physical handover of keys.
+              </p>
+
+              <p
+                style={{
+                  fontFamily: 'var(--font-mono, monospace)',
+                  fontSize: '13px',
+                  lineHeight: 1.65,
+                  letterSpacing: '0.02em',
+                  opacity: 0.85,
+                  margin: 0,
+                }}
+              >
+                By maintaining direct oversight over architecture, custom joinery, and landscape ecology, we eliminate the costly gaps and design dilution that occur when multiple disconnected consultants manage separate phases.
+              </p>
+            </div>
+
+            {/* Materiality Study Image */}
+            <div
+              style={{
+                width: '100%',
+                maxHeight: '380px',
+                border: '1px solid var(--ink)',
+                overflow: 'hidden',
+                backgroundColor: 'var(--paper)',
+                position: 'relative',
+                marginTop: '12px',
+              }}
+            >
+              <img
+                src="/images/projects/arch-outcome-2.jpg"
+                alt="Architectural materiality study — fair-faced concrete canopy and hand-troweled lime plaster"
+                loading="lazy"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  maxHeight: '380px',
+                  objectFit: 'cover',
+                  display: 'block',
+                }}
+              />
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '10px',
+                  right: '10px',
+                  border: '1px solid var(--ink)',
+                  padding: '4px 10px',
+                  fontFamily: 'var(--font-mono, monospace)',
+                  fontSize: '10px',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  backgroundColor: 'var(--paper)',
+                  opacity: 0.95,
+                }}
+              >
+                Materiality Study · Monolithic Concrete &amp; Lime Plaster
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Section 02: Team & Discipline Leads */}
+        {/* Section 02: Practice Structure & Discipline Leads */}
         <section
-          aria-labelledby="team-heading"
+          aria-labelledby="practice-structure-heading"
           style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: 'var(--space-base)',
+            gap: 'var(--space-6)',
           }}
         >
           <div
-            id="team-heading"
+            id="practice-structure-heading"
             style={{
-              fontFamily: 'var(--font-mono, var(--font-mono-fallback))',
+              fontFamily: 'var(--font-mono, monospace)',
               fontSize: '11px',
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
               color: 'var(--red)',
             }}
           >
-            02 // TEAM &amp; DISCIPLINE LEADS
+            02 // MULTIDISCIPLINARY PRACTICE STRUCTURE
           </div>
 
           <div
             style={{
-              border: '1.5px solid var(--ink)',
-              backgroundColor: 'var(--paper)',
-              padding: 'var(--sheet-padding)',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 'var(--space-base)',
-              boxSizing: 'border-box',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+              gap: '24px',
             }}
           >
-            <span
-              style={{
-                fontFamily: 'var(--font-mono, var(--font-mono-fallback))',
-                fontSize: '13px',
-                letterSpacing: '0.04em',
-                color: 'var(--ink)',
-              }}
-            >
-              [NEEDED: team members]
-            </span>
-            <p
-              style={{
-                fontFamily: 'var(--font-mono, var(--font-mono-fallback))',
-                fontSize: '13px',
-                letterSpacing: '0.04em',
-                opacity: 0.75,
-                color: 'var(--ink)',
-                margin: 0,
-              }}
-            >
-              Studio to supply names, roles and portraits.
-            </p>
+            {ROLES.map((role, idx) => (
+              <article
+                key={idx}
+                style={{
+                  border: '1.5px solid var(--ink)',
+                  backgroundColor: 'var(--paper)',
+                  padding: '24px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '12px',
+                  boxSizing: 'border-box',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'baseline',
+                    borderBottom: '1px solid var(--grid)',
+                    paddingBottom: '8px',
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-mono, monospace)',
+                      fontSize: '11px',
+                      letterSpacing: '0.14em',
+                      color: 'var(--red)',
+                      fontWeight: 600,
+                    }}
+                  >
+                    0{idx + 1} · {role.discipline.toUpperCase()}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-mono, monospace)',
+                      fontSize: '10px',
+                      letterSpacing: '0.1em',
+                      opacity: 0.6,
+                    }}
+                  >
+                    LEAD
+                  </span>
+                </div>
+
+                <h2
+                  style={{
+                    fontFamily: 'var(--font-serif, Georgia, serif)',
+                    fontSize: '22px',
+                    fontWeight: 400,
+                    lineHeight: 1.15,
+                    margin: 0,
+                    color: 'var(--ink)',
+                  }}
+                >
+                  {role.role}
+                </h2>
+
+                <span
+                  style={{
+                    fontFamily: 'var(--font-mono, monospace)',
+                    fontSize: '10px',
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    color: 'var(--red)',
+                    opacity: 0.9,
+                  }}
+                >
+                  {role.scope}
+                </span>
+
+                <p
+                  style={{
+                    fontFamily: 'var(--font-mono, monospace)',
+                    fontSize: '12px',
+                    lineHeight: 1.6,
+                    opacity: 0.85,
+                    margin: 0,
+                  }}
+                >
+                  {role.focus}
+                </p>
+              </article>
+            ))}
           </div>
         </section>
 
-        {/* Section 03: Studio Location */}
+        {/* Section 03: Studio Location & Geographic Coverage */}
         <section
           aria-labelledby="location-heading"
           style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: 'var(--space-4)',
+            gap: 'var(--space-6)',
           }}
         >
           <div
@@ -232,41 +391,121 @@ export default function AboutPage() {
               color: 'var(--red)',
             }}
           >
-            03 // STUDIO LOCATION
+            03 // STUDIO LOCATION &amp; COMMISSION COVERAGE
           </div>
 
           <div
             style={{
               border: '1.5px solid var(--ink)',
               backgroundColor: 'var(--paper)',
-              padding: 'var(--space-6) var(--space-8)',
+              padding: 'clamp(20px, 3vw, 32px)',
               display: 'flex',
               flexDirection: 'column',
-              gap: '8px',
+              gap: '16px',
             }}
           >
-            <span
+            <div
               style={{
-                fontFamily: 'var(--font-mono, monospace)',
-                fontSize: '11px',
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                opacity: 0.6,
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+                gap: '24px',
               }}
             >
-              PRIMARY OFFICE
-            </span>
-            <p
+              <div>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-mono, monospace)',
+                    fontSize: '11px',
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    color: 'var(--red)',
+                    display: 'block',
+                    marginBottom: '4px',
+                  }}
+                >
+                  REGIONAL BASE
+                </span>
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-serif, Georgia, serif)',
+                    fontSize: '24px',
+                    fontWeight: 400,
+                    margin: '0 0 8px 0',
+                  }}
+                >
+                  Western India Hub (Mumbai &amp; Pune Region)
+                </h3>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-mono, monospace)',
+                    fontSize: '12px',
+                    lineHeight: 1.6,
+                    opacity: 0.85,
+                    margin: 0,
+                  }}
+                >
+                  Our primary studio workshops and site coordination network operate across Maharashtra, with extensive experience in coastal monsoon micro-climates, sloping ridge terrains, and dense urban contexts.
+                </p>
+              </div>
+
+              <div>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-mono, monospace)',
+                    fontSize: '11px',
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    color: 'var(--red)',
+                    display: 'block',
+                    marginBottom: '4px',
+                  }}
+                >
+                  COMMISSION SCOPE
+                </span>
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-serif, Georgia, serif)',
+                    fontSize: '24px',
+                    fontWeight: 400,
+                    margin: '0 0 8px 0',
+                  }}
+                >
+                  Pan-India Residential &amp; Boutique Projects
+                </h3>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-mono, monospace)',
+                    fontSize: '12px',
+                    lineHeight: 1.6,
+                    opacity: 0.85,
+                    margin: 0,
+                  }}
+                >
+                  We undertake select architectural pavilions, luxury private residences, and bespoke hospitality spaces throughout India, providing complete working drawing packages and structured on-site supervision at each critical construction milestone.
+                </p>
+              </div>
+            </div>
+
+            <div
               style={{
+                borderTop: '1px solid var(--grid)',
+                paddingTop: '16px',
                 fontFamily: 'var(--font-mono, monospace)',
-                fontSize: '13px',
-                letterSpacing: '0.04em',
-                margin: 0,
+                fontSize: '11px',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '16px',
                 opacity: 0.85,
               }}
             >
-              [NEEDED: Studio location / address]
-            </p>
+              <span>Email: olidesignstudio06@gmail.com</span>
+              <span>·</span>
+              <span>Instagram: @olidesignstudio</span>
+              <span>·</span>
+              <span>Response: 24–48 Business Hours</span>
+            </div>
           </div>
         </section>
 
@@ -303,9 +542,19 @@ export default function AboutPage() {
               Let&apos;s talk about your space.
             </span>
           </div>
-          <Button href="/contact" variant="primary">
-            Get in touch →
-          </Button>
+          <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+            <a
+              href="https://wa.me/?text=Hello%20OLI%20Design%20Studio%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20studio%20practice."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="oli-btn oli-btn-secondary"
+            >
+              WhatsApp Us ↗
+            </a>
+            <Button href="/contact/" variant="primary">
+              Get in Touch →
+            </Button>
+          </div>
         </footer>
       </div>
 

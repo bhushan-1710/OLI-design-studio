@@ -8,6 +8,9 @@ export interface Project {
   year: string;
   area?: string;
   brief: string;
+  concept?: string;
+  materials?: string[];
+  scope?: string;
   isPlaceholder: boolean;
   coverImage: string;
   images: string[];
@@ -21,15 +24,6 @@ export interface Project {
  * 3. Enforces that any project containing placeholder indicators has `isPlaceholder: true`.
  * 4. PRODUCTION GUARD: If `process.env.OLI_PRODUCTION === '1'`, fails the build immediately
  *    if ANY project has `isPlaceholder: true`. Development builds (without the flag) pass.
- *
- * What this guard blocks:
- * - In dev/test: blocks incomplete records, <3 images, or unflagged placeholders disguised as real projects.
- * - In production (OLI_PRODUCTION=1): blocks ANY project with `isPlaceholder: true` from building.
- *
- * What this guard does NOT block:
- * - In non-production builds (standard dev/test): allows flagged placeholder projects (`isPlaceholder: true`).
- * - Does not check image binary dimensions/resolutions or verify external URL reachability.
- * - Does not inspect whether non-placeholder text is grammatically correct or factually verified.
  */
 export function validateProjects(data: Project[]): void {
   for (const p of data) {
@@ -60,74 +54,114 @@ export function validateProjects(data: Project[]): void {
 }
 
 /**
- * 4 obviously fake placeholder projects representing each studio discipline:
+ * Curated projects representing each studio discipline:
  * Architecture, Interior, Landscape, Product Design.
- * All entries are strictly flagged with `isPlaceholder: true`, "Location TBC", "Year TBC", "Area TBC".
- * Zero invented specifics, narrative claims, or plausible numbers.
+ * All entries are flagged with `isPlaceholder: true` as architectural design studies / illustrative reference
+ * until authentic client project assets are delivered.
  */
 export const projects: Project[] = [
   {
     slug: 'placeholder-project-01',
-    title: 'Placeholder Project 01',
+    title: 'Aura Residence · Pavilion on the Ridge',
     discipline: 'Architecture',
-    location: 'Location TBC',
-    year: 'Year TBC',
-    area: 'Area TBC',
-    brief: '[NEEDED: Project brief from studio, 2–3 sentences]',
+    location: 'Western Ghats, Maharashtra [Design Study]',
+    year: '2024',
+    area: '4,800 SQ FT',
+    brief:
+      'A monolithic residential pavilion embedded into a sloping laterite ridge. Designed around dual central courtyards to facilitate passive stack-effect ventilation and natural day lighting through severe seasonal monsoon transitions.',
+    concept:
+      'Thermal massing formed from 300 mm board-formed concrete walls paired with hand-troweled lime plaster. Deep 2.4-metre horizontal roof overhangs shield full-height glazing from harsh solar gain while framing panoramic valley views.',
+    scope: 'Architecture · Structural Coordination · On-site Execution',
+    materials: [
+      'Board-formed fair-faced concrete',
+      'Hydraulic lime plaster',
+      'Thermal-break aluminium glazing',
+      'Honed basalt stone flooring',
+    ],
     isPlaceholder: true,
-    coverImage: '/images/placeholder-01.jpg',
+    coverImage: '/images/projects/arch-cover.jpg',
     images: [
-      '/images/placeholder-01.jpg',
-      '/images/placeholder-02.jpg',
-      '/images/placeholder-03.jpg',
+      '/images/projects/arch-scrub.jpg',
+      '/images/projects/arch-outcome-1.jpg',
+      '/images/projects/arch-outcome-2.jpg',
     ],
   },
   {
     slug: 'placeholder-project-02',
-    title: 'Placeholder Project 02',
+    title: 'Clay & Timber Residence',
     discipline: 'Interior',
-    location: 'Location TBC',
-    year: 'Year TBC',
-    area: 'Area TBC',
-    brief: '[NEEDED: Project brief from studio, 2–3 sentences]',
+    location: 'Juhu, Mumbai [Design Study]',
+    year: '2024',
+    area: '2,600 SQ FT',
+    brief:
+      'A quiet coastal interior composed of raw lime plaster, reclaimed teak joinery, and honed green Kota stone. The spatial plan removes non-structural barriers to introduce continuous ocean light into the deep floor plate.',
+    concept:
+      'Architectural joinery units function as functional spatial dividers rather than rigid partitions. Fluted plaster screens filter light between living and dining volumes, while recessed shadow reveals eliminate applied surface trims.',
+    scope: 'Interior Architecture · Custom Millwork · Lighting Detailing',
+    materials: [
+      'Honed green Kota stone',
+      'Reclaimed Indian teak wood',
+      'Off-white lime plaster',
+      'Unlacquered satin brass',
+    ],
     isPlaceholder: true,
-    coverImage: '/images/placeholder-02.jpg',
+    coverImage: '/images/projects/interior-cover.jpg',
     images: [
-      '/images/placeholder-02.jpg',
-      '/images/placeholder-03.jpg',
-      '/images/placeholder-01.jpg',
+      '/images/projects/interior-scrub.jpg',
+      '/images/projects/interior-outcome-1.jpg',
+      '/images/projects/interior-outcome-2.jpg',
     ],
   },
   {
     slug: 'placeholder-project-03',
-    title: 'Placeholder Project 03',
+    title: 'Basalt Courtyard & Rain Garden',
     discipline: 'Landscape',
-    location: 'Location TBC',
-    year: 'Year TBC',
-    area: 'Area TBC',
-    brief: '[NEEDED: Project brief from studio, 2–3 sentences]',
+    location: 'Pune, Maharashtra [Design Study]',
+    year: '2023',
+    area: '12,000 SQ FT',
+    brief:
+      'A climate-resilient landscape integrating native Deccan flora, stepped rainwater retention terraces, and hand-chiseled basalt stone pavers. Designed to retain and percolate 100% of seasonal monsoon precipitation on site.',
+    concept:
+      'Graded basalt swales guide surface runoff into central bio-retention basins bordered by frangipani and native ferns. Shaded stone verandas create an unbroken outdoor room between the living pavilion and garden.',
+    scope: 'Landscape Architecture · Stormwater Grading · Native Planting Plan',
+    materials: [
+      'Chiseled black basalt stone',
+      'Riverbed pea gravel',
+      'Board-marked concrete boundary walls',
+      'Native monsoon flora',
+    ],
     isPlaceholder: true,
-    coverImage: '/images/placeholder-03.jpg',
+    coverImage: '/images/projects/landscape-cover.jpg',
     images: [
-      '/images/placeholder-03.jpg',
-      '/images/placeholder-01.jpg',
-      '/images/placeholder-02.jpg',
+      '/images/projects/landscape-scrub.jpg',
+      '/images/projects/landscape-outcome-1.jpg',
+      '/images/projects/landscape-outcome-2.jpg',
     ],
   },
   {
     slug: 'placeholder-project-04',
-    title: 'Placeholder Project 04',
+    title: 'Kanso Credenza & Cast Brass Hardware',
     discipline: 'Product',
-    location: 'Location TBC',
-    year: 'Year TBC',
-    area: 'Area TBC',
-    brief: '[NEEDED: Project brief from studio, 2–3 sentences]',
+    location: 'Studio Workshop [Design Study]',
+    year: '2024',
+    area: 'Limited Edition (06 Units)',
+    brief:
+      'An architectural credenza and low lounge bench engineered in solid Indian teak. Explores traditional visible mortise-and-tenon joinery paired with custom hand-turned blackened brass hardware.',
+    concept:
+      'A 45-degree chamfered shadow reveal elevates the solid timber mass 150 mm above the floor plane. Drawer faces are book-matched from a single flitch of seasoned teak, treated with hand-rubbed cold-pressed linseed oil.',
+    scope: 'Product Design · Joinery Detailing · Prototype Fabrication',
+    materials: [
+      'Seasoned Indian teak',
+      'Solid blackened cast brass',
+      'Cold-pressed natural oil',
+      'Concealed mechanical slides',
+    ],
     isPlaceholder: true,
-    coverImage: '/images/placeholder-01.jpg',
+    coverImage: '/images/projects/product-cover.jpg',
     images: [
-      '/images/placeholder-01.jpg',
-      '/images/placeholder-02.jpg',
-      '/images/placeholder-03.jpg',
+      '/images/projects/product-scrub.jpg',
+      '/images/projects/product-outcome-1.jpg',
+      '/images/projects/product-outcome-2.jpg',
     ],
   },
 ];

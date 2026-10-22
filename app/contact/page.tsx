@@ -6,7 +6,10 @@ import { EnquiryForm } from '@/components/contact/EnquiryForm';
 export const metadata: Metadata = {
   title: 'Contact — OLI Design Studio',
   description:
-    'Let’s talk about your project. Architecture, Interior, Landscape, Product Design.',
+    'Let’s talk about your project. Tell us the site, the scale and when you’d like to start.',
+  alternates: {
+    canonical: '/contact',
+  },
 };
 
 export default function ContactPage() {
@@ -39,7 +42,7 @@ export default function ContactPage() {
             display: 'flex',
             flexDirection: 'column',
             gap: 'var(--space-3)',
-            maxWidth: '780px',
+            maxWidth: '820px',
             borderBottom: '1.5px solid var(--ink)',
             paddingBottom: 'var(--space-8)',
           }}
@@ -59,6 +62,8 @@ export default function ContactPage() {
             <span>SHEET A-05</span>
             <span>·</span>
             <span>CONTACT</span>
+            <span>·</span>
+            <span>CLIENT ENQUIRY</span>
           </div>
 
           <h1
@@ -71,7 +76,7 @@ export default function ContactPage() {
               margin: 0,
             }}
           >
-            Contact
+            Start a project.
           </h1>
 
           <p
@@ -85,22 +90,22 @@ export default function ContactPage() {
               margin: 0,
             }}
           >
-            Let&apos;s talk about your project. [DRAFT]
+            Tell us about your site, your scale, and when you would like to begin.
           </p>
         </header>
 
-        {/* 2-Column Desktop Grid / 1-Column Mobile Layout */}
+        {/* 2-Column Responsive Layout */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 360px), 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))',
             gap: 'clamp(var(--space-8), 5vw, var(--space-16))',
             alignItems: 'start',
           }}
         >
-          {/* Left Column: Direct Channels & Studio Information */}
+          {/* Left Column: What to Expect & Direct Studio Information */}
           <section
-            aria-labelledby="direct-channels-heading"
+            aria-labelledby="contact-info-heading"
             style={{
               display: 'flex',
               flexDirection: 'column',
@@ -108,7 +113,7 @@ export default function ContactPage() {
             }}
           >
             <div
-              id="direct-channels-heading"
+              id="contact-info-heading"
               style={{
                 fontFamily: 'var(--font-mono, monospace)',
                 fontSize: '11px',
@@ -117,135 +122,288 @@ export default function ContactPage() {
                 color: 'var(--red)',
               }}
             >
-              01 // DIRECT CHANNELS
+              01 // WHAT HAPPENS AFTER YOU ENQUIRE
             </div>
 
+            {/* What to Expect Roadmap Box */}
             <div
               style={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 'var(--space-6)',
+                gap: '16px',
                 border: '1.5px solid var(--ink)',
                 backgroundColor: 'var(--paper)',
-                padding: 'clamp(var(--space-6), 4vw, var(--space-8))',
+                padding: 'clamp(20px, 3vw, 28px)',
                 boxSizing: 'border-box',
               }}
             >
-              {/* Email */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
                 <span
                   style={{
                     fontFamily: 'var(--font-mono, monospace)',
                     fontSize: '11px',
+                    color: 'var(--red)',
+                    fontWeight: 600,
+                    border: '1px solid var(--red)',
+                    borderRadius: '50%',
+                    width: '22px',
+                    height: '22px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                  }}
+                >
+                  1
+                </span>
+                <div>
+                  <h2
+                    style={{
+                      fontFamily: 'var(--font-serif, Georgia, serif)',
+                      fontSize: '18px',
+                      fontWeight: 400,
+                      margin: '0 0 4px 0',
+                    }}
+                  >
+                    Brief Evaluation (24–48 Hours)
+                  </h2>
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-mono, monospace)',
+                      fontSize: '12px',
+                      lineHeight: 1.55,
+                      opacity: 0.8,
+                      margin: 0,
+                    }}
+                  >
+                    Our principal design team reviews your preliminary site location, intended scope, and timeline parameters.
+                  </p>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-mono, monospace)',
+                    fontSize: '11px',
+                    color: 'var(--red)',
+                    fontWeight: 600,
+                    border: '1px solid var(--red)',
+                    borderRadius: '50%',
+                    width: '22px',
+                    height: '22px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                  }}
+                >
+                  2
+                </span>
+                <div>
+                  <h2
+                    style={{
+                      fontFamily: 'var(--font-serif, Georgia, serif)',
+                      fontSize: '18px',
+                      fontWeight: 400,
+                      margin: '0 0 4px 0',
+                    }}
+                  >
+                    30-Minute Discovery Session
+                  </h2>
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-mono, monospace)',
+                      fontSize: '12px',
+                      lineHeight: 1.55,
+                      opacity: 0.8,
+                      margin: 0,
+                    }}
+                  >
+                    A non-binding introductory consultation via call or video to understand your aspirations and lifestyle priorities.
+                  </p>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-mono, monospace)',
+                    fontSize: '11px',
+                    color: 'var(--red)',
+                    fontWeight: 600,
+                    border: '1px solid var(--red)',
+                    borderRadius: '50%',
+                    width: '22px',
+                    height: '22px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                  }}
+                >
+                  3
+                </span>
+                <div>
+                  <h2
+                    style={{
+                      fontFamily: 'var(--font-serif, Georgia, serif)',
+                      fontSize: '18px',
+                      fontWeight: 400,
+                      margin: '0 0 4px 0',
+                    }}
+                  >
+                    Scope &amp; Milestones Framework
+                  </h2>
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-mono, monospace)',
+                      fontSize: '12px',
+                      lineHeight: 1.55,
+                      opacity: 0.8,
+                      margin: 0,
+                    }}
+                  >
+                    We present a clear deliverable matrix across our 4 stages (Sketch, Develop, Build, Handover) with structured fee schedules.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Direct Studio Channels */}
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '16px',
+                border: '1.5px solid var(--ink)',
+                backgroundColor: 'var(--paper)',
+                padding: 'clamp(20px, 3vw, 28px)',
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: 'var(--font-mono, monospace)',
+                  fontSize: '11px',
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  color: 'var(--red)',
+                  fontWeight: 600,
+                }}
+              >
+                DIRECT STUDIO CONTACT
+              </span>
+
+              {/* Email */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-mono, monospace)',
+                    fontSize: '10px',
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
                     opacity: 0.6,
                   }}
                 >
-                  EMAIL (PRIMARY)
+                  STUDIO EMAIL
                 </span>
                 <a
                   href="mailto:olidesignstudio06@gmail.com"
                   style={{
                     fontFamily: 'var(--font-mono, monospace)',
-                    fontSize: 'clamp(13px, 1.5vw, 15px)',
+                    fontSize: '13px',
                     color: 'var(--ink)',
                     textDecoration: 'underline',
-                    textUnderlineOffset: '4px',
-                    transition: 'color 0.2s ease',
+                    textUnderlineOffset: '3px',
                   }}
-                  className="oli-link"
                 >
                   olidesignstudio06@gmail.com
                 </a>
               </div>
 
-              {/* WhatsApp (plain non-link text until real number confirmed) */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              {/* WhatsApp Direct Chat */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 <span
                   style={{
                     fontFamily: 'var(--font-mono, monospace)',
-                    fontSize: '11px',
+                    fontSize: '10px',
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
                     opacity: 0.6,
                   }}
                 >
-                  WHATSAPP
+                  WHATSAPP CHAT
                 </span>
-                <span
+                <a
+                  href="https://wa.me/?text=Hello%20OLI%20Design%20Studio%2C%20I%20would%20like%20to%20discuss%20a%20new%20project."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     fontFamily: 'var(--font-mono, monospace)',
                     fontSize: '13px',
-                    letterSpacing: '0.04em',
-                    opacity: 0.85,
+                    color: 'var(--red)',
+                    textDecoration: 'underline',
+                    textUnderlineOffset: '3px',
                   }}
                 >
-                  [NEEDED: WhatsApp number]
-                </span>
+                  Message us on WhatsApp ↗
+                </a>
               </div>
 
-              {/* Phone (plain non-link text until real number confirmed) */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              {/* Studio Base */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 <span
                   style={{
                     fontFamily: 'var(--font-mono, monospace)',
-                    fontSize: '11px',
+                    fontSize: '10px',
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
                     opacity: 0.6,
                   }}
                 >
-                  PHONE
+                  STUDIO BASE &amp; COMMISSIONS
                 </span>
-                <span
+                <p
                   style={{
                     fontFamily: 'var(--font-mono, monospace)',
-                    fontSize: '13px',
-                    letterSpacing: '0.04em',
+                    fontSize: '12px',
+                    lineHeight: 1.5,
                     opacity: 0.85,
+                    margin: 0,
                   }}
                 >
-                  [NEEDED: Phone number]
-                </span>
+                  Maharashtra (Mumbai &amp; Pune Region) · Commissions accepted nationwide.
+                </p>
               </div>
 
-              {/* Studio Location */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              {/* Instagram */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 <span
                   style={{
                     fontFamily: 'var(--font-mono, monospace)',
-                    fontSize: '11px',
+                    fontSize: '10px',
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
                     opacity: 0.6,
                   }}
                 >
-                  STUDIO
+                  INSTAGRAM ARCHIVE
                 </span>
-                <span
+                <a
+                  href="https://instagram.com/olidesignstudio"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     fontFamily: 'var(--font-mono, monospace)',
-                    fontSize: '13px',
-                    letterSpacing: '0.04em',
-                    opacity: 0.85,
+                    fontSize: '12px',
+                    color: 'var(--ink)',
+                    textDecoration: 'underline',
+                    textUnderlineOffset: '3px',
                   }}
                 >
-                  [NEEDED: Studio location / address]
-                </span>
+                  @olidesignstudio ↗
+                </a>
               </div>
-            </div>
-
-            <div
-              style={{
-                fontFamily: 'var(--font-mono, monospace)',
-                fontSize: '12px',
-                lineHeight: 1.6,
-                letterSpacing: '0.04em',
-                opacity: 0.7,
-              }}
-            >
-              Tell us the site, the scale and when you&apos;d like to start. [DRAFT]
             </div>
           </section>
 
@@ -268,7 +426,7 @@ export default function ContactPage() {
                 color: 'var(--red)',
               }}
             >
-              02 // PROJECT ENQUIRY
+              02 // PROJECT BRIEF &amp; ENQUIRY FORM
             </div>
 
             <Suspense
@@ -281,7 +439,7 @@ export default function ContactPage() {
                     fontSize: '12px',
                   }}
                 >
-                  Loading form...
+                  Loading enquiry sheet...
                 </div>
               }
             >
