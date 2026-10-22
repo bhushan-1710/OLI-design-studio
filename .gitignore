@@ -35,3 +35,5 @@ next-env.d.ts
 # Audits
 scripts/lighthouse-reports/
 
+# Review artifacts
+/review/

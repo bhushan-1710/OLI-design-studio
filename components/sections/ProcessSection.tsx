@@ -608,7 +608,7 @@ export function ProcessSection() {
               <rect className="d" x="170" y="110" width="16" height="190" stroke="var(--red)" strokeWidth="1.5" />
               <text x="178" y="100" textAnchor="middle" fill="var(--red)" style={{ fontFamily: 'var(--font-mono)', fontSize: '8px' }}>15 MM REVEAL</text>
 
-              {/* Teak Timber Rafter Beam */}
+              {/* Structural Timber Rafter Beam */}
               <polygon className="d" points="186,120 380,60 440,80 246,140" strokeWidth="2" fill="var(--wash-sand)" fillOpacity="0.25" />
               <polygon className="d" points="186,120 246,140 246,200 186,180" strokeWidth="2" fill="var(--wash-timber)" fillOpacity="0.25" />
               <polygon className="d" points="246,140 440,80 440,140 246,200" strokeWidth="2" />
@@ -622,7 +622,7 @@ export function ProcessSection() {
               <text x="50" y="44" fill="var(--red)" style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', letterSpacing: '0.08em' }}>300 MM FAIR-FACED CONCRETE</text>
 
               <path className="d" d="M 330 100 L 330 40 L 440 40" stroke="var(--red)" strokeWidth="1.2" />
-              <text x="440" y="34" textAnchor="end" fill="var(--red)" style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', letterSpacing: '0.08em' }}>SEASONED TEAK RAFTER (120×60)</text>
+              <text x="440" y="34" textAnchor="end" fill="var(--red)" style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', letterSpacing: '0.08em' }}>STRUCTURAL TIMBER RAFTER (120×60)</text>
 
               <path className="d" d="M 216 165 L 216 270 L 290 270" stroke="var(--red)" strokeWidth="1.2" />
               <text x="296" y="274" fill="var(--red)" style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', letterSpacing: '0.08em' }}>SOLID BRASS CONNECTION PIN</text>

@@ -7,6 +7,7 @@ import { Footer } from '@/components/layout/Footer';
 import { PageTransition } from '@/components/layout/PageTransition';
 import '@/styles/base.css';
 import '@/styles/components.css';
+import '@/styles/tailwind.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://olidesignstudio.in'),
@@ -65,7 +66,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <SkipLink />
         <PageTransition />
         <Nav />

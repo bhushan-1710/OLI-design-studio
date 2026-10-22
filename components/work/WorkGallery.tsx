@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import { Project, Discipline, getAllProjects } from '@/content/projects';
 import { ProjectCard } from '@/components/ui/ProjectCard';
 import { Chip } from '@/components/ui/Chip';
+import { DiscreteTabs } from '@/components/ui/discrete-tabs';
 import { prefersReducedMotion } from '@/lib/motion/reduced-motion';
 
 const ALL_DISCIPLINES: Discipline[] = ['Architecture', 'Interior', 'Landscape', 'Product'];
@@ -116,29 +117,19 @@ export function WorkGallery() {
           FILTER:
         </span>
 
-        {/* 'All' chip */}
-        <Chip
-          active={activeFilter === 'All'}
-          onClick={() => handleSelectFilter('All')}
-          aria-label={`Show all projects (${counts['All'] || 0})`}
-        >
-          All ({counts['All'] || 0})
-        </Chip>
-
-        {/* Discipline chips */}
-        {ALL_DISCIPLINES.map((discipline) => {
-          const count = counts[discipline] || 0;
-          return (
-            <Chip
-              key={discipline}
-              active={activeFilter === discipline}
-              onClick={() => handleSelectFilter(discipline)}
-              aria-label={`Filter by ${discipline} (${count})`}
-            >
-              {discipline} ({count})
-            </Chip>
-          );
-        })}
+        <DiscreteTabs
+          ariaLabel="Filter projects by discipline"
+          activeId={activeFilter}
+          onChange={(id) => handleSelectFilter(id as 'All' | Discipline)}
+          tabs={[
+            { id: 'All', label: 'All', badge: counts['All'] || 0 },
+            ...ALL_DISCIPLINES.map((d) => ({
+              id: d,
+              label: d,
+              badge: counts[d] || 0,
+            })),
+          ]}
+        />
       </div>
 
       {/* Projects Grid */}

@@ -13,37 +13,39 @@ export const metadata: Metadata = {
   },
 };
 
+import { studioFacts } from '@/content/studio-facts';
+
 interface DisciplineLeadRole {
-  role: string;
   discipline: string;
+  role: string;
   scope: string;
-  focus: string;
+  status: string;
 }
 
 const ROLES: DisciplineLeadRole[] = [
   {
     discipline: 'Architecture',
-    role: 'Architectural Direction & Building Envelope',
-    scope: 'Site Orientation · Massing · Structural Coordination · Envelope Engineering',
-    focus: 'Guiding form, passive stack-effect ventilation, and climate-resilient concrete and lime structures from initial site sketch to statutory approvals and structural commissioning.',
+    role: '[NEEDED: Architecture lead / architect details]',
+    scope: 'Site Orientation · Massing · Envelope · Handover',
+    status: '[NEEDED]',
   },
   {
     discipline: 'Interior',
-    role: 'Interior Architecture & Millwork Detailing',
-    scope: 'Spatial Planning · Teak Joinery · Lime Plaster · Lighting Schematics',
-    focus: 'Curating continuous interior volumes with bespoke millwork, fluted lime screens, recessed reveals, and custom architectural fixtures tailored to daily living rituals.',
+    role: '[NEEDED: Interior design lead details]',
+    scope: 'Spatial Planning · Joinery · Materials · Lighting',
+    status: '[NEEDED]',
   },
   {
     discipline: 'Landscape',
-    role: 'Landscape Architecture & Site Ecology',
-    scope: 'Topographical Grading · Monsoon Swales · Native Flora · Shaded Pavilions',
-    focus: 'Integrating the built envelope into the terrain with native planting, rainwater retention terraces, and stone verandas that blur the boundary between indoors and nature.',
+    role: '[NEEDED: Landscape design lead details]',
+    scope: 'Terrain · Plantings · Water Systems · Outdoor Pavilions',
+    status: '[NEEDED]',
   },
   {
-    discipline: 'Product',
-    role: 'Bespoke Fabrication & Architectural Hardware',
-    scope: 'Solid Teak Joinery · Cast Brass · Prototype Fabrication · Natural Finishes',
-    focus: 'Working directly alongside master woodworkers and metal casters to produce custom architectural furniture and hardware specific to each client project.',
+    discipline: 'Product Design',
+    role: '[NEEDED: Product fabrication lead details]',
+    scope: 'Bespoke Objects · Custom Hardware · Prototype Fabrication',
+    status: '[NEEDED]',
   },
 ];
 
@@ -365,7 +367,7 @@ export default function AboutPage() {
                     margin: 0,
                   }}
                 >
-                  {role.focus}
+                  {role.status}
                 </p>
               </article>
             ))}
@@ -423,7 +425,7 @@ export default function AboutPage() {
                     marginBottom: '4px',
                   }}
                 >
-                  REGIONAL BASE
+                  STUDIO LOCATION
                 </span>
                 <h3
                   style={{
@@ -433,7 +435,7 @@ export default function AboutPage() {
                     margin: '0 0 8px 0',
                   }}
                 >
-                  Western India Hub (Mumbai &amp; Pune Region)
+                  {studioFacts.location}
                 </h3>
                 <p
                   style={{
@@ -444,7 +446,7 @@ export default function AboutPage() {
                     margin: 0,
                   }}
                 >
-                  Our primary studio workshops and site coordination network operate across Maharashtra, with extensive experience in coastal monsoon micro-climates, sloping ridge terrains, and dense urban contexts.
+                  Address: {studioFacts.address} · Hours: {studioFacts.hours}
                 </p>
               </div>
 
@@ -460,7 +462,7 @@ export default function AboutPage() {
                     marginBottom: '4px',
                   }}
                 >
-                  COMMISSION SCOPE
+                  PRACTICE PROMISE
                 </span>
                 <h3
                   style={{
@@ -470,7 +472,7 @@ export default function AboutPage() {
                     margin: '0 0 8px 0',
                   }}
                 >
-                  Pan-India Residential &amp; Boutique Projects
+                  {studioFacts.promise}
                 </h3>
                 <p
                   style={{
@@ -481,7 +483,7 @@ export default function AboutPage() {
                     margin: 0,
                   }}
                 >
-                  We undertake select architectural pavilions, luxury private residences, and bespoke hospitality spaces throughout India, providing complete working drawing packages and structured on-site supervision at each critical construction milestone.
+                  Four integrated disciplines: {studioFacts.disciplines.map((d) => d.name).join(' · ')}.
                 </p>
               </div>
             </div>
@@ -500,11 +502,11 @@ export default function AboutPage() {
                 opacity: 0.85,
               }}
             >
-              <span>Email: olidesignstudio06@gmail.com</span>
+              <span>Email: {studioFacts.email}</span>
               <span>·</span>
-              <span>Instagram: @olidesignstudio</span>
+              <span>Instagram: {studioFacts.instagram.handle}</span>
               <span>·</span>
-              <span>Response: 24–48 Business Hours</span>
+              <span>Response: {studioFacts.responseTime}</span>
             </div>
           </div>
         </section>

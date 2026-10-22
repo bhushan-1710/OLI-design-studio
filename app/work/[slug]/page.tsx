@@ -6,6 +6,7 @@ import { getAllProjects, getProjectBySlug, Project } from '@/content/projects';
 import { TitleBlock } from '@/components/layout/TitleBlock';
 import { SketchScrub } from '@/components/work/SketchScrub';
 import { Button } from '@/components/ui/Button';
+import { CarouselSlider } from '@/components/ui/carousel-slider';
 
 interface ProjectPageProps {
   params: {
@@ -535,75 +536,14 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
             Outcome
           </h2>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 500px), 1fr))',
-              gap: 'var(--space-6)',
-            }}
-          >
-            {project.images.slice(1, 3).map((img, i) => (
-              <div
-                key={i}
-                style={{
-                  position: 'relative',
-                  width: '100%',
-                  aspectRatio: '16 / 10',
-                  border: '1.5px solid var(--ink)',
-                  backgroundColor: 'var(--paper)',
-                  overflow: 'hidden',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                {img ? (
-                  <img
-                    src={img}
-                    alt={`${project.title} — Architectural outcome view 0${i + 1}`}
-                    loading="lazy"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      display: 'block',
-                    }}
-                  />
-                ) : (
-                  <div
-                    style={{
-                      border: '1px solid var(--ink)',
-                      padding: '6px 12px',
-                      fontFamily: 'var(--font-mono, monospace)',
-                      fontSize: '11px',
-                      letterSpacing: '0.14em',
-                      textTransform: 'uppercase',
-                      backgroundColor: 'var(--paper)',
-                    }}
-                  >
-                    Outcome view 0{i + 1}
-                  </div>
-                )}
-                <div
-                  style={{
-                    position: 'absolute',
-                    bottom: '12px',
-                    left: '12px',
-                    border: '1px solid var(--ink)',
-                    padding: '3px 8px',
-                    fontFamily: 'var(--font-mono, monospace)',
-                    fontSize: '10px',
-                    letterSpacing: '0.12em',
-                    textTransform: 'uppercase',
-                    backgroundColor: 'var(--paper)',
-                    opacity: 0.95,
-                  }}
-                >
-                  View 0{i + 1} · Handover
-                </div>
-              </div>
-            ))}
-          </div>
+          <CarouselSlider
+            title="Outcome Gallery"
+            slides={project.images.slice(1, 4).map((img, i) => ({
+              image: img,
+              caption: `${project.title} — Architectural outcome view 0${i + 1}`,
+              meta: `View 0${i + 1} · Handover`,
+            }))}
+          />
         </section>
 
         {/* Project Delivery Framework Note */}
@@ -665,7 +605,7 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
               margin: 0,
             }}
           >
-            From the initial trace-paper elevation sketch through structural engineering, material mock-up testing, and on-site vendor supervision, OLI Design Studio provided unified single-point responsibility until physical keys and warranties were handed over.
+            From initial sketch through detailing, vendor coordination, and site supervision, OLI Design Studio provides unified single-point responsibility until project handover.
           </p>
         </section>
 

@@ -1,405 +1,451 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { studioFacts } from '@/content/studio-facts';
+import { prefersReducedMotion } from '@/lib/motion/reduced-motion';
 
-interface DisciplineItem {
+interface DisciplineData {
+  num: string;
   id: string;
-  number: string;
   name: string;
   scope: string;
-  desc: string;
+  description: string;
   drawing: React.ReactNode;
 }
 
 export function DisciplinesSection() {
-  const [hoveredDiscipline, setHoveredDiscipline] = useState<string | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const rowsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  const disciplines: DisciplineItem[] = [
+  const disciplines: DisciplineData[] = [
     {
+      num: '01',
       id: 'architecture',
-      number: '01',
-      name: 'Architecture',
-      scope: 'Site Contours · Massing · Passive Ventilation · Structural Detailing',
-      desc: 'Form, light and material engineered from site contours to structural completion. We sculpt monolithic fair-faced concrete, hydraulic lime, and expansive glazing designed for seasonal monsoons and natural illumination.',
+      name: studioFacts.disciplines[0].name,
+      scope: studioFacts.disciplines[0].scope,
+      description: studioFacts.disciplines[0].description,
       drawing: (
         <svg
-          viewBox="0 0 240 140"
-          style={{ width: '100%', height: '100%', stroke: 'var(--ink)', fill: 'none', strokeWidth: 1.4 }}
+          viewBox="0 0 320 180"
+          style={{ width: '100%', height: '100%', stroke: 'var(--ink)', fill: 'none', strokeWidth: 1.5 }}
           aria-hidden="true"
         >
-          {/* Ground line */}
-          <line x1="20" y1="115" x2="220" y2="115" strokeWidth="1.8" />
-          {/* Main pavilion mass */}
-          <rect x="35" y="55" width="105" height="60" strokeWidth="2" />
-          {/* Shuttering grooves */}
-          <line x1="35" y1="75" x2="140" y2="75" strokeWidth="0.8" opacity="0.4" />
-          <line x1="35" y1="95" x2="140" y2="95" strokeWidth="0.8" opacity="0.4" />
-          {/* Cantilevered higher roof volume */}
-          <polygon points="135,40 215,25 215,115 135,115" strokeWidth="2" />
-          <line x1="130" y1="36" x2="220" y2="20" strokeWidth="2.6" stroke="var(--red)" />
+          {/* Ground contour line */}
+          <line className="d-line" pathLength={1} x1="20" y1="145" x2="300" y2="145" strokeWidth="2" />
+          {/* Main pavilion envelope */}
+          <rect className="d-line" pathLength={1} x="50" y="70" width="140" height="75" strokeWidth="1.8" />
+          {/* Shuttering bands */}
+          <line className="d-line" pathLength={1} x1="50" y1="95" x2="190" y2="95" strokeWidth="0.8" opacity="0.4" />
+          <line className="d-line" pathLength={1} x1="50" y1="120" x2="190" y2="120" strokeWidth="0.8" opacity="0.4" />
+          {/* Cantilever roof volume */}
+          <polygon className="d-line" pathLength={1} points="180,50 285,30 285,145 180,145" strokeWidth="1.8" />
+          <line className="d-line" pathLength={1} x1="175" y1="45" x2="295" y2="25" strokeWidth="2.5" stroke="var(--red)" />
           {/* Glazing aperture */}
-          <rect x="145" y="55" width="60" height="60" stroke="var(--ink)" strokeWidth="1.2" />
-          <line x1="175" y1="55" x2="175" y2="115" strokeWidth="1" strokeDasharray="3 2" />
-        </svg>
-      ),
-    },
-    {
-      id: 'interior',
-      number: '02',
-      name: 'Interior Architecture',
-      scope: 'Fluted Plaster · Custom Millwork · Recessed Reveals · Lighting Schematics',
-      desc: 'Spatial plans crafted with bespoke teak joinery, curved lime plaster screens, and honed Kota stone. We detail custom architectural hardware and integrated shadow gaps so no extraneous trims are required.',
-      drawing: (
-        <svg
-          viewBox="0 0 240 140"
-          style={{ width: '100%', height: '100%', stroke: 'var(--ink)', fill: 'none', strokeWidth: 1.4 }}
-          aria-hidden="true"
-        >
-          {/* Room Volume Outline */}
-          <rect x="25" y="25" width="190" height="95" strokeWidth="2" />
-          {/* Pitched ceiling truss lines */}
-          <line x1="25" y1="25" x2="120" y2="10" stroke="var(--red)" strokeWidth="1.6" />
-          <line x1="215" y1="25" x2="120" y2="10" stroke="var(--red)" strokeWidth="1.6" />
-          {/* Fluted column left */}
-          <path d="M 40 25 L 40 120" strokeWidth="2" />
-          <line x1="50" y1="25" x2="50" y2="120" strokeWidth="1" opacity="0.5" />
-          <line x1="60" y1="25" x2="60" y2="120" strokeWidth="1" opacity="0.5" />
-          {/* Solid teak dining table profile */}
-          <polygon points="90,75 185,75 175,90 80,90" strokeWidth="1.6" />
-          <line x1="95" y1="90" x2="95" y2="120" strokeWidth="2.2" />
-          <line x1="170" y1="90" x2="170" y2="120" strokeWidth="2.2" />
+          <rect className="d-line" pathLength={1} x="195" y="70" width="75" height="75" strokeWidth="1.2" />
+          <line className="d-line" pathLength={1} x1="232" y1="70" x2="232" y2="145" strokeWidth="1" strokeDasharray="4 3" />
           {/* Dimension string */}
-          <line x1="40" y1="130" x2="215" y2="130" stroke="var(--red)" strokeWidth="1" />
-          <text x="127" y="138" textAnchor="middle" fill="var(--red)" style={{ fontFamily: 'var(--font-mono)', fontSize: '8px' }}>CLEAR SPAN</text>
+          <line className="d-line" pathLength={1} x1="50" y1="162" x2="285" y2="162" stroke="var(--red)" strokeWidth="1" />
+          <text x="167" y="174" textAnchor="middle" fill="var(--red)" style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', letterSpacing: '0.12em' }}>
+            SPAN 23.5 M · 01 ARCHITECTURE
+          </text>
         </svg>
       ),
     },
     {
+      num: '02',
+      id: 'interior',
+      name: studioFacts.disciplines[1].name,
+      scope: studioFacts.disciplines[1].scope,
+      description: studioFacts.disciplines[1].description,
+      drawing: (
+        <svg
+          viewBox="0 0 320 180"
+          style={{ width: '100%', height: '100%', stroke: 'var(--ink)', fill: 'none', strokeWidth: 1.5 }}
+          aria-hidden="true"
+        >
+          {/* Interior Room Volume */}
+          <rect className="d-line" pathLength={1} x="30" y="30" width="260" height="120" strokeWidth="1.8" />
+          {/* Rafter Lines */}
+          <line className="d-line" pathLength={1} x1="30" y1="30" x2="160" y2="15" stroke="var(--red)" strokeWidth="1.5" />
+          <line className="d-line" pathLength={1} x1="290" y1="30" x2="160" y2="15" stroke="var(--red)" strokeWidth="1.5" />
+          {/* Plaster column partition */}
+          <path className="d-line" pathLength={1} d="M 60 30 L 60 150" strokeWidth="2" />
+          <line className="d-line" pathLength={1} x1="75" y1="30" x2="75" y2="150" strokeWidth="1" opacity="0.4" />
+          <line className="d-line" pathLength={1} x1="90" y1="30" x2="90" y2="150" strokeWidth="1" opacity="0.4" />
+          {/* Joinery Table Profile */}
+          <polygon className="d-line" pathLength={1} points="130,95 250,95 240,115 120,115" strokeWidth="1.6" />
+          <line className="d-line" pathLength={1} x1="140" y1="115" x2="140" y2="150" strokeWidth="2" />
+          <line className="d-line" pathLength={1} x1="230" y1="115" x2="230" y2="150" strokeWidth="2" />
+          {/* Dimension string */}
+          <line className="d-line" pathLength={1} x1="30" y1="165" x2="290" y2="165" stroke="var(--red)" strokeWidth="1" />
+          <text x="160" y="175" textAnchor="middle" fill="var(--red)" style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', letterSpacing: '0.12em' }}>
+            CLEAR REVEAL 15 MM · 02 INTERIOR
+          </text>
+        </svg>
+      ),
+    },
+    {
+      num: '03',
       id: 'landscape',
-      number: '03',
-      name: 'Landscape Architecture',
-      scope: 'Monsoon Bio-Swales · Basalt Terraces · Native Flora · Shaded Verandas',
-      desc: 'Topographical grading and water retention design. We engineer stepped basalt retention basins, outdoor living verandas, and native Deccan flora that transition unbroken from the architectural envelope into the earth.',
+      name: studioFacts.disciplines[2].name,
+      scope: studioFacts.disciplines[2].scope,
+      description: studioFacts.disciplines[2].description,
       drawing: (
         <svg
-          viewBox="0 0 240 140"
-          style={{ width: '100%', height: '100%', stroke: 'var(--ink)', fill: 'none', strokeWidth: 1.4 }}
+          viewBox="0 0 320 180"
+          style={{ width: '100%', height: '100%', stroke: 'var(--ink)', fill: 'none', strokeWidth: 1.5 }}
           aria-hidden="true"
         >
-          {/* Stepped Basalt Terraces */}
-          <polygon points="20,110 90,110 90,85 140,85 140,60 180,60 180,120 20,120" strokeWidth="1.8" />
-          {/* Swale Water Level Ripple */}
-          <ellipse cx="75" cy="115" rx="35" ry="5" stroke="var(--red)" strokeWidth="1.2" />
-          <text x="75" y="130" textAnchor="middle" fill="var(--red)" style={{ fontFamily: 'var(--font-mono)', fontSize: '8px' }}>SWALE -0.30M</text>
-          {/* Stone column pergola */}
-          <line x1="180" y1="40" x2="225" y2="30" strokeWidth="2.4" stroke="var(--red)" />
-          <rect x="190" y="40" width="14" height="80" strokeWidth="1.6" />
-          <rect x="215" y="40" width="14" height="80" strokeWidth="1.6" />
-          {/* Foliage lines */}
-          <path d="M 30 110 Q 38 80, 50 110" stroke="var(--ink)" strokeWidth="1.4" />
-          <path d="M 100 85 Q 108 55, 120 85" stroke="var(--ink)" strokeWidth="1.4" />
+          {/* Stepped Contours & Retention Basins */}
+          <polygon className="d-line" pathLength={1} points="25,140 120,140 120,105 190,105 190,75 250,75 250,150 25,150" strokeWidth="1.8" />
+          {/* Swale Water Ripple */}
+          <ellipse className="d-line" pathLength={1} cx="95" cy="145" rx="45" ry="6" stroke="var(--red)" strokeWidth="1.2" />
+          {/* Pergola Columns */}
+          <line className="d-line" pathLength={1} x1="245" y1="45" x2="305" y2="35" strokeWidth="2.5" stroke="var(--red)" />
+          <rect className="d-line" pathLength={1} x="255" y="45" width="16" height="105" strokeWidth="1.6" />
+          <rect className="d-line" pathLength={1} x="285" y="45" width="16" height="105" strokeWidth="1.6" />
+          {/* Native Flora Organic Curves */}
+          <path className="d-line" pathLength={1} d="M 40 140 Q 50 100, 68 140" strokeWidth="1.4" />
+          <path className="d-line" pathLength={1} d="M 135 105 Q 148 65, 165 105" strokeWidth="1.4" />
+          {/* Datum Callout */}
+          <text x="95" y="168" textAnchor="middle" fill="var(--red)" style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', letterSpacing: '0.12em' }}>
+            DATUM -0.45 M · 03 LANDSCAPE
+          </text>
         </svg>
       ),
     },
     {
+      num: '04',
       id: 'product',
-      number: '04',
-      name: 'Product & Furniture Design',
-      scope: 'Solid Teak Joinery · Cold-Cast Brass · Shadow Reveals · Custom Luminaires',
-      desc: 'Bespoke furniture and architectural lighting born from project requirements. We detail visible mortise-and-tenon joints, cold-pressed natural oil treatments, and hand-turned solid brass hardware crafted in limited studio editions.',
+      name: studioFacts.disciplines[3].name,
+      scope: studioFacts.disciplines[3].scope,
+      description: studioFacts.disciplines[3].description,
       drawing: (
         <svg
-          viewBox="0 0 240 140"
-          style={{ width: '100%', height: '100%', stroke: 'var(--ink)', fill: 'none', strokeWidth: 1.4 }}
+          viewBox="0 0 320 180"
+          style={{ width: '100%', height: '100%', stroke: 'var(--ink)', fill: 'none', strokeWidth: 1.5 }}
           aria-hidden="true"
         >
-          {/* Floor lamp stem & arm */}
-          <ellipse cx="60" cy="120" rx="22" ry="6" strokeWidth="1.8" />
-          <line x1="60" y1="120" x2="60" y2="25" strokeWidth="2" stroke="var(--red)" />
-          <line x1="60" y1="25" x2="105" y2="25" strokeWidth="2" stroke="var(--red)" />
-          <rect x="100" y="20" width="10" height="22" stroke="var(--red)" strokeWidth="1.6" fill="var(--paper)" />
-          {/* Armchair Profile */}
-          <path d="M 115 75 Q 110 100, 125 110 L 195 110 Q 210 100, 205 75 Z" strokeWidth="1.8" />
-          <line x1="125" y1="110" x2="118" y2="125" strokeWidth="2.2" />
-          <line x1="195" y1="110" x2="202" y2="125" strokeWidth="2.2" />
-          <rect x="120" y="95" width="80" height="15" rx="3" strokeWidth="1.4" />
-          {/* Joinery annotation */}
-          <circle cx="160" cy="102" r="3" fill="var(--red)" />
-          <text x="160" y="135" textAnchor="middle" fill="var(--red)" style={{ fontFamily: 'var(--font-mono)', fontSize: '8px' }}>MORTISE & TENON</text>
+          {/* Architectural Credenza Profile */}
+          <rect className="d-line" pathLength={1} x="40" y="65" width="170" height="65" strokeWidth="1.8" />
+          <line className="d-line" pathLength={1} x1="40" y1="95" x2="210" y2="95" strokeWidth="1" strokeDasharray="3 3" />
+          <line className="d-line" pathLength={1} x1="125" y1="65" x2="125" y2="130" strokeWidth="1.4" />
+          {/* 45 degree shadow gap base */}
+          <polygon className="d-line" pathLength={1} points="55,130 195,130 185,145 65,145" stroke="var(--red)" strokeWidth="1.5" />
+          {/* Custom Luminaire Stem & Arm */}
+          <ellipse className="d-line" pathLength={1} cx="260" cy="150" rx="28" ry="8" strokeWidth="1.8" />
+          <line className="d-line" pathLength={1} x1="260" y1="150" x2="260" y2="30" stroke="var(--red)" strokeWidth="2" />
+          <line className="d-line" pathLength={1} x1="260" y1="30" x2="215" y2="30" stroke="var(--red)" strokeWidth="2" />
+          <rect className="d-line" pathLength={1} x="208" y="24" width="14" height="28" stroke="var(--red)" strokeWidth="1.6" />
+          {/* Dimension string */}
+          <line className="d-line" pathLength={1} x1="40" y1="162" x2="210" y2="162" stroke="var(--red)" strokeWidth="1" />
+          <text x="125" y="174" textAnchor="middle" fill="var(--red)" style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', letterSpacing: '0.12em' }}>
+            JOINERY 1:1 DETAIL · 04 PRODUCT
+          </text>
         </svg>
       ),
     },
   ];
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+
+    const section = sectionRef.current;
+    if (!section) return;
+
+    if (prefersReducedMotion()) {
+      const allLines = section.querySelectorAll<SVGElement>('.d-line');
+      allLines.forEach((el) => {
+        gsap.set(el, { strokeDashoffset: 0 });
+      });
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      rowsRef.current.forEach((row) => {
+        if (!row) return;
+
+        const lines = row.querySelectorAll<SVGElement>('.d-line');
+        // Initialize dash offset
+        lines.forEach((l) => {
+          gsap.set(l, { strokeDasharray: 1, strokeDashoffset: 1 });
+        });
+
+        // Trigger draw once on scroll enter
+        gsap.to(lines, {
+          strokeDashoffset: 0,
+          duration: 1.1,
+          stagger: 0.06,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: row,
+            start: 'top 78%',
+            once: true,
+          },
+        });
+      });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
-      className="disciplines-section"
+      ref={sectionRef}
+      id="disciplines"
+      className="oli-disciplines-folio-section"
       style={{
+        width: '100%',
         position: 'relative',
-        padding: 'clamp(56px, 7vw, 100px) clamp(22px, 3vw, 38px)',
-        borderTop: '1.5px solid var(--ink)',
         backgroundColor: 'var(--paper)',
+        borderTop: '1.5px solid var(--ink)',
+        padding: 'clamp(56px, 8vw, 110px) 0',
+        overflow: 'hidden',
       }}
-      aria-label="Studio disciplines and integrated practice"
+      aria-label="Integrated Studio Disciplines"
     >
-      {/* Asymmetrical 2-Column Grid */}
       <div
-        className="disciplines-layout-grid"
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))',
-          gap: 'clamp(36px, 5vw, 72px)',
-          alignItems: 'start',
+          width: '100%',
+          maxWidth: '1280px',
+          margin: '0 auto',
+          padding: '0 clamp(20px, 4vw, 40px)',
+          boxSizing: 'border-box',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'clamp(48px, 6vw, 84px)',
         }}
       >
-        {/* Left Column: Architectural Manifesto & Proportional Divider Symbol */}
-        <div
+        {/* Section Folio Header */}
+        <header
           style={{
-            position: 'relative',
             display: 'flex',
             flexDirection: 'column',
-            gap: '20px',
+            gap: '12px',
+            maxWidth: '780px',
+            borderBottom: '1.5px solid var(--ink)',
+            paddingBottom: '24px',
           }}
         >
-          {/* Bespoke Architectural Proportional Divider Graphic Detail */}
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '16px',
+              gap: '10px',
+              fontFamily: 'var(--font-mono, monospace)',
+              fontSize: '11px',
+              letterSpacing: '0.16em',
+              textTransform: 'uppercase',
+              color: 'var(--red)',
             }}
           >
-            <svg
-              viewBox="0 0 64 64"
-              style={{ width: '42px', height: '42px', stroke: 'var(--ink)', fill: 'none', strokeWidth: 1.5 }}
-              aria-hidden="true"
-            >
-              {/* Drafting Compass / Divider Legs */}
-              <circle cx="32" cy="14" r="5" stroke="var(--red)" strokeWidth="1.8" />
-              <line x1="32" y1="19" x2="14" y2="58" strokeWidth="1.8" />
-              <line x1="32" y1="19" x2="50" y2="58" strokeWidth="1.8" />
-              {/* Circular Proportional Arc with measurement ticks */}
-              <path d="M 19 46 A 22 22 0 0 1 45 46" stroke="var(--ink)" strokeDasharray="3 2" />
-              <circle cx="32" cy="40" r="2" fill="var(--red)" />
-              <line x1="32" y1="36" x2="32" y2="44" stroke="var(--red)" strokeWidth="1.2" />
-            </svg>
-
-            <span
-              style={{
-                fontSize: '11px',
-                fontFamily: 'var(--font-mono, monospace)',
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                color: 'var(--red)',
-                fontWeight: 500,
-              }}
-            >
-              FOLIO · 04 INTEGRATED DISCIPLINES
-            </span>
+            <span>FOLIO · 04</span>
+            <span>·</span>
+            <span>INTEGRATED DISCIPLINES</span>
           </div>
 
           <h2
             style={{
-              fontSize: 'clamp(36px, 4.8vw, 64px)',
               fontFamily: 'var(--font-serif, Georgia, serif)',
+              fontSize: 'clamp(34px, 5vw, 56px)',
               fontWeight: 400,
-              lineHeight: 1.05,
+              lineHeight: 1.1,
+              color: 'var(--ink)',
               margin: 0,
             }}
           >
-            Four disciplines. One drawing sheet. Zero gaps.
+            Four disciplines. One drawing sheet.
           </h2>
 
-          <div
-            style={{
-              width: '48px',
-              height: '1.5px',
-              backgroundColor: 'var(--red)',
-              margin: '4px 0',
-            }}
-          />
-
           <p
             style={{
-              fontSize: 'clamp(14px, 1.25vw, 17px)',
-              lineHeight: 1.7,
-              opacity: 0.88,
-              maxWidth: '48ch',
-              margin: 0,
-            }}
-          >
-            Most building projects fracture between separate architects, interior decorators, landscape contractors, and furniture suppliers. Crucial design details disappear in the handoffs between teams.
-          </p>
-
-          <p
-            style={{
-              fontSize: 'clamp(13px, 1.15vw, 16px)',
-              lineHeight: 1.65,
-              opacity: 0.75,
-              maxWidth: '48ch',
-              margin: 0,
-            }}
-          >
-            OLI operates as a unified architectural practice. We resolve the building envelope, shape the interior spaces, grade the living gardens, and build the custom furniture under a coordinated set of drawings. One team remains accountable from the first pencil trace to the day keys are handed over.
-          </p>
-
-          {/* Notebook Datum Marker */}
-          <div
-            style={{
-              marginTop: '12px',
-              paddingTop: '16px',
-              borderTop: '1px solid var(--grid)',
               fontFamily: 'var(--font-mono, monospace)',
-              fontSize: '10px',
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              opacity: 0.6,
-              display: 'flex',
-              gap: '16px',
+              fontSize: '13px',
+              lineHeight: 1.6,
+              color: 'var(--ink)',
+              opacity: 0.85,
+              margin: 0,
             }}
           >
-            <span>SHEET SPECIFICATION: ARCH-INT-LAND-PROD</span>
-            <span>·</span>
-            <span>TOLERANCE: ±0 MM</span>
-          </div>
-        </div>
+            Architecture, Interior, Landscape, and Product Design conceived in concert so no line is compromised at the seams.
+          </p>
+        </header>
 
-        {/* Right Column: Asymmetrical Editorial Discipline Cards */}
+        {/* Asymmetric Interlocking Rows (feature-4 Base Layout) */}
         <div
+          className="oli-disciplines-interlocking-grid"
           style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: 'clamp(24px, 3.5vw, 40px)',
+            gap: 'clamp(40px, 6vw, 72px)',
+            width: '100%',
           }}
         >
-          {disciplines.map((d, index) => {
-            const isHovered = hoveredDiscipline === d.id;
-
+          {disciplines.map((item, idx) => {
+            const isEven = idx % 2 === 1; // 0 is odd row (Architecture), 1 is even row (Interior), etc.
             return (
               <div
-                key={d.id}
-                className="discipline-card focus-visible-ring"
-                onMouseEnter={() => setHoveredDiscipline(d.id)}
-                onMouseLeave={() => setHoveredDiscipline(null)}
+                key={item.id}
+                ref={(el) => {
+                  rowsRef.current[idx] = el;
+                }}
+                className={`oli-discipline-row ${isEven ? 'oli-discipline-row-even' : 'oli-discipline-row-odd'}`}
                 style={{
-                  position: 'relative',
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))',
+                  gap: 'clamp(24px, 4vw, 56px)',
+                  alignItems: 'center',
                   border: '1.5px solid var(--ink)',
                   backgroundColor: 'var(--paper)',
-                  padding: 'clamp(20px, 3vw, 32px)',
-                  transition: 'border-color 0.25s ease, transform 0.25s ease',
-                  marginLeft: index % 2 === 1 ? 'clamp(0px, 3vw, 24px)' : '0px',
-                  boxShadow: isHovered ? '0 6px 24px rgba(0, 0, 0, 0.04)' : 'none',
+                  padding: 'clamp(24px, 4vw, 44px)',
+                  position: 'relative',
+                  marginTop: idx > 0 ? (isEven ? '12px' : '0px') : '0px',
                 }}
               >
-                {/* Header with Number, Title, and Direct Link Arrow */}
+                {/* Text Content Column */}
                 <div
+                  className="oli-discipline-text-col"
                   style={{
+                    order: isEven ? 2 : 1,
                     display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'baseline',
-                    flexWrap: 'wrap',
-                    gap: '12px',
-                    marginBottom: '12px',
-                    borderBottom: '1px solid var(--grid)',
-                    paddingBottom: '12px',
+                    flexDirection: 'column',
+                    gap: '14px',
+                    position: 'relative',
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px' }}>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '16px' }}>
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-serif, Georgia, serif)',
+                        fontSize: 'clamp(44px, 6vw, 76px)',
+                        lineHeight: 0.9,
+                        color: 'var(--red)',
+                        fontWeight: 400,
+                      }}
+                    >
+                      {item.num}
+                    </span>
                     <span
                       style={{
                         fontFamily: 'var(--font-mono, monospace)',
-                        fontSize: '12px',
-                        letterSpacing: '0.18em',
-                        color: 'var(--red)',
-                        fontWeight: 600,
+                        fontSize: '11px',
+                        letterSpacing: '0.14em',
+                        textTransform: 'uppercase',
+                        opacity: 0.6,
                       }}
                     >
-                      {d.number}
+                      DISCIPLINE
                     </span>
-                    <h3
-                      style={{
-                        fontFamily: 'var(--font-serif, Georgia, serif)',
-                        fontSize: 'clamp(24px, 3vw, 36px)',
-                        fontWeight: 400,
-                        margin: 0,
-                        color: isHovered ? 'var(--red)' : 'var(--ink)',
-                        transition: 'color 0.25s ease',
-                      }}
-                    >
-                      {d.name}
-                    </h3>
                   </div>
 
-                  <Link
-                    href={`/work/?type=${d.id}`}
+                  <h3
                     style={{
-                      fontFamily: 'var(--font-mono, monospace)',
-                      fontSize: '11px',
-                      letterSpacing: '0.14em',
-                      textTransform: 'uppercase',
-                      color: 'var(--red)',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '4px',
-                      textDecoration: 'none',
-                    }}
-                    aria-label={`Explore ${d.name} projects in our portfolio`}
-                  >
-                    <span>EXPLORE</span>
-                    <span style={{ transform: isHovered ? 'translate(2px, -2px)' : 'none', transition: 'transform 0.2s' }}>↗</span>
-                  </Link>
-                </div>
-
-                {/* Scope Metadata Tags */}
-                <div
-                  style={{
-                    fontFamily: 'var(--font-mono, monospace)',
-                    fontSize: '10px',
-                    letterSpacing: '0.1em',
-                    textTransform: 'uppercase',
-                    color: 'var(--red)',
-                    opacity: 0.9,
-                    marginBottom: '12px',
-                  }}
-                >
-                  {d.scope}
-                </div>
-
-                {/* Description & Bespoke Drawing in Split Row */}
-                <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                    gap: '20px',
-                    alignItems: 'center',
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: 'clamp(13px, 1.15vw, 15px)',
-                      lineHeight: 1.6,
-                      opacity: 0.82,
+                      fontFamily: 'var(--font-serif, Georgia, serif)',
+                      fontSize: 'clamp(26px, 3.2vw, 38px)',
+                      fontWeight: 400,
+                      lineHeight: 1.15,
+                      color: 'var(--ink)',
                       margin: 0,
                     }}
                   >
-                    {d.desc}
-                  </p>
+                    {item.name}
+                  </h3>
 
                   <div
                     style={{
-                      width: '100%',
-                      height: '110px',
-                      border: '1px solid var(--grid)',
-                      backgroundColor: 'rgba(0, 0, 0, 0.015)',
-                      padding: '8px',
-                      boxSizing: 'border-box',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
+                      fontFamily: 'var(--font-mono, monospace)',
+                      fontSize: '11px',
+                      letterSpacing: '0.12em',
+                      textTransform: 'uppercase',
+                      color: 'var(--red)',
+                      fontWeight: 600,
+                      borderLeft: '2px solid var(--red)',
+                      paddingLeft: '10px',
                     }}
                   >
-                    {d.drawing}
+                    {item.scope}
+                  </div>
+
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-mono, monospace)',
+                      fontSize: '12px',
+                      lineHeight: 1.65,
+                      color: 'var(--ink)',
+                      opacity: 0.85,
+                      margin: 0,
+                    }}
+                  >
+                    {item.description}
+                  </p>
+
+                  <div style={{ paddingTop: '8px' }}>
+                    <Link
+                      href={`/work/?type=${item.id}`}
+                      className="focus-visible-ring"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        fontFamily: 'var(--font-mono, monospace)',
+                        fontSize: '11px',
+                        letterSpacing: '0.14em',
+                        textTransform: 'uppercase',
+                        color: 'var(--ink)',
+                        textDecoration: 'underline',
+                        textUnderlineOffset: '4px',
+                      }}
+                    >
+                      Explore {item.name} Work →
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Technical Linework Visual Column */}
+                <div
+                  className="oli-discipline-visual-col"
+                  style={{
+                    order: isEven ? 1 : 2,
+                    width: '100%',
+                    aspectRatio: '16 / 9',
+                    border: '1.5px solid var(--ink)',
+                    backgroundColor: 'var(--paper)',
+                    padding: '12px',
+                    boxSizing: 'border-box',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    position: 'relative',
+                  }}
+                >
+                  {/* Drawing Visual */}
+                  <div style={{ width: '100%', height: '100%' }}>
+                    {item.drawing}
+                  </div>
+
+                  {/* Corner Index Tag */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '8px',
+                      right: '8px',
+                      fontFamily: 'var(--font-mono, monospace)',
+                      fontSize: '9px',
+                      letterSpacing: '0.12em',
+                      textTransform: 'uppercase',
+                      color: 'var(--ink)',
+                      opacity: 0.6,
+                      border: '1px solid var(--grid)',
+                      padding: '2px 6px',
+                      backgroundColor: 'var(--paper)',
+                    }}
+                  >
+                    DWG · {item.num}
                   </div>
                 </div>
               </div>
@@ -410,4 +456,3 @@ export function DisciplinesSection() {
     </section>
   );
 }
-

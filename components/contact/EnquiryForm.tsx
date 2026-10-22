@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/Button';
 import { Stamp } from '@/components/ui/Stamp';
+import { studioFacts } from '@/content/studio-facts';
 
 const PROJECT_TYPE_OPTIONS = [
   'Architecture',
@@ -179,11 +180,11 @@ export function EnquiryForm() {
       clearTimeout(timeoutId);
       if (err instanceof DOMException && err.name === 'AbortError') {
         setSubmitError(
-          'Request timed out after 10 seconds. Your message is preserved below. Please try again or email olidesignstudio06@gmail.com directly.'
+          `Request timed out after 10 seconds. Your message is preserved below. Please try again or email ${studioFacts.email} directly.`
         );
       } else {
         setSubmitError(
-          "That didn't send. Your message is still here. Try again, or email us at olidesignstudio06@gmail.com."
+          `That didn't send. Your message is still here. Try again, or email us at ${studioFacts.email}.`
         );
       }
     } finally {

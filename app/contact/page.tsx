@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { TitleBlock } from '@/components/layout/TitleBlock';
 import { EnquiryForm } from '@/components/contact/EnquiryForm';
+import { studioFacts } from '@/content/studio-facts';
 
 export const metadata: Metadata = {
   title: 'Contact — OLI Design Studio',
@@ -220,7 +221,7 @@ export default function ContactPage() {
                       margin: 0,
                     }}
                   >
-                    A non-binding introductory consultation via call or video to understand your aspirations and lifestyle priorities.
+                    An introductory consultation via call or video to understand your aspirations and project requirements.
                   </p>
                 </div>
               </div>
@@ -372,7 +373,7 @@ export default function ContactPage() {
                     margin: 0,
                   }}
                 >
-                  Maharashtra (Mumbai &amp; Pune Region) · Commissions accepted nationwide.
+                  {studioFacts.location} · {studioFacts.address}
                 </p>
               </div>
 

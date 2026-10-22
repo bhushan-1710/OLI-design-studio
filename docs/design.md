@@ -155,7 +155,7 @@ Order: title + discipline/location/year → brief (2–3 sentences) → sketch-t
 
 ## 10. Build and quality
 
-- **Stack:** Next.js (static export) or Astro, plain CSS with the tokens above, GSAP + ScrollTrigger + Lenis. No UI-kit components that fight the sheet aesthetic.
+- **Stack:** Next.js (static export) or Astro, plain CSS with the tokens above, Tailwind CSS v4, GSAP + ScrollTrigger + Lenis, Motion (framer-motion for internal component states). Approved sources: 21st.dev, Watermelon UI, MotionSites. Every imported component is re-themed to our tokens (tokens.css) and recorded in docs/components-used.md with source URL, licence, and the files it added.
 - **Performance:** hero interactive and drawing within 2.5s on a mid-range Android on 4G; total JS under 200 KB gzipped; fonts `display=swap` with fallbacks; images responsive with AVIF/WebP.
 - **Accessibility:** WCAG AA contrast (check red on paper in both themes), visible focus states in red, SVG drawings have `role="img"` + descriptive label, all content reachable by keyboard, no information carried only by animation.
 - **SEO:** real text in HTML for headline, tagline, disciplines and project names; one `h1` per page; Open Graph image from the hero drawing.

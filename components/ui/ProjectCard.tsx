@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Project } from '@/content/projects';
 import { prefersReducedMotion } from '@/lib/motion/reduced-motion';
 
@@ -19,6 +20,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   const metaRef = useRef<HTMLDivElement>(null);
   const underlineRef = useRef<HTMLSpanElement>(null);
   const arrowRef = useRef<HTMLSpanElement>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isReduced, setIsReduced] = useState(false);
+
+  useEffect(() => {
+    setIsReduced(prefersReducedMotion());
+  }, []);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -68,6 +75,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   }, []);
 
   const handleMouseEnter = () => {
+    setIsExpanded(true);
     if (prefersReducedMotion()) return;
     if (mediaRef.current) {
       gsap.to(mediaRef.current, { scale: 1.03, duration: 0.5, ease: 'power2.out', overwrite: 'auto' });
@@ -81,6 +89,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   };
 
   const handleMouseLeave = () => {
+    setIsExpanded(false);
     if (prefersReducedMotion()) return;
     if (mediaRef.current) {
       gsap.to(mediaRef.current, { scale: 1.0, duration: 0.5, ease: 'power2.out', overwrite: 'auto' });
@@ -100,6 +109,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       className="project-card focus-visible-ring"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onFocus={() => setIsExpanded(true)}
+      onBlur={() => setIsExpanded(false)}
       aria-label={`View project details for ${project.title} (${project.discipline}, ${project.year})`}
       style={{
         display: 'flex',
@@ -109,6 +120,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         position: 'relative',
         cursor: 'pointer',
         outline: 'none',
+        border: '1.5px solid var(--ink)',
+        padding: '16px',
+        backgroundColor: 'var(--paper)',
+        transition: 'background-color 0.2s ease',
       }}
     >
       {/* Media Wrapper with 4:3 ratio and overflow hidden */}
@@ -175,6 +190,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
         {/* SVG Sketch Outline Overlay */}
         <svg
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
           style={{
             position: 'absolute',
             inset: 0,
@@ -188,7 +205,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             ref={outlineRef}
             className="d"
             pathLength="1"
-            d="M 2 2 H 100% V 100% H 2 Z"
+            d="M 1 1 H 99 V 99 H 1 Z"
             fill="none"
             stroke="var(--red)"
             strokeWidth="2"
@@ -197,12 +214,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         </svg>
       </div>
 
-      {/* Card Meta */}
+      {/* Card Meta Header */}
       <div ref={metaRef} style={{ marginTop: '14px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px' }}>
           <h2
             style={{
-              fontSize: 'clamp(20px, 2.2vw, 26px)',
+              fontSize: 'clamp(20px, 2.2vw, 24px)',
               fontFamily: 'var(--font-serif, Georgia, serif)',
               fontWeight: 400,
               lineHeight: 1.2,
@@ -262,6 +279,50 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           <span>{project.location}</span>
           <span>·</span>
           <span>{project.year}</span>
+        </div>
+
+        {/* Expand-Details Container (No nested button) */}
+        <div
+          style={{
+            overflow: 'hidden',
+            transition: isReduced ? 'none' : 'max-height 0.35s ease, opacity 0.3s ease',
+            maxHeight: isExpanded || isReduced ? '160px' : '0px',
+            opacity: isExpanded || isReduced ? 1 : 0,
+            marginTop: isExpanded || isReduced ? '10px' : '0px',
+            borderTop: isExpanded || isReduced ? '1px dashed var(--grid)' : 'none',
+            paddingTop: isExpanded || isReduced ? '10px' : '0px',
+          }}
+        >
+          <p
+            style={{
+              fontSize: '12px',
+              lineHeight: 1.5,
+              fontFamily: 'var(--font-mono, monospace)',
+              opacity: 0.85,
+              margin: '0 0 8px 0',
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+            }}
+          >
+            {project.brief}
+          </p>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              fontFamily: 'var(--font-mono, monospace)',
+              fontSize: '10px',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: 'var(--red)',
+            }}
+          >
+            <span>{project.materials?.slice(0, 2).join(' · ')}</span>
+            <span>View drawings →</span>
+          </div>
         </div>
       </div>
     </Link>

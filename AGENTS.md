@@ -33,7 +33,7 @@ A website for OLI Design Studio (Architecture, Interior, Landscape, Product). Th
 - Use `100svh`, never `100vh`, for full-height sections.
 
 **Don't**
-- Don't use a UI kit (shadcn, MUI, Magic UI, etc.) for visible components; they fight the sheet aesthetic.
+- Approved sources: 21st.dev, Watermelon UI, MotionSites. Every imported component is re-themed to our tokens (tokens.css) and recorded in docs/components-used.md with source URL, licence, and the files it added.
 - Don't use handwriting fonts for anything longer than a few words.
 - Don't use Caveat, Architects Daughter, dashed-border "sketch" cards, drop-shadow cards, gradient blobs, emoji icons, or stock imagery.
 - Don't add WebGL/Three.js in v1.

@@ -4,7 +4,6 @@ import { HeroSection } from '@/components/sections/HeroSection';
 import { SelectedWorkSection } from '@/components/sections/SelectedWorkSection';
 import { ProcessSection } from '@/components/sections/ProcessSection';
 import { DisciplinesSection } from '@/components/sections/DisciplinesSection';
-import { StudioPillarsSection } from '@/components/sections/StudioPillarsSection';
 import { ClosingCtaSection } from '@/components/sections/ClosingCtaSection';
 
 export const metadata: Metadata = {
@@ -22,7 +21,6 @@ export default function HomePage() {
       <SelectedWorkSection />
       <ProcessSection />
       <DisciplinesSection />
-      <StudioPillarsSection />
       <ClosingCtaSection />
     </>
   );

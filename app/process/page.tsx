@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { studioFacts } from '@/content/studio-facts';
+
 interface ProcessStage {
   num: string;
   name: string;
@@ -22,109 +24,31 @@ interface ProcessStage {
   whatYouReceive: string[];
 }
 
-const STAGES: ProcessStage[] = [
-  {
-    num: '01',
-    name: 'Sketch & Briefing',
-    tagline: 'We start on paper: your site, your brief, first ideas drawn by hand.',
-    whatWeDo: [
-      'Topographical and climatic site evaluation (solar path, monsoon wind angles, natural contours).',
-      'In-depth client brief synthesis and programmatic zoning analysis.',
-      'Hand-drawn conceptual plans, massing sketches, and preliminary elevation diagrams.',
-      'Statutory zoning and local municipal setback feasibility checks.',
-    ],
-    whatYouDecide: [
-      'Core lifestyle priorities, room relationships, and functional requirements.',
-      'Target project timeline and preliminary investment budget parameters.',
-      'Selection of preferred conceptual spatial layout from initial study options.',
-    ],
-    whatYouReceive: [
-      'Site analysis schematic and solar orientation diagram.',
-      'Hand-sketched conceptual floor plans and massing studies.',
-      'Structured Project Brief & Preliminary Feasibility Dossier.',
-    ],
-  },
-  {
-    num: '02',
-    name: 'Develop & Detail',
-    tagline: 'Ideas become plans, sections and materials you can review and change.',
-    whatWeDo: [
-      'Production of dimensioned architectural working drawings, elevations, and structural sections.',
-      'Interior joinery detailing: custom teak millwork, fluted plaster screens, recessed reveals.',
-      'Physical material curation: board-formed concrete finishes, lime wash palettes, local stone samples.',
-      'Integration of MEP (mechanical, electrical, plumbing) and lighting schematics.',
-    ],
-    whatYouDecide: [
-      'Final spatial configuration and room dimension approvals.',
-      'Selection and tactile sign-off on material boards (stone, timber, lime, brass hardware).',
-      'Lighting intensity, fixture positions, and fenestration hardware choices.',
-    ],
-    whatYouReceive: [
-      'Comprehensive architectural drawing set (1:50 & 1:20 detail sheets).',
-      'Physical material and tactile finish sample board.',
-      'Itemised bill of quantities and preliminary contractor tender schedule.',
-    ],
-  },
-  {
-    num: '03',
-    name: 'Build & Supervise',
-    tagline: 'We detail the drawings, coordinate vendors and visit site as it goes up.',
-    whatWeDo: [
-      'Vendor tendering assistance: evaluating civil contractors, joiners, and stone masons.',
-      'Scheduled bi-weekly on-site architectural audits and dimensional verification.',
-      'Structural and MEP coordination meetings resolving site contingencies in real time.',
-      'Physical mock-up review of plaster textures, concrete pours, and joinery prototypes.',
-    ],
-    whatYouDecide: [
-      'Contractor and specialist fabricator appointment based on tender reviews.',
-      'Sign-off on full-scale on-site material mock-ups before mass execution.',
-      'Progress milestone approvals against verified site delivery logs.',
-    ],
-    whatYouReceive: [
-      'Bi-weekly architectural site inspection and quality audit logs.',
-      'Vendor shop-drawing review annotations and engineering clarifications.',
-      'Milestone construction progress photographic reports.',
-    ],
-  },
-  {
-    num: '04',
-    name: 'Handover & Living',
-    tagline: 'You receive the finished space and the documents behind it.',
-    whatWeDo: [
-      'Exhaustive pre-handover punch-list compilation and contractor rectification oversight.',
-      'Testing, balancing, and commissioning of all electrical, plumbing, and architectural fixtures.',
-      'Preparation of definitive as-built architectural drawing sets and operational dossiers.',
-      'Personal walk-through and physical key handover ceremony with maintenance orientation.',
-    ],
-    whatYouDecide: [
-      'Final walk-through inspection and snagging verification with the design team.',
-      'Formal acceptance of the built space and handover sign-off.',
-    ],
-    whatYouReceive: [
-      'Set of physical keys to your residence or commercial space.',
-      'Complete bound As-Built Architectural Drawing Package.',
-      'Operational and maintenance guide for natural stone, lime, and timber surfaces.',
-      'Consolidated vendor warranty and equipment dossier.',
-    ],
-  },
-];
+const STAGES: ProcessStage[] = studioFacts.process.map((p) => ({
+  num: p.stage,
+  name: p.name,
+  tagline: p.tagline,
+  whatWeDo: p.whatWeDo,
+  whatYouDecide: p.whatYouDecide,
+  whatYouReceive: p.whatYouReceive,
+}));
 
 const FAQS = [
   {
     q: 'At what stage should we contact OLI Design Studio?',
-    a: 'Ideally before finalising property acquisition or during early site planning. Evaluating contour slopes, sunlight paths, and zoning constraints early allows us to maximise passive ventilation and avoid costly structural redesigns.',
+    a: 'At early planning or site selection. Connecting before finalizing design decisions allows integration across architecture, interior, and landscape from the outset.',
   },
   {
-    q: 'Do you work outside of Maharashtra?',
-    a: 'Yes. While our primary studio practice is based in Western India (Mumbai and Pune regions), we undertake residential and boutique commercial commissions across India, conducting structured site visits at each critical execution milestone.',
+    q: 'Where does OLI Design Studio accept commissions?',
+    a: `Studio location: ${studioFacts.location}. Project commissions are evaluated by site scale and schedule.`,
   },
   {
-    q: 'Can we commission OLI for only Interior or Landscape design?',
-    a: 'Yes. While our signature strength is turnkey delivery from architecture to handover, we frequently accept standalone commissions for interior architectural transformations, private landscape gardens, and bespoke architectural hardware.',
+    q: 'Can we commission OLI for individual disciplines?',
+    a: 'Yes. We accept commissions for architecture, interior, landscape, or product design individually or as a unified start-to-handover commission.',
   },
   {
-    q: 'How does OLI ensure the site contractor builds according to the drawings?',
-    a: 'Single-point accountability is our core principle. We do not simply hand over drawings and disappear. We issue comprehensive 1:20 and 1:5 construction details, approve physical material mock-ups on site, and conduct scheduled site inspections to ensure zero compromise.',
+    q: 'How does OLI ensure the build matches the design?',
+    a: `${studioFacts.promise} Drawing sets, vendor coordination, and structured site reviews ensure continuity from drawing to handover.`,
   },
 ];
 

@@ -9,9 +9,13 @@ const HTML_PATTERNS = [
   { label: '[DRAFT', regex: /\[DRAFT/i },
   { label: 'TBC', regex: /\bTBC\b/i },
   { label: 'placeholder', regex: /placeholder/i },
+  { label: 'Lorem ipsum', regex: /lorem\s+ipsum/i },
+  { label: 'Acme', regex: /\bAcme\b/i },
+  { label: 'John Doe', regex: /\bJohn\s+Doe\b/i },
+  { label: 'example.com', regex: /example\.com/i },
 ];
 
-const JS_LITERAL_PATTERNS = ['[NEEDED', '[DRAFT'];
+const JS_LITERAL_PATTERNS = ['[NEEDED', '[DRAFT', 'Lorem ipsum', 'Acme'];
 
 function getAllHtmlFiles(dir, fileList = []) {
   if (!fs.existsSync(dir)) return fileList;

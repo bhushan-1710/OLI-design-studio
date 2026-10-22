@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ThemeToggle } from './ThemeToggle';
+import { studioFacts } from '@/content/studio-facts';
 
 export const Footer: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ export const Footer: React.FC = () => {
         {/* Top: Disciplines statement */}
         <div className="oli-footer-statement">
           <p className="oli-footer-disciplines">
-            Architecture · Interior · Landscape · Product Design — one studio, start to finish.
+            {studioFacts.disciplines.map((d) => d.name).join(' · ')} — one studio, start to finish.
           </p>
         </div>
 
@@ -30,46 +31,49 @@ export const Footer: React.FC = () => {
             <h2 className="oli-footer-heading">Direct Channels</h2>
             <ul className="oli-footer-contact-list">
               <li>
-                <a
-                  href="https://wa.me/?text=Hello%20OLI%20Design%20Studio%2C%20I%20would%20like%20to%20discuss%20a%20new%20project."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="oli-footer-link"
-                >
-                  WhatsApp: Message Design Team ↗
-                </a>
-              </li>
-              <li>
-                <a href="mailto:olidesignstudio06@gmail.com" className="oli-footer-link">
-                  Email: olidesignstudio06@gmail.com
+                <a href={`mailto:${studioFacts.email}`} className="oli-footer-link">
+                  Email: {studioFacts.email}
                 </a>
               </li>
               <li>
                 <a
-                  href="https://instagram.com/olidesignstudio"
+                  href={studioFacts.instagram.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="oli-footer-link"
                 >
-                  Instagram: @olidesignstudio ↗
+                  Instagram: {studioFacts.instagram.handle} ↗
                 </a>
               </li>
-              <li style={{ opacity: 0.75, fontSize: '11px', fontFamily: 'var(--font-mono, monospace)', marginTop: '4px' }}>
-                Response: Within 24–48 Business Hours
-              </li>
+              {studioFacts.whatsapp.isConfirmed ? (
+                <li>
+                  <a
+                    href={`https://wa.me/${studioFacts.whatsapp.number}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="oli-footer-link"
+                  >
+                    WhatsApp: {studioFacts.whatsapp.display} ↗
+                  </a>
+                </li>
+              ) : (
+                <li style={{ opacity: 0.6, fontSize: '11px', fontFamily: 'var(--font-mono, monospace)', marginTop: '4px' }}>
+                  WhatsApp: [NEEDED]
+                </li>
+              )}
             </ul>
           </div>
 
           <div className="oli-footer-col">
             <h2 className="oli-footer-heading">Studio Practice</h2>
             <p style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '12px', lineHeight: 1.6, opacity: 0.85, margin: 0 }}>
-              Regional Base: Western India (Mumbai &amp; Pune Region)
+              Region: {studioFacts.office.region}
             </p>
             <p style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', lineHeight: 1.5, opacity: 0.75, marginTop: '4px', margin: 0 }}>
-              Operating Scope: Pan-India Residential, Interior &amp; Landscape Commissions
+              Hours: {studioFacts.office.hours}
             </p>
             <p style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', lineHeight: 1.5, opacity: 0.75, marginTop: '4px', margin: 0 }}>
-              Studio Hours: Mon – Sat, 9:30 AM – 6:30 PM IST
+              Promise: {studioFacts.promise}
             </p>
           </div>
         </div>

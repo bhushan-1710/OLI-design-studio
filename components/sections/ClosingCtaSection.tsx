@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
+import { studioFacts } from '@/content/studio-facts';
 
 export function ClosingCtaSection() {
   return (
@@ -10,269 +11,233 @@ export function ClosingCtaSection() {
       className="closing-cta-section"
       style={{
         position: 'relative',
-        padding: 'clamp(56px, 8vw, 110px) clamp(22px, 3vw, 38px)',
-        borderTop: '1.5px solid var(--ink)',
+        padding: 'clamp(56px, 8vw, 100px) clamp(20px, 4vw, 40px)',
         backgroundColor: 'var(--paper)',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
+        borderTop: '1.5px solid var(--ink)',
       }}
-      aria-label="Enquiry and Consultation"
+      aria-label="Start a Project Consultation"
     >
-      <div style={{ maxWidth: '840px', margin: '0 auto', width: '100%' }}>
-        <span
+      {/* cta-3 Container: Architectural Grid Frame with SOLID 1.5px ink borders */}
+      <div
+        style={{
+          maxWidth: '1080px',
+          margin: '0 auto',
+          border: '1.5px solid var(--ink)',
+          backgroundColor: 'var(--paper)',
+          padding: 'clamp(32px, 5vw, 64px)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
+          position: 'relative',
+          borderRadius: 0,
+        }}
+      >
+        {/* Folio Header Tag */}
+        <div
           style={{
-            fontSize: '11px',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
             fontFamily: 'var(--font-mono, monospace)',
-            letterSpacing: '0.18em',
+            fontSize: '11px',
+            letterSpacing: '0.16em',
             textTransform: 'uppercase',
             color: 'var(--red)',
-            display: 'block',
-            marginBottom: '12px',
+            marginBottom: '16px',
+            border: '1px solid var(--red)',
+            padding: '3px 10px',
+            borderRadius: 0,
           }}
         >
-          04 // START A CONVERSATION
-        </span>
+          <span>SHEET CTA · 01</span>
+          <span>·</span>
+          <span>START A PROJECT</span>
+        </div>
 
+        {/* Heading */}
         <h2
           style={{
-            fontSize: 'clamp(36px, 5.5vw, 68px)',
             fontFamily: 'var(--font-serif, Georgia, serif)',
+            fontSize: 'clamp(36px, 5.5vw, 64px)',
             fontWeight: 400,
-            lineHeight: 1.05,
-            marginBottom: '16px',
+            lineHeight: 1.08,
             color: 'var(--ink)',
+            margin: '0 0 16px 0',
+            maxWidth: '20ch',
           }}
         >
           Have a project in mind?
         </h2>
 
+        {/* Subtitle from studio-facts.ts */}
         <p
           style={{
-            fontSize: 'clamp(14px, 1.25vw, 18px)',
+            fontFamily: 'var(--font-mono, monospace)',
+            fontSize: 'clamp(13px, 1.2vw, 16px)',
             lineHeight: 1.6,
+            color: 'var(--ink)',
             opacity: 0.85,
             maxWidth: '56ch',
-            margin: '0 auto 32px',
-            color: 'var(--ink)',
+            margin: '0 auto 32px auto',
           }}
         >
-          Whether you are embarking on a residential pavilion, an interior transformation, or a private landscape, we welcome thoughtful projects at every scale.
+          {studioFacts.promise} Tell us the site, the scale, and when you’d like to start.
         </p>
 
-        {/* Client Onboarding Roadmap: What to Expect When You Contact Us */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-            gap: '20px',
-            textAlign: 'left',
-            margin: '32px 0 40px',
-            padding: 'clamp(20px, 3vw, 28px)',
-            border: '1.5px solid var(--ink)',
-            backgroundColor: 'rgba(0, 0, 0, 0.015)',
-          }}
-        >
-          <div>
-            <span
-              style={{
-                fontSize: '10px',
-                fontFamily: 'var(--font-mono, monospace)',
-                color: 'var(--red)',
-                letterSpacing: '0.16em',
-                fontWeight: 600,
-                display: 'block',
-                marginBottom: '4px',
-              }}
-            >
-              STAGE 01 · CONSULTATION
-            </span>
-            <h3
-              style={{
-                fontSize: '16px',
-                fontFamily: 'var(--font-serif, Georgia, serif)',
-                fontWeight: 400,
-                margin: '0 0 6px 0',
-                color: 'var(--ink)',
-              }}
-            >
-              Initial Brief &amp; Site Review
-            </h3>
-            <p
-              style={{
-                fontSize: '12px',
-                fontFamily: 'var(--font-mono, monospace)',
-                lineHeight: 1.55,
-                opacity: 0.75,
-                margin: 0,
-                color: 'var(--ink)',
-              }}
-            >
-              We evaluate your site location, brief requirements, zoning contours, and intended timelines over a direct discussion.
-            </p>
-          </div>
-
-          <div>
-            <span
-              style={{
-                fontSize: '10px',
-                fontFamily: 'var(--font-mono, monospace)',
-                color: 'var(--red)',
-                letterSpacing: '0.16em',
-                fontWeight: 600,
-                display: 'block',
-                marginBottom: '4px',
-              }}
-            >
-              STAGE 02 · FRAMEWORK
-            </span>
-            <h3
-              style={{
-                fontSize: '16px',
-                fontFamily: 'var(--font-serif, Georgia, serif)',
-                fontWeight: 400,
-                margin: '0 0 6px 0',
-                color: 'var(--ink)',
-              }}
-            >
-              Concept &amp; Scope Proposal
-            </h3>
-            <p
-              style={{
-                fontSize: '12px',
-                fontFamily: 'var(--font-mono, monospace)',
-                lineHeight: 1.55,
-                opacity: 0.75,
-                margin: 0,
-                color: 'var(--ink)',
-              }}
-            >
-              We define clear scope schedules across disciplines, establishing transparent deliverables, fees, and milestone dates.
-            </p>
-          </div>
-
-          <div>
-            <span
-              style={{
-                fontSize: '10px',
-                fontFamily: 'var(--font-mono, monospace)',
-                color: 'var(--red)',
-                letterSpacing: '0.16em',
-                fontWeight: 600,
-                display: 'block',
-                marginBottom: '4px',
-              }}
-            >
-              STAGE 03 · EXECUTION
-            </span>
-            <h3
-              style={{
-                fontSize: '16px',
-                fontFamily: 'var(--font-serif, Georgia, serif)',
-                fontWeight: 400,
-                margin: '0 0 6px 0',
-                color: 'var(--ink)',
-              }}
-            >
-              Linework to Handover
-            </h3>
-            <p
-              style={{
-                fontSize: '12px',
-                fontFamily: 'var(--font-mono, monospace)',
-                lineHeight: 1.55,
-                opacity: 0.75,
-                margin: 0,
-                color: 'var(--ink)',
-              }}
-            >
-              From technical drawings and vendor coordination to continuous site supervision, one studio takes full accountability.
-            </p>
-          </div>
-        </div>
-
-        {/* Action Buttons */}
+        {/* Action Triggers */}
         <div
           style={{
             display: 'flex',
-            gap: '16px',
-            justifyContent: 'center',
+            gap: '14px',
             alignItems: 'center',
+            justifyContent: 'center',
             flexWrap: 'wrap',
-            marginBottom: '24px',
+            marginBottom: '40px',
           }}
         >
           <Button variant="primary" href="/contact/">
             Send an enquiry →
           </Button>
 
-          {/* WhatsApp Direct Chat */}
-          <a
-            href="https://wa.me/?text=Hello%20OLI%20Design%20Studio%2C%20I%20would%20like%20to%20discuss%20a%20new%20project."
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              padding: '9px 18px',
-              fontFamily: 'var(--font-mono, monospace)',
-              fontSize: '12px',
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'var(--ink)',
-              border: '1.5px solid var(--ink)',
-              borderRadius: 'var(--radius-wobbly)',
-              textDecoration: 'none',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              transition: 'border-color 0.2s, color 0.2s, background-color 0.2s',
-            }}
-            className="focus-visible-ring"
-          >
-            WhatsApp us ↗
-          </a>
+          {studioFacts.whatsapp.isConfirmed ? (
+            <a
+              href={`https://wa.me/${studioFacts.whatsapp.number}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="focus-visible-ring"
+              style={{
+                padding: '9px 20px',
+                fontFamily: 'var(--font-mono, monospace)',
+                fontSize: '12px',
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'var(--ink)',
+                border: '1.5px solid var(--ink)',
+                backgroundColor: 'transparent',
+                borderRadius: 0,
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+              }}
+            >
+              WhatsApp Us ↗
+            </a>
+          ) : (
+            <Link
+              href="/work/"
+              className="focus-visible-ring"
+              style={{
+                padding: '9px 20px',
+                fontFamily: 'var(--font-mono, monospace)',
+                fontSize: '12px',
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'var(--ink)',
+                border: '1.5px solid var(--ink)',
+                backgroundColor: 'transparent',
+                borderRadius: 0,
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+              }}
+            >
+              Explore Selected Work →
+            </Link>
+          )}
         </div>
 
-        {/* Reassurance & Direct Studio Info */}
+        {/* Meta Attribution Strip with SOLID 1.5px ink border (Zero dashed lines) */}
         <div
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '8px',
-            alignItems: 'center',
+            width: '100%',
+            borderTop: '1.5px solid var(--ink)',
+            paddingTop: '20px',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '16px',
+            textAlign: 'left',
           }}
         >
-          <p
-            style={{
-              fontSize: '12px',
-              fontFamily: 'var(--font-mono, monospace)',
-              letterSpacing: '0.04em',
-              opacity: 0.8,
-              margin: 0,
-            }}
-          >
-            Response within 24–48 business hours · Initial site and brief reviews are non-binding.
-          </p>
-
-          <div
-            style={{
-              fontSize: '11px',
-              fontFamily: 'var(--font-mono, monospace)',
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              opacity: 0.85,
-            }}
-          >
-            Direct studio email:{' '}
-            <a
-              href="mailto:olidesignstudio06@gmail.com"
+          <div>
+            <span
               style={{
+                display: 'block',
+                fontFamily: 'var(--font-mono, monospace)',
+                fontSize: '10px',
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
                 color: 'var(--red)',
+                marginBottom: '4px',
+              }}
+            >
+              STUDIO LOCATION
+            </span>
+            <span
+              style={{
+                fontFamily: 'var(--font-mono, monospace)',
+                fontSize: '12px',
+                color: 'var(--ink)',
+                opacity: 0.85,
+              }}
+            >
+              {studioFacts.location}
+            </span>
+          </div>
+
+          <div>
+            <span
+              style={{
+                display: 'block',
+                fontFamily: 'var(--font-mono, monospace)',
+                fontSize: '10px',
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'var(--red)',
+                marginBottom: '4px',
+              }}
+            >
+              RESPONSE TIME
+            </span>
+            <span
+              style={{
+                fontFamily: 'var(--font-mono, monospace)',
+                fontSize: '12px',
+                color: 'var(--ink)',
+                opacity: 0.85,
+              }}
+            >
+              {studioFacts.responseTime}
+            </span>
+          </div>
+
+          <div>
+            <span
+              style={{
+                display: 'block',
+                fontFamily: 'var(--font-mono, monospace)',
+                fontSize: '10px',
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'var(--red)',
+                marginBottom: '4px',
+              }}
+            >
+              DIRECT CONTACT
+            </span>
+            <a
+              href={`mailto:${studioFacts.email}`}
+              style={{
+                fontFamily: 'var(--font-mono, monospace)',
+                fontSize: '12px',
+                color: 'var(--ink)',
                 textDecoration: 'underline',
                 textUnderlineOffset: '3px',
               }}
             >
-              olidesignstudio06@gmail.com
+              {studioFacts.email}
             </a>
           </div>
         </div>
