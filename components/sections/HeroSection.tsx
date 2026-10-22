@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SheetFrame } from '@/components/layout/SheetFrame';
@@ -8,12 +8,13 @@ import { TitleBlock } from '@/components/layout/TitleBlock';
 import { HeroElevation } from '@/components/sections/HeroElevation';
 import { prefersReducedMotion } from '@/lib/motion/reduced-motion';
 import { initSmoothScroll, getLenisInstance } from '@/lib/motion/lenis';
+import { useIsomorphicLayoutEffect } from '@/lib/motion/isomorphic-layout-effect';
 
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeStage, setActiveStage] = useState<number>(0);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     // Register ScrollTrigger plugin safely
     if (typeof window !== 'undefined') {
       gsap.registerPlugin(ScrollTrigger);
@@ -139,53 +140,55 @@ export function HeroSection() {
   };
 
   return (
-    <header ref={containerRef} className="stage hero-stage">
-      <SheetFrame />
+    <div className="hero-section-wrapper" style={{ width: '100%', position: 'relative' }}>
+      <header ref={containerRef} className="stage hero-stage">
+        <SheetFrame />
 
-      {/* Copy Container */}
-      <div className="copy hero-copy">
-        <h1>
-          From <em>sketch</em> to{' '}
-          <span className="hl">
-            handover.
-            <svg viewBox="0 0 220 64" preserveAspectRatio="none" aria-hidden="true">
-              <path
-                className="d hl-path"
-                pathLength="1"
-                d="M12 34C6 10 90 3 150 12C216 22 216 52 140 57C70 62 8 52 14 24"
-              />
-            </svg>
-          </span>
-        </h1>
-        <div className="sub hero-sub">
-          <p>We take care of your projects from designing to handover.</p>
-          <ul>
-            <li>Architecture</li>
-            <li>Interior</li>
-            <li>Landscape</li>
-            <li>Product</li>
-          </ul>
+        {/* Copy Container */}
+        <div className="copy hero-copy">
+          <h1>
+            From <em>sketch</em> to{' '}
+            <span className="hl">
+              handover.
+              <svg viewBox="0 0 220 64" preserveAspectRatio="none" aria-hidden="true">
+                <path
+                  className="d hl-path"
+                  pathLength="1"
+                  d="M12 34C6 10 90 3 150 12C216 22 216 52 140 57C70 62 8 52 14 24"
+                />
+              </svg>
+            </span>
+          </h1>
+          <div className="sub hero-sub">
+            <p>We take care of your projects from designing to handover.</p>
+            <ul>
+              <li>Architecture</li>
+              <li>Interior</li>
+              <li>Landscape</li>
+              <li>Product</li>
+            </ul>
+          </div>
         </div>
-      </div>
 
-      {/* Architectural Elevation Drawing */}
-      <HeroElevation />
+        {/* Architectural Elevation Drawing */}
+        <HeroElevation />
 
-      {/* Scroll Cue (nudge on click, fades on scroll) */}
-      <div id="cue" className="cue" onClick={handleCueClick} role="button" tabIndex={0} aria-label="Scroll to draw">
-        scroll ↓
-      </div>
+        {/* Scroll Cue (nudge on click, fades on scroll) */}
+        <div id="cue" className="cue" onClick={handleCueClick} role="button" tabIndex={0} aria-label="Scroll to draw">
+          scroll ↓
+        </div>
 
-      {/* Stage Tracker */}
-      <ol className="stages hero-stages" aria-label="Project stages">
-        <li className={activeStage === 0 ? 'on' : ''}>01 Sketch</li>
-        <li className={activeStage === 1 ? 'on' : ''}>02 Develop</li>
-        <li className={activeStage === 2 ? 'on' : ''}>03 Build</li>
-        <li className={activeStage === 3 ? 'on' : ''}>04 Handover</li>
-      </ol>
+        {/* Stage Tracker */}
+        <ol className="stages hero-stages" aria-label="Project stages">
+          <li className={activeStage === 0 ? 'on' : ''}>01 Sketch</li>
+          <li className={activeStage === 1 ? 'on' : ''}>02 Develop</li>
+          <li className={activeStage === 2 ? 'on' : ''}>03 Build</li>
+          <li className={activeStage === 3 ? 'on' : ''}>04 Handover</li>
+        </ol>
 
-      {/* TitleBlock (hidden on <=820px) */}
-      <TitleBlock sheetNumber="A-01" sheetTitle="Home" />
-    </header>
+        {/* TitleBlock (hidden on <=820px) */}
+        <TitleBlock sheetNumber="A-01" sheetTitle="Home" />
+      </header>
+    </div>
   );
 }

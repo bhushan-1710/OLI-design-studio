@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { prefersReducedMotion } from '@/lib/motion/reduced-motion';
+import { useIsomorphicLayoutEffect } from '@/lib/motion/isomorphic-layout-effect';
 
 interface ProcessStage {
   number: string;
@@ -39,7 +40,7 @@ export function ProcessSection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeStage, setActiveStage] = useState(0);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (typeof window !== 'undefined') {
       gsap.registerPlugin(ScrollTrigger);
     }
@@ -142,9 +143,10 @@ export function ProcessSection() {
   }, []);
 
   return (
-    <section
-      ref={containerRef}
-      className="process-section"
+    <div className="process-section-wrapper" style={{ width: '100%', position: 'relative' }}>
+      <section
+        ref={containerRef}
+        className="process-section"
       style={{
         position: 'relative',
         backgroundColor: 'var(--paper)',
@@ -802,5 +804,6 @@ export function ProcessSection() {
         </div>
       </div>
     </section>
+    </div>
   );
 }

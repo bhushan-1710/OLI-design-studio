@@ -67,7 +67,9 @@ export function PageTransition() {
     if (prefersReducedMotion()) {
       // Still refresh ScrollTrigger for pin calculations on the newly loaded page
       requestAnimationFrame(() => {
-        ScrollTrigger.refresh();
+        try {
+          ScrollTrigger.refresh();
+        } catch {}
       });
       return;
     }
@@ -82,7 +84,9 @@ export function PageTransition() {
         onComplete: () => {
           gsap.set(overlay, { display: 'none' });
           // Ensure ScrollTrigger pins on the target page calculate exact geometry
-          ScrollTrigger.refresh();
+          try {
+            ScrollTrigger.refresh();
+          } catch {}
         },
       });
 
