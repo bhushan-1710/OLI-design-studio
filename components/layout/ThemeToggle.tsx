@@ -18,12 +18,10 @@ export const ThemeToggle: React.FC<{ className?: string }> = ({ className = '' }
     setStoredTheme(next);
   };
 
-  // Avoid hydration mismatch by rendering neutral text until mounted
-  const label = mounted
-    ? theme === 'dark'
+  const label =
+    mounted && theme === 'dark'
       ? 'Theme: Dark [Switch to Light]'
-      : 'Theme: Light [Switch to Dark]'
-    : 'Theme: System';
+      : 'Theme: Light [Switch to Dark]';
 
   return (
     <button

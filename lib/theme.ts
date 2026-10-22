@@ -10,18 +10,15 @@ export const themeInitScript = `
 (function() {
   try {
     var stored = localStorage.getItem('${THEME_STORAGE_KEY}');
-    var theme = stored === 'light' || stored === 'dark'
-      ? stored
-      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    var theme = stored === 'dark' ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', theme);
 
     if (window.matchMedia && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.documentElement.classList.add('js');
     }
   } catch (e) {
-    // Graceful fallback for restricted storage environments (incognito/private browsing)
-    var fallback = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', fallback);
+    // Graceful fallback: light theme default
+    document.documentElement.setAttribute('data-theme', 'light');
   }
 })();
 `;

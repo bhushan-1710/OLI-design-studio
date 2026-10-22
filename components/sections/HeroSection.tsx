@@ -113,13 +113,17 @@ export function HeroSection() {
     }, container);
 
     // Refresh ScrollTrigger geometry once fonts load
+    let active = true;
     if (typeof document !== 'undefined' && document.fonts) {
       document.fonts.ready.then(() => {
-        ScrollTrigger.refresh();
-      });
+        if (active) {
+          ScrollTrigger.refresh();
+        }
+      }).catch(() => {});
     }
 
     return () => {
+      active = false;
       ctx.revert();
       cleanupLenis();
     };

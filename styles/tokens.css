@@ -59,27 +59,7 @@
   --transition-fast: 0.2s ease;
 }
 
-/* Dark Theme via System Preference (guarded against explicit light override) */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #1C1B19;
-    --ink: #ECE6D9;
-    --red: #E5694F;
-    --grid: rgba(236, 230, 217, 0.06);
-
-    /* Calibrated Marker Wash Palette for Dark Mode (preserving >4.5:1 contrast for cream linework) */
-    --wash-sand: #3A3428;
-    --wash-concrete: #343330;
-    --wash-glass: #223538;
-    --wash-timber: #3C2417;
-    --wash-sage: #263420;
-    --wash-shrub: #1F2B18;
-    --wash-slab: #2E2B27;
-    --wash-ground: #2E2B25;
-  }
-}
-
-/* Dark Theme via Manual Override */
+/* Dark Theme via Manual Override (Light theme is default on :root) */
 :root[data-theme="dark"] {
   --paper: #1C1B19;
   --ink: #ECE6D9;

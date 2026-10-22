@@ -61,8 +61,11 @@ export function ProcessSection() {
       el.setAttribute('pathLength', '1');
     });
 
+    let mmInstance: gsap.MatchMedia | null = null;
+
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
+      mmInstance = mm;
 
       // Desktop: Pinned horizontal scrub across 4 panels
       mm.add('(min-width: 821px)', () => {
@@ -112,7 +115,7 @@ export function ProcessSection() {
           const paths = panel.querySelectorAll('.d');
           if (paths.length) {
             gsap.fromTo(
-              paths,
+              Array.from(paths),
               { strokeDashoffset: 1 },
               {
                 strokeDashoffset: 0,
@@ -122,6 +125,7 @@ export function ProcessSection() {
                 scrollTrigger: {
                   trigger: panel,
                   start: 'top 75%',
+                  end: 'bottom 20%',
                   once: true,
                 },
               }
@@ -131,7 +135,10 @@ export function ProcessSection() {
       });
     }, container);
 
-    return () => ctx.revert();
+    return () => {
+      mmInstance?.revert();
+      ctx.revert();
+    };
   }, []);
 
   return (

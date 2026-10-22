@@ -166,32 +166,37 @@ export function DisciplinesSection() {
       return;
     }
 
-    const ctx = gsap.context(() => {
-      rowsRef.current.forEach((row) => {
-        if (!row) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const lines = entry.target.querySelectorAll<SVGElement>('.d-line');
+            lines.forEach((l, i) => {
+              gsap.to(l, {
+                strokeDashoffset: 0,
+                duration: 1.1,
+                delay: i * 0.06,
+                ease: 'power2.out',
+              });
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
 
+    rowsRef.current.forEach((row) => {
+      if (row) {
         const lines = row.querySelectorAll<SVGElement>('.d-line');
-        // Initialize dash offset
         lines.forEach((l) => {
           gsap.set(l, { strokeDasharray: 1, strokeDashoffset: 1 });
         });
+        observer.observe(row);
+      }
+    });
 
-        // Trigger draw once on scroll enter
-        gsap.to(lines, {
-          strokeDashoffset: 0,
-          duration: 1.1,
-          stagger: 0.06,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: row,
-            start: 'top 78%',
-            once: true,
-          },
-        });
-      });
-    }, section);
-
-    return () => ctx.revert();
+    return () => observer.disconnect();
   }, []);
 
   return (

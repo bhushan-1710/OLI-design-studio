@@ -56,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={fontClassNames} suppressHydrationWarning>
+    <html lang="en" data-theme="light" className={fontClassNames} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{ __html: themeInitScript }}
